@@ -30,7 +30,7 @@
   
   <link rel="shortcut icon" href="icon_32.png" type="image/x-icon" />
 
-
+<link rel="next" href="introducción-a-r-y-rstudio.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -136,15 +143,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path=""><a href="#overview"><i class="fa fa-check"></i>Overview</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#external-links"><i class="fa fa-check"></i>External links</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#course-prerequisites"><i class="fa fa-check"></i>Course Prerequisites</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#course-evaluation"><i class="fa fa-check"></i>Course Evaluation</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#r-session-information"><i class="fa fa-check"></i>R session information</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#license"><i class="fa fa-check"></i>License</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#external-links"><i class="fa fa-check"></i>External links</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-prerequisites"><i class="fa fa-check"></i>Course Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i>Course Evaluation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-session-information"><i class="fa fa-check"></i>R session information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introducción a R y RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#github"><i class="fa fa-check"></i><b>1.2</b> GitHub</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#material-del-curso"><i class="fa fa-check"></i><b>1.4</b> Material del curso</a></li>
+<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards-opcional"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html"><i class="fa fa-check"></i><b>2</b> Introducción a Bioconductor</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#encontrando-paquetes-de-bioconductor"><i class="fa fa-check"></i><b>2.1</b> Encontrando paquetes de Bioconductor</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#estructura-de-un-paquete-de-bioc"><i class="fa fa-check"></i><b>2.2</b> Estructura de un paquete de BioC</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#las-dos-ramas-de-bioconductor-release-y-devel"><i class="fa fa-check"></i><b>2.3</b> Las dos ramas de Bioconductor: release y devel</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#cursos-y-eventos"><i class="fa fa-check"></i><b>2.4</b> Cursos y eventos</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#comunidad"><i class="fa fa-check"></i><b>2.5</b> Comunidad</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#ejercicio-grupal"><i class="fa fa-check"></i><b>2.6</b> Ejercicio grupal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html"><i class="fa fa-check"></i><b>3</b> Objetos de Bioconductor para datos de expresión</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#summarizedexperiment"><i class="fa fa-check"></i><b>3.1</b> SummarizedExperiment</a></li>
+<li class="chapter" data-level="3.2" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio"><i class="fa fa-check"></i><b>3.2</b> Ejercicio</a></li>
+<li class="chapter" data-level="3.3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#isee"><i class="fa fa-check"></i><b>3.3</b> iSEE</a></li>
+<li class="chapter" data-level="3.4" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio-con-spatiallibd"><i class="fa fa-check"></i><b>3.4</b> Ejercicio con spatialLIBD</a></li>
+<li class="chapter" data-level="3.5" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#comunidad-1"><i class="fa fa-check"></i><b>3.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html"><i class="fa fa-check"></i><b>4</b> Datos de RNA-seq a través de recount3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#procesar-datos-crudos-fastq-con-speaqeasy"><i class="fa fa-check"></i><b>4.1</b> Procesar datos crudos (FASTQ) con SPEAQeasy</a></li>
+<li class="chapter" data-level="4.2" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#proyectos-recount"><i class="fa fa-check"></i><b>4.2</b> Proyectos recount</a></li>
+<li class="chapter" data-level="4.3" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#usar-recount3"><i class="fa fa-check"></i><b>4.3</b> Usar recount3</a></li>
+<li class="chapter" data-level="4.4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#ejercicio-1"><i class="fa fa-check"></i><b>4.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="4.5" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#comunidad-2"><i class="fa fa-check"></i><b>4.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html"><i class="fa fa-check"></i><b>5</b> Modelos estadísticos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#exploremodelmatrix"><i class="fa fa-check"></i><b>5.1</b> ExploreModelMatrix</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-1"><i class="fa fa-check"></i><b>5.1.1</b> Ejemplo 1</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-2"><i class="fa fa-check"></i><b>5.1.2</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.1.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-3"><i class="fa fa-check"></i><b>5.1.3</b> Ejemplo 3</a></li>
+<li class="chapter" data-level="5.1.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-2"><i class="fa fa-check"></i><b>5.1.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.1.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#para-aprender-más"><i class="fa fa-check"></i><b>5.1.5</b> Para aprender más</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#datos-de-srp045638"><i class="fa fa-check"></i><b>5.2</b> Datos de SRP045638</a></li>
+<li class="chapter" data-level="5.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#normalización-de-datos"><i class="fa fa-check"></i><b>5.3</b> Normalización de datos</a></li>
+<li class="chapter" data-level="5.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#expresión-diferencial"><i class="fa fa-check"></i><b>5.4</b> Expresión diferencial</a></li>
+<li class="chapter" data-level="5.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#visualizando-genes-de"><i class="fa fa-check"></i><b>5.5</b> Visualizando genes DE</a></li>
+<li class="chapter" data-level="5.6" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-3"><i class="fa fa-check"></i><b>5.6</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.7" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#comunidad-3"><i class="fa fa-check"></i><b>5.7</b> Comunidad</a></li>
+<li class="chapter" data-level="5.8" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-respuesta"><i class="fa fa-check"></i><b>5.8</b> Ejercicio: respuesta</a></li>
+<li class="chapter" data-level="5.9" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#sobre-centering-y-scaling-en-heatmaps"><i class="fa fa-check"></i><b>5.9</b> Sobre <em>centering</em> y <em>scaling</em> en heatmaps</a></li>
+<li class="chapter" data-level="5.10" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#específicaciones-del-proyecto"><i class="fa fa-check"></i><b>5.10</b> Específicaciones del proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="smokingmouse.html"><a href="smokingmouse.html"><i class="fa fa-check"></i><b>6</b> smokingMouse</a></li>
+<li class="chapter" data-level="7" data-path="revisión.html"><a href="revisión.html"><i class="fa fa-check"></i><b>7</b> Revisión</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="revisión.html"><a href="revisión.html#ejercicio-en-equipo"><i class="fa fa-check"></i><b>7.1</b> Ejercicio en equipo</a></li>
+<li class="chapter" data-level="7.2" data-path="revisión.html"><a href="revisión.html#respuestas"><i class="fa fa-check"></i><b>7.2</b> Respuestas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rbioconductor-powered-team-data-science.html"><a href="rbioconductor-powered-team-data-science.html"><i class="fa fa-check"></i><b>8</b> R/Bioconductor-powered Team Data Science</a></li>
+<li class="chapter" data-level="9" data-path="spatiallibd.html"><a href="spatiallibd.html"><i class="fa fa-check"></i><b>9</b> spatialLIBD</a></li>
+<li class="chapter" data-level="10" data-path="comunidad-4.html"><a href="comunidad-4.html"><i class="fa fa-check"></i><b>10</b> Comunidad</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="comunidad-4.html"><a href="comunidad-4.html#de-alumnos-lcg-2021"><i class="fa fa-check"></i><b>10.1</b> De alumnos LCG 2021</a></li>
+<li class="chapter" data-level="10.2" data-path="comunidad-4.html"><a href="comunidad-4.html#de-ustedes"><i class="fa fa-check"></i><b>10.2</b> De ustedes</a></li>
 </ul></li>
 </ul>
 
@@ -168,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author"><em>Leonardo Collado-Torres</em></p>
 </div>
 <div id="overview" class="section level1 unnumbered hasAnchor">
-<h1>Overview<a href="#overview" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1>Overview<a href="index.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Here you can find the files for the February 2023 introduction to R, RStudio and RNA-sequencing (RNA-seq) course for <a href="https://lcg.unam.mx/">LCG-UNAM</a> at <a href="https://ccg.unam.mx/">CCG-UNAM</a> (January 30 - February 2, 2024). The rest of the chapters will be in Spanish.</p>
 <p>Instructor:</p>
 <ul>
@@ -190,12 +263,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Download the materials for this course with <code>usethis::use_course('lcolladotor/rnaseq_LCG-UNAM_2024')</code> or view online at <a href="http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024"><strong>lcolladotor.github.io/rnaseq_LCG-UNAM_2024</strong></a>.</p>
 <div id="code-of-conduct" class="section level2 unnumbered hasAnchor">
-<h2>Code of Conduct<a href="#code-of-conduct" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Code of Conduct<a href="index.html#code-of-conduct" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’ll follow the CDSB code of conduct <a href="https://comunidadbioinfo.github.io/codigo-de-conducta/">comunidadbioinfo.github.io/codigo-de-conducta/</a> as well as version 1.2.0 of the Bioconductor code of conduct <a href="https://bioconductor.github.io/bioc_coc_multilingual/">bioconductor.github.io/bioc_coc_multilingual/</a>.</p>
 <p>For reporting any violations of the code of conduct, report them to the Instructor and/or Course Coordinators.</p>
 </div>
 <div id="course-schedule" class="section level2 unnumbered hasAnchor">
-<h2>Course Schedule<a href="#course-schedule" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Course Schedule<a href="index.html#course-schedule" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>Local times in Cuernavaca, Mexico</em></p>
 <ul>
 <li>Tuesday January 30:
@@ -227,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="external-links" class="section level2 unnumbered hasAnchor">
-<h2>External links<a href="#external-links" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>External links<a href="index.html#external-links" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://cursos.lcg.unam.mx/course/view.php?id=161">Cursos LCG</a></li>
 <li><a href="https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024">GitHub source code</a></li>
@@ -240,40 +313,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="course-prerequisites" class="section level2 unnumbered hasAnchor">
-<h2>Course Prerequisites<a href="#course-prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Course Prerequisites<a href="index.html#course-prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Install R 4.3.x from <a href="https://cran.r-project.org/">CRAN</a> then install the following R packages:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="do">## For installing Bioconductor packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>}</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">## Install required packages</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="fu">c</span>(</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>        <span class="st">&quot;usethis&quot;</span>, <span class="do">## Utilities</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>        <span class="st">&quot;here&quot;</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>        <span class="st">&quot;biocthis&quot;</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>        <span class="st">&quot;lobstr&quot;</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>        <span class="st">&quot;postcards&quot;</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>        <span class="st">&quot;sessioninfo&quot;</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>        <span class="st">&quot;SummarizedExperiment&quot;</span>, <span class="do">## Main containers / vis</span></span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>        <span class="st">&quot;iSEE&quot;</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>        <span class="st">&quot;edgeR&quot;</span>, <span class="do">## RNA-seq</span></span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>        <span class="st">&quot;ExploreModelMatrix&quot;</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>        <span class="st">&quot;limma&quot;</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>        <span class="st">&quot;recount3&quot;</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>        <span class="st">&quot;pheatmap&quot;</span>, <span class="do">## Visualization</span></span>
-<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>        <span class="st">&quot;ggplot2&quot;</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>        <span class="st">&quot;patchwork&quot;</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>        <span class="st">&quot;RColorBrewer&quot;</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>        <span class="st">&quot;ComplexHeatmap&quot;</span>,</span>
-<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a>        <span class="st">&quot;spatialLIBD&quot;</span> <span class="do">## Advanced</span></span>
-<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a>    )</span>
-<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="do">## For installing Bioconductor packages</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="index.html#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="index.html#cb1-6" tabindex="-1"></a><span class="do">## Install required packages</span></span>
+<span id="cb1-7"><a href="index.html#cb1-7" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(</span>
+<span id="cb1-8"><a href="index.html#cb1-8" tabindex="-1"></a>    <span class="fu">c</span>(</span>
+<span id="cb1-9"><a href="index.html#cb1-9" tabindex="-1"></a>        <span class="st">&quot;usethis&quot;</span>, <span class="do">## Utilities</span></span>
+<span id="cb1-10"><a href="index.html#cb1-10" tabindex="-1"></a>        <span class="st">&quot;here&quot;</span>,</span>
+<span id="cb1-11"><a href="index.html#cb1-11" tabindex="-1"></a>        <span class="st">&quot;biocthis&quot;</span>,</span>
+<span id="cb1-12"><a href="index.html#cb1-12" tabindex="-1"></a>        <span class="st">&quot;lobstr&quot;</span>,</span>
+<span id="cb1-13"><a href="index.html#cb1-13" tabindex="-1"></a>        <span class="st">&quot;postcards&quot;</span>,</span>
+<span id="cb1-14"><a href="index.html#cb1-14" tabindex="-1"></a>        <span class="st">&quot;sessioninfo&quot;</span>,</span>
+<span id="cb1-15"><a href="index.html#cb1-15" tabindex="-1"></a>        <span class="st">&quot;SummarizedExperiment&quot;</span>, <span class="do">## Main containers / vis</span></span>
+<span id="cb1-16"><a href="index.html#cb1-16" tabindex="-1"></a>        <span class="st">&quot;iSEE&quot;</span>,</span>
+<span id="cb1-17"><a href="index.html#cb1-17" tabindex="-1"></a>        <span class="st">&quot;edgeR&quot;</span>, <span class="do">## RNA-seq</span></span>
+<span id="cb1-18"><a href="index.html#cb1-18" tabindex="-1"></a>        <span class="st">&quot;ExploreModelMatrix&quot;</span>,</span>
+<span id="cb1-19"><a href="index.html#cb1-19" tabindex="-1"></a>        <span class="st">&quot;limma&quot;</span>,</span>
+<span id="cb1-20"><a href="index.html#cb1-20" tabindex="-1"></a>        <span class="st">&quot;recount3&quot;</span>,</span>
+<span id="cb1-21"><a href="index.html#cb1-21" tabindex="-1"></a>        <span class="st">&quot;pheatmap&quot;</span>, <span class="do">## Visualization</span></span>
+<span id="cb1-22"><a href="index.html#cb1-22" tabindex="-1"></a>        <span class="st">&quot;ggplot2&quot;</span>,</span>
+<span id="cb1-23"><a href="index.html#cb1-23" tabindex="-1"></a>        <span class="st">&quot;patchwork&quot;</span>,</span>
+<span id="cb1-24"><a href="index.html#cb1-24" tabindex="-1"></a>        <span class="st">&quot;RColorBrewer&quot;</span>,</span>
+<span id="cb1-25"><a href="index.html#cb1-25" tabindex="-1"></a>        <span class="st">&quot;ComplexHeatmap&quot;</span>,</span>
+<span id="cb1-26"><a href="index.html#cb1-26" tabindex="-1"></a>        <span class="st">&quot;spatialLIBD&quot;</span> <span class="do">## Advanced</span></span>
+<span id="cb1-27"><a href="index.html#cb1-27" tabindex="-1"></a>    )</span>
+<span id="cb1-28"><a href="index.html#cb1-28" tabindex="-1"></a>)</span></code></pre></div>
 <p>You will also need to install <a href="https://rstudio.com/products/rstudio/download/#download">RStudio</a> version RStudio 2023.06.1+524 or newer.</p>
 </div>
 <div id="course-evaluation" class="section level2 unnumbered hasAnchor">
-<h2>Course Evaluation<a href="#course-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Course Evaluation<a href="index.html#course-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Participation
 <ul>
@@ -297,42 +370,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Projects, public work and notes are due at 9 am US Eastern on Monday February 12th, though we recommend doing any work related to this course by Friday February 9th.</p>
 </div>
 <div id="r-session-information" class="section level2 unnumbered hasAnchor">
-<h2>R session information<a href="#r-session-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>R session information<a href="index.html#r-session-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Details on the R version used for making this book. The source code is available at <a href="https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024"><code>lcolladotor/rnaseq_LCG-UNAM_2024</code></a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">## Load the package at the top of your script</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;sessioninfo&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="do">##  Utilities</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;BiocStyle&quot;</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;biocthis&quot;</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;here&quot;</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;lobstr&quot;</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;postcards&quot;</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;usethis&quot;</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;sessioninfo&quot;</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="do">## Main containers / vis</span></span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;SummarizedExperiment&quot;</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;iSEE&quot;</span>)</span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="do">## RNA-seq</span></span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;edgeR&quot;</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ExploreModelMatrix&quot;</span>)</span>
-<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;limma&quot;</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span>
-<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="do">## Visualization</span></span>
-<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ComplexHeatmap&quot;</span>)</span>
-<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;patchwork&quot;</span>)</span>
-<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;pheatmap&quot;</span>)</span>
-<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
-<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="do">## Advanced</span></span>
-<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;spatialLIBD&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="do">## Reproducibility information</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">session_info</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a><span class="do">## Load the package at the top of your script</span></span>
+<span id="cb2-2"><a href="index.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;sessioninfo&quot;</span>)</span>
+<span id="cb2-3"><a href="index.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="index.html#cb2-4" tabindex="-1"></a><span class="do">##  Utilities</span></span>
+<span id="cb2-5"><a href="index.html#cb2-5" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;BiocStyle&quot;</span>)</span>
+<span id="cb2-6"><a href="index.html#cb2-6" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;biocthis&quot;</span>)</span>
+<span id="cb2-7"><a href="index.html#cb2-7" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;here&quot;</span>)</span>
+<span id="cb2-8"><a href="index.html#cb2-8" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;lobstr&quot;</span>)</span>
+<span id="cb2-9"><a href="index.html#cb2-9" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;postcards&quot;</span>)</span>
+<span id="cb2-10"><a href="index.html#cb2-10" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb2-11"><a href="index.html#cb2-11" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;sessioninfo&quot;</span>)</span>
+<span id="cb2-12"><a href="index.html#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="index.html#cb2-13" tabindex="-1"></a><span class="do">## Main containers / vis</span></span>
+<span id="cb2-14"><a href="index.html#cb2-14" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;SummarizedExperiment&quot;</span>)</span>
+<span id="cb2-15"><a href="index.html#cb2-15" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;iSEE&quot;</span>)</span>
+<span id="cb2-16"><a href="index.html#cb2-16" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="index.html#cb2-17" tabindex="-1"></a><span class="do">## RNA-seq</span></span>
+<span id="cb2-18"><a href="index.html#cb2-18" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;edgeR&quot;</span>)</span>
+<span id="cb2-19"><a href="index.html#cb2-19" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ExploreModelMatrix&quot;</span>)</span>
+<span id="cb2-20"><a href="index.html#cb2-20" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;limma&quot;</span>)</span>
+<span id="cb2-21"><a href="index.html#cb2-21" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span>
+<span id="cb2-22"><a href="index.html#cb2-22" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="index.html#cb2-23" tabindex="-1"></a><span class="do">## Visualization</span></span>
+<span id="cb2-24"><a href="index.html#cb2-24" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ComplexHeatmap&quot;</span>)</span>
+<span id="cb2-25"><a href="index.html#cb2-25" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb2-26"><a href="index.html#cb2-26" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;patchwork&quot;</span>)</span>
+<span id="cb2-27"><a href="index.html#cb2-27" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;pheatmap&quot;</span>)</span>
+<span id="cb2-28"><a href="index.html#cb2-28" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
+<span id="cb2-29"><a href="index.html#cb2-29" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="index.html#cb2-30" tabindex="-1"></a><span class="do">## Advanced</span></span>
+<span id="cb2-31"><a href="index.html#cb2-31" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;spatialLIBD&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="do">## Reproducibility information</span></span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
+<span id="cb3-3"><a href="index.html#cb3-3" tabindex="-1"></a><span class="fu">session_info</span>()</span></code></pre></div>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value
 ##  version  R version 4.3.2 (2023-10-31)
@@ -534,13 +607,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  [3] /usr/local/lib/R/library
 ## 
 ## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">proc.time</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a><span class="fu">proc.time</span>()</span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##  12.798   0.895  13.353</code></pre>
-<p>This book was last updated at 2024-01-29 14:14:03.274458.</p>
+##  11.249   1.019  11.947</code></pre>
+<p>This book was last updated at 2024-01-29 14:16:05.4769.</p>
 </div>
 <div id="license" class="section level2 unnumbered hasAnchor">
-<h2>License<a href="#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>License<a href="index.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
 
 </div>
@@ -594,7 +667,7 @@ Published with <a href="https://bookdown.org/" target="_blank" rel="noopener">Bo
         </div>
       </div>
 
-
+<a href="introducción-a-r-y-rstudio.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Datos de RNA-seq a través de recount3 | Intro RNA-seq LCG-UNAM 2024</title>
+  <meta name="description" content="4 Datos de RNA-seq a través de recount3 | Intro RNA-seq LCG-UNAM 2024" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Datos de RNA-seq a través de recount3 | Intro RNA-seq LCG-UNAM 2024" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="lcolladotor/rnaseq_LCG-UNAM_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Datos de RNA-seq a través de recount3 | Intro RNA-seq LCG-UNAM 2024" />
+  
+  
+  
+
+<meta name="author" content="Leonardo Collado-Torres" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="icon_32.png" type="image/x-icon" />
+<link rel="prev" href="objetos-de-bioconductor-para-datos-de-expresión.html"/>
+<link rel="next" href="modelos-estadísticos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#external-links"><i class="fa fa-check"></i>External links</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-prerequisites"><i class="fa fa-check"></i>Course Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i>Course Evaluation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-session-information"><i class="fa fa-check"></i>R session information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introducción a R y RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#github"><i class="fa fa-check"></i><b>1.2</b> GitHub</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#material-del-curso"><i class="fa fa-check"></i><b>1.4</b> Material del curso</a></li>
+<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards-opcional"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html"><i class="fa fa-check"></i><b>2</b> Introducción a Bioconductor</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#encontrando-paquetes-de-bioconductor"><i class="fa fa-check"></i><b>2.1</b> Encontrando paquetes de Bioconductor</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#estructura-de-un-paquete-de-bioc"><i class="fa fa-check"></i><b>2.2</b> Estructura de un paquete de BioC</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#las-dos-ramas-de-bioconductor-release-y-devel"><i class="fa fa-check"></i><b>2.3</b> Las dos ramas de Bioconductor: release y devel</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#cursos-y-eventos"><i class="fa fa-check"></i><b>2.4</b> Cursos y eventos</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#comunidad"><i class="fa fa-check"></i><b>2.5</b> Comunidad</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#ejercicio-grupal"><i class="fa fa-check"></i><b>2.6</b> Ejercicio grupal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html"><i class="fa fa-check"></i><b>3</b> Objetos de Bioconductor para datos de expresión</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#summarizedexperiment"><i class="fa fa-check"></i><b>3.1</b> SummarizedExperiment</a></li>
+<li class="chapter" data-level="3.2" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio"><i class="fa fa-check"></i><b>3.2</b> Ejercicio</a></li>
+<li class="chapter" data-level="3.3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#isee"><i class="fa fa-check"></i><b>3.3</b> iSEE</a></li>
+<li class="chapter" data-level="3.4" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio-con-spatiallibd"><i class="fa fa-check"></i><b>3.4</b> Ejercicio con spatialLIBD</a></li>
+<li class="chapter" data-level="3.5" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#comunidad-1"><i class="fa fa-check"></i><b>3.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html"><i class="fa fa-check"></i><b>4</b> Datos de RNA-seq a través de recount3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#procesar-datos-crudos-fastq-con-speaqeasy"><i class="fa fa-check"></i><b>4.1</b> Procesar datos crudos (FASTQ) con SPEAQeasy</a></li>
+<li class="chapter" data-level="4.2" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#proyectos-recount"><i class="fa fa-check"></i><b>4.2</b> Proyectos recount</a></li>
+<li class="chapter" data-level="4.3" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#usar-recount3"><i class="fa fa-check"></i><b>4.3</b> Usar recount3</a></li>
+<li class="chapter" data-level="4.4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#ejercicio-1"><i class="fa fa-check"></i><b>4.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="4.5" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#comunidad-2"><i class="fa fa-check"></i><b>4.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html"><i class="fa fa-check"></i><b>5</b> Modelos estadísticos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#exploremodelmatrix"><i class="fa fa-check"></i><b>5.1</b> ExploreModelMatrix</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-1"><i class="fa fa-check"></i><b>5.1.1</b> Ejemplo 1</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-2"><i class="fa fa-check"></i><b>5.1.2</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.1.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-3"><i class="fa fa-check"></i><b>5.1.3</b> Ejemplo 3</a></li>
+<li class="chapter" data-level="5.1.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-2"><i class="fa fa-check"></i><b>5.1.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.1.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#para-aprender-más"><i class="fa fa-check"></i><b>5.1.5</b> Para aprender más</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#datos-de-srp045638"><i class="fa fa-check"></i><b>5.2</b> Datos de SRP045638</a></li>
+<li class="chapter" data-level="5.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#normalización-de-datos"><i class="fa fa-check"></i><b>5.3</b> Normalización de datos</a></li>
+<li class="chapter" data-level="5.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#expresión-diferencial"><i class="fa fa-check"></i><b>5.4</b> Expresión diferencial</a></li>
+<li class="chapter" data-level="5.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#visualizando-genes-de"><i class="fa fa-check"></i><b>5.5</b> Visualizando genes DE</a></li>
+<li class="chapter" data-level="5.6" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-3"><i class="fa fa-check"></i><b>5.6</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.7" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#comunidad-3"><i class="fa fa-check"></i><b>5.7</b> Comunidad</a></li>
+<li class="chapter" data-level="5.8" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-respuesta"><i class="fa fa-check"></i><b>5.8</b> Ejercicio: respuesta</a></li>
+<li class="chapter" data-level="5.9" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#sobre-centering-y-scaling-en-heatmaps"><i class="fa fa-check"></i><b>5.9</b> Sobre <em>centering</em> y <em>scaling</em> en heatmaps</a></li>
+<li class="chapter" data-level="5.10" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#específicaciones-del-proyecto"><i class="fa fa-check"></i><b>5.10</b> Específicaciones del proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="smokingmouse.html"><a href="smokingmouse.html"><i class="fa fa-check"></i><b>6</b> smokingMouse</a></li>
+<li class="chapter" data-level="7" data-path="revisión.html"><a href="revisión.html"><i class="fa fa-check"></i><b>7</b> Revisión</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="revisión.html"><a href="revisión.html#ejercicio-en-equipo"><i class="fa fa-check"></i><b>7.1</b> Ejercicio en equipo</a></li>
+<li class="chapter" data-level="7.2" data-path="revisión.html"><a href="revisión.html#respuestas"><i class="fa fa-check"></i><b>7.2</b> Respuestas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rbioconductor-powered-team-data-science.html"><a href="rbioconductor-powered-team-data-science.html"><i class="fa fa-check"></i><b>8</b> R/Bioconductor-powered Team Data Science</a></li>
+<li class="chapter" data-level="9" data-path="spatiallibd.html"><a href="spatiallibd.html"><i class="fa fa-check"></i><b>9</b> spatialLIBD</a></li>
+<li class="chapter" data-level="10" data-path="comunidad-4.html"><a href="comunidad-4.html"><i class="fa fa-check"></i><b>10</b> Comunidad</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="comunidad-4.html"><a href="comunidad-4.html#de-alumnos-lcg-2021"><i class="fa fa-check"></i><b>10.1</b> De alumnos LCG 2021</a></li>
+<li class="chapter" data-level="10.2" data-path="comunidad-4.html"><a href="comunidad-4.html#de-ustedes"><i class="fa fa-check"></i><b>10.2</b> De ustedes</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro RNA-seq LCG-UNAM 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-de-rna-seq-a-través-de-recount3" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Datos de RNA-seq a través de recount3<a href="datos-de-rna-seq-a-través-de-recount3.html#datos-de-rna-seq-a-través-de-recount3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="procesar-datos-crudos-fastq-con-speaqeasy" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Procesar datos crudos (FASTQ) con SPEAQeasy<a href="datos-de-rna-seq-a-través-de-recount3.html#procesar-datos-crudos-fastq-con-speaqeasy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="http://research.libd.org/SPEAQeasy/images/4_workflow.png" width="800px"/></p>
+<ul>
+<li>Pre-print de diciembre 2020 <a href="https://www.biorxiv.org/content/10.1101/2020.12.11.386789v1" class="uri">https://www.biorxiv.org/content/10.1101/2020.12.11.386789v1</a></li>
+<li>Artículo de mayo 2021 <a href="https://doi.org/10.1186/s12859-021-04142-3" class="uri">https://doi.org/10.1186/s12859-021-04142-3</a></li>
+<li>Documentación del software <a href="http://research.libd.org/SPEAQeasy/" class="uri">http://research.libd.org/SPEAQeasy/</a></li>
+<li>Ejemplo de como usar el software y analizar los datos <a href="http://research.libd.org/SPEAQeasy-example/" class="uri">http://research.libd.org/SPEAQeasy-example/</a></li>
+<li>Taller de 3 días (aprox 6 horas en total) sobre expresión diferencial usando estos datos <a href="https://lcolladotor.github.io/bioc_team_ds/differential-expression-analysis.html" class="uri">https://lcolladotor.github.io/bioc_team_ds/differential-expression-analysis.html</a></li>
+</ul>
+</div>
+<div id="proyectos-recount" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Proyectos recount<a href="datos-de-rna-seq-a-través-de-recount3.html#proyectos-recount" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>ReCount</code>: datos de unos 20 estudios
+<ul>
+<li><a href="http://bowtie-bio.sourceforge.net/recount/index.shtml" class="uri">http://bowtie-bio.sourceforge.net/recount/index.shtml</a></li>
+<li>Artículo del 2011 <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-449" class="uri">https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-449</a></li>
+</ul></li>
+<li><code>recount</code>: 70 mil muestras de RNA-seq uniformemente procesadas
+<ul>
+<li><a href="https://jhubiostatistics.shinyapps.io/recount/" class="uri">https://jhubiostatistics.shinyapps.io/recount/</a></li>
+<li>Documentación con <code>pkgdown</code>: <a href="http://leekgroup.github.io/recount/" class="uri">http://leekgroup.github.io/recount/</a></li>
+<li>Documentación en Bioconductor: <a href="http://bioconductor.org/packages/recount" class="uri">http://bioconductor.org/packages/recount</a></li>
+<li>Artículo principal de 2017 <a href="http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html" class="uri">http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html</a></li>
+<li>Artículo que explica porque las cuentas (<em>counts</em>) son diferentes a las usuales <a href="https://f1000research.com/articles/6-1558/v1" class="uri">https://f1000research.com/articles/6-1558/v1</a></li>
+<li>Algunos análisis ejemplo que hicimos <a href="http://leekgroup.github.io/recount-analyses/" class="uri">http://leekgroup.github.io/recount-analyses/</a></li>
+</ul></li>
+<li><code>recount3</code>: 700 mil muestras de RNA-seq de humano y ratón
+<ul>
+<li><a href="http://rna.recount.bio/" class="uri">http://rna.recount.bio/</a></li>
+<li>Documentación con <code>pkgdown</code>: <a href="http://research.libd.org/recount3/" class="uri">http://research.libd.org/recount3/</a></li>
+<li>Documentación en Bioconductor: <a href="http://bioconductor.org/packages/recount3" class="uri">http://bioconductor.org/packages/recount3</a></li>
+<li>Pre-print: mayo 2021 <a href="https://doi.org/10.1101/2021.05.21.445138" class="uri">https://doi.org/10.1101/2021.05.21.445138</a></li>
+<li>Artículo: noviembre 2021 <a href="https://doi.org/10.1186/s13059-021-02533-6" class="uri">https://doi.org/10.1186/s13059-021-02533-6</a></li>
+</ul></li>
+<li>Ayuda a que todxs podamos analizar los datos sin importar quien tiene acceso a <em>high performance computing</em> (HPC) (clústers para procesar datos).</li>
+<li>Es como democratizar el acceso a los datos ^^</li>
+</ul>
+</div>
+<div id="usar-recount3" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Usar recount3<a href="datos-de-rna-seq-a-través-de-recount3.html#usar-recount3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Check the original documentation in English <a href="http://rna.recount.bio/docs/quick-access.html#quick-recount3">here</a> and <a href="http://rna.recount.bio/docs/bioconductor.html#recount3">here</a>.</em></p>
+<p>Primero cargamos el paquete de R que automáticamente carga todas las dependencias incluyendo a <code>SummarizedExperiment</code>.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb54-1" tabindex="-1"></a><span class="do">## Load recount3 R package</span></span>
+<span id="cb54-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb54-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span></code></pre></div>
+<p>Después tenemos que identificar un estudio de interes y determinar si queremos accesar la información a nivel de genes, exones, etc. Sabiendo el estudio de interes, podemos descargar los datos usando la función <code>create_rse()</code> como mostramos a continuación. <code>create_rse()</code> tiene argumentos con los cuales podemos especificar la <strong>anotación</strong> que queremos usar (las opciones dependen del organismo).</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-1" tabindex="-1"></a><span class="do">## Cambiaremos el URL de recount3 a Amazon (AWS)</span></span>
+<span id="cb55-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-2" tabindex="-1"></a><span class="do">## para evitar problems de TLS versión 1.2 en</span></span>
+<span id="cb55-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-3" tabindex="-1"></a><span class="do">## Windows (luego tiene una versión más vieja).</span></span>
+<span id="cb55-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-4" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-5" tabindex="-1"></a><span class="do">## Primero vemos el URL actual</span></span>
+<span id="cb55-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-6" tabindex="-1"></a><span class="fu">getOption</span>(</span>
+<span id="cb55-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-7" tabindex="-1"></a>    <span class="st">&quot;recount3_url&quot;</span>,</span>
+<span id="cb55-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-8" tabindex="-1"></a>    <span class="st">&quot;http://duffel.rail.bio/recount3&quot;</span></span>
+<span id="cb55-9"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-9" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## [1] &quot;http://duffel.rail.bio/recount3&quot;</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-1" tabindex="-1"></a><span class="do">## Ahora si lo cambiamos</span></span>
+<span id="cb57-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">recount3_url =</span> <span class="st">&quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</span>)</span>
+<span id="cb57-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-3" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-4" tabindex="-1"></a><span class="do">## Y vemos que ya funcionó el cambio.</span></span>
+<span id="cb57-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-5" tabindex="-1"></a><span class="fu">getOption</span>(</span>
+<span id="cb57-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-6" tabindex="-1"></a>    <span class="st">&quot;recount3_url&quot;</span>,</span>
+<span id="cb57-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-7" tabindex="-1"></a>    <span class="st">&quot;http://duffel.rail.bio/recount3&quot;</span></span>
+<span id="cb57-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-8" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## [1] &quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb59-1" tabindex="-1"></a><span class="do">## Revisemos todos los proyectos con datos de humano en recount3</span></span>
+<span id="cb59-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb59-2" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
+<pre><code>## 2024-01-29 14:16:10.558477 caching file sra.recount_project.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/sra.recount_project.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:10.901017 caching file gtex.recount_project.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/gtex/metadata/gtex.recount_project.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:11.147195 caching file tcga.recount_project.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/tcga/metadata/tcga.recount_project.MD.gz&#39;</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-1" tabindex="-1"></a><span class="do">## Encuentra tu proyecto de interés. Aquí usaremos</span></span>
+<span id="cb66-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-2" tabindex="-1"></a><span class="do">## SRP009615 de ejemplo</span></span>
+<span id="cb66-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-3" tabindex="-1"></a>proj_info <span class="ot">&lt;-</span> <span class="fu">subset</span>(</span>
+<span id="cb66-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-4" tabindex="-1"></a>    human_projects,</span>
+<span id="cb66-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-5" tabindex="-1"></a>    project <span class="sc">==</span> <span class="st">&quot;SRP009615&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
+<span id="cb66-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-6" tabindex="-1"></a>)</span>
+<span id="cb66-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-7" tabindex="-1"></a><span class="do">## Crea un objeto de tipo RangedSummarizedExperiment (RSE)</span></span>
+<span id="cb66-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-8" tabindex="-1"></a><span class="do">## con la información a nivel de genes</span></span>
+<span id="cb66-9"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-9" tabindex="-1"></a>rse_gene_SRP009615 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info)</span></code></pre></div>
+<pre><code>## 2024-01-29 14:16:15.759461 downloading and reading the metadata.</code></pre>
+<pre><code>## 2024-01-29 14:16:15.804971 caching file sra.sra.SRP009615.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.sra.SRP009615.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:16.039536 caching file sra.recount_project.SRP009615.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_project.SRP009615.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:16.337347 caching file sra.recount_qc.SRP009615.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_qc.SRP009615.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:16.539207 caching file sra.recount_seq_qc.SRP009615.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_seq_qc.SRP009615.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:16.776662 caching file sra.recount_pred.SRP009615.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_pred.SRP009615.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:16.980247 downloading and reading the feature information.</code></pre>
+<pre><code>## 2024-01-29 14:16:17.010289 caching file human.gene_sums.G026.gtf.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/annotations/gene_sums/human.gene_sums.G026.gtf.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:17.602354 downloading and reading the counts: 12 samples across 63856 features.</code></pre>
+<pre><code>## 2024-01-29 14:16:17.630956 caching file sra.gene_sums.SRP009615.G026.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/gene_sums/15/SRP009615/sra.gene_sums.SRP009615.G026.gz&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:18.044817 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb85-1" tabindex="-1"></a><span class="do">## Explora el objeto RSE</span></span>
+<span id="cb85-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb85-2" tabindex="-1"></a>rse_gene_SRP009615</span></code></pre></div>
+<pre><code>## class: RangedSummarizedExperiment 
+## dim: 63856 12 
+## metadata(8): time_created recount3_version ... annotation recount3_url
+## assays(1): raw_counts
+## rownames(63856): ENSG00000278704.1 ENSG00000277400.1 ... ENSG00000182484.15_PAR_Y ENSG00000227159.8_PAR_Y
+## rowData names(10): source type ... havana_gene tag
+## colnames(12): SRR387777 SRR387778 ... SRR389077 SRR389078
+## colData names(175): rail_id external_id ... recount_pred.curated.cell_line BigWigURL</code></pre>
+<p>De forma interactiva también podemos escoger nuestro estudio de interés usando el siguiente código o vía <a href="http://rna.recount.bio/docs/index.html#study-explorer">el explorar de estudios</a> que creamos.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-1" tabindex="-1"></a><span class="do">## Explora los proyectos disponibles de forma interactiva</span></span>
+<span id="cb87-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-2" tabindex="-1"></a>proj_info_interactive <span class="ot">&lt;-</span> interactiveDisplayBase<span class="sc">::</span><span class="fu">display</span>(human_projects)</span>
+<span id="cb87-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-3" tabindex="-1"></a><span class="do">## Selecciona un solo renglón en la tabla y da click en &quot;send&quot;.</span></span>
+<span id="cb87-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-4" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-5" tabindex="-1"></a><span class="do">## Aquí verificamos que solo seleccionaste un solo renglón.</span></span>
+<span id="cb87-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-6" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">nrow</span>(proj_info_interactive) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb87-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-7" tabindex="-1"></a><span class="do">## Crea el objeto RSE</span></span>
+<span id="cb87-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-8" tabindex="-1"></a>rse_gene_interactive <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info_interactive)</span></code></pre></div>
+<p>Una vez que tenemos las cuentas, podemos usar <code>transform_counts()</code> o <code>compute_read_counts()</code> para convertir en los formatos esperados por otras herramientas. Revisen el artículo de 2017 del <code>recountWorkflow</code> para <a href="https://f1000research.com/articles/6-1558/v1">más detalles</a>.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-1" tabindex="-1"></a><span class="do">## Convirtamos las cuentas por nucleotido a cuentas por lectura</span></span>
+<span id="cb88-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-2" tabindex="-1"></a><span class="do">## usando compute_read_counts().</span></span>
+<span id="cb88-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-3" tabindex="-1"></a><span class="do">## Para otras transformaciones como RPKM y TPM, revisa transform_counts().</span></span>
+<span id="cb88-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-4" tabindex="-1"></a><span class="fu">assay</span>(rse_gene_SRP009615, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene_SRP009615)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-1" tabindex="-1"></a><span class="do">## Para este estudio en específico, hagamos más fácil de usar la</span></span>
+<span id="cb89-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-2" tabindex="-1"></a><span class="do">## información del experimento</span></span>
+<span id="cb89-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-3" tabindex="-1"></a>rse_gene_SRP009615 <span class="ot">&lt;-</span> <span class="fu">expand_sra_attributes</span>(rse_gene_SRP009615)</span>
+<span id="cb89-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-4" tabindex="-1"></a><span class="fu">colData</span>(rse_gene_SRP009615)[</span>
+<span id="cb89-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-5" tabindex="-1"></a>    ,</span>
+<span id="cb89-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-6" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene_SRP009615)))</span>
+<span id="cb89-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-7" tabindex="-1"></a>]</span></code></pre></div>
+<pre><code>## DataFrame with 12 rows and 4 columns
+##           sra_attribute.cells sra_attribute.shRNA_expression sra_attribute.source_name sra_attribute.treatment
+##                   &lt;character&gt;                    &lt;character&gt;               &lt;character&gt;             &lt;character&gt;
+## SRR387777                K562                             no                    SL2933               Puromycin
+## SRR387778                K562             yes, targeting SRF                    SL2934  Puromycin, doxycycline
+## SRR387779                K562                             no                    SL5265               Puromycin
+## SRR387780                K562              yes targeting SRF                    SL3141  Puromycin, doxycycline
+## SRR389079                K562            no shRNA expression                    SL6485               Puromycin
+## ...                       ...                            ...                       ...                     ...
+## SRR389082                K562         expressing shRNA tar..                    SL2592  Puromycin, doxycycline
+## SRR389083                K562            no shRNA expression                    SL4337               Puromycin
+## SRR389084                K562         expressing shRNA tar..                    SL4326  Puromycin, doxycycline
+## SRR389077                K562            no shRNA expression                    SL1584               Puromycin
+## SRR389078                K562         expressing shRNA tar..                    SL1583  Puromycin, doxycycline</code></pre>
+<p>Ahora estamos listos para usar otras herramientas para el análisis de los datos.</p>
+</div>
+<div id="ejercicio-1" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Ejercicio<a href="datos-de-rna-seq-a-través-de-recount3.html#ejercicio-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Utiliza <code>iSEE</code> para reproducir la siguiente imagen</li>
+</ul>
+<p><img src="images/iSEE_SRP009615.PNG" width="500px" /></p>
+<ul>
+<li>Pistas:
+<ul>
+<li>Utiliza el <em>dynamic feature selection</em></li>
+<li>Utiliza información de las columnas para el eje X</li>
+<li>Utiliza información de las columnas para los colores</li>
+</ul></li>
+<li>(opcional) Crea tu cuenta gratis de <a href="https://www.shinyapps.io/" class="uri">https://www.shinyapps.io/</a> y comparte tu visualización de los datos usando <code>iSEE</code> de esa forma. Ejemplos reales: <a href="https://github.com/LieberInstitute/10xPilot_snRNAseq-human#explore-the-data-interactively" class="uri">https://github.com/LieberInstitute/10xPilot_snRNAseq-human#explore-the-data-interactively</a>. Ejemplo: <a href="https://libd.shinyapps.io/SRP009615/" class="uri">https://libd.shinyapps.io/SRP009615/</a> creado con <a href="https://github.com/lcolladotor/rnaseq_2023_notas_en_vivo/blob/main/app.R" class="uri">https://github.com/lcolladotor/rnaseq_2023_notas_en_vivo/blob/main/app.R</a>.</li>
+</ul>
+</div>
+<div id="comunidad-2" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Comunidad<a href="datos-de-rna-seq-a-través-de-recount3.html#comunidad-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Autores de recount2 y 3 en Twitter:
+<ul>
+<li><a href="https://twitter.com/chrisnwilks" class="uri">https://twitter.com/chrisnwilks</a></li>
+<li><a href="https://twitter.com/BenLangmead" class="uri">https://twitter.com/BenLangmead</a></li>
+<li><a href="https://twitter.com/KasperDHansen" class="uri">https://twitter.com/KasperDHansen</a></li>
+<li><a href="https://twitter.com/AbhiNellore" class="uri">https://twitter.com/AbhiNellore</a></li>
+<li><a href="https://twitter.com/Shannon_E_Ellis" class="uri">https://twitter.com/Shannon_E_Ellis</a></li>
+<li><a href="https://twitter.com/jtleek" class="uri">https://twitter.com/jtleek</a></li>
+</ul></li>
+<li>Más sobre los tipos de cuentas:</li>
+</ul>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+If I'm using recount2 data for a differential analysis in DEseq2, should I be using the original counts, or the scaled counts?<a href="https://twitter.com/mikelove?ref_src=twsrc%5Etfw"><span class="citation">@mikelove</span></a> <a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw"><span class="citation">@lcolladotor</span></a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/Bioconductor?src=hash&amp;ref_src=twsrc%5Etfw">#Bioconductor</a>
+</p>
+— Dr. Robert M Flight, PhD (<span class="citation">@rmflight</span>) <a href="https://twitter.com/rmflight/status/1354981737525366786?ref_src=twsrc%5Etfw">January 29, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<ul>
+<li>Ejemplos de tweets de la comunidad</li>
+</ul>
+<p>Un tweet de un alumno del 2021:</p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw"><span class="citation">@lcolladotor</span></a> <br>Earlier I was looking for some data to analyze in recount, they have so much, I seriously can't decide what to use! <a href="https://t.co/fIJwXq46Tz">https://t.co/fIJwXq46Tz</a><br><br>Thanks for such an useful package!<a href="https://twitter.com/chrisnwilks?ref_src=twsrc%5Etfw"><span class="citation">@chrisnwilks</span></a> <a href="https://twitter.com/BenLangmead?ref_src=twsrc%5Etfw"><span class="citation">@BenLangmead</span></a> <a href="https://twitter.com/KasperDHansen?ref_src=twsrc%5Etfw"><span class="citation">@KasperDHansen</span></a> <a href="https://twitter.com/AbhiNellore?ref_src=twsrc%5Etfw"><span class="citation">@AbhiNellore</span></a> <a href="https://twitter.com/Shannon_E_Ellis?ref_src=twsrc%5Etfw"><span class="citation">@Shannon_E_Ellis</span></a> <a href="https://twitter.com/jtleek?ref_src=twsrc%5Etfw"><span class="citation">@jtleek</span></a>
+</p>
+— Axel Zagal Norman (<span class="citation">@NormanZagal</span>) <a href="https://twitter.com/NormanZagal/status/1364762134014398467?ref_src=twsrc%5Etfw">February 25, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Explorando la posibilidad de hacer análisis con <code>recount3</code> (enero 2022):</p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+I have found a novel exon expressed in a cancer sample. I would like to search TCGA/SRA to identify other samples with the same/similar exon. It will be rare. Can I use Recount3, megadepth for this? <a href="https://twitter.com/jtleek?ref_src=twsrc%5Etfw"><span class="citation">@jtleek</span></a> <a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw"><span class="citation">@lcolladotor</span></a> <a href="https://twitter.com/BenLangmead?ref_src=twsrc%5Etfw"><span class="citation">@BenLangmead</span></a>
+</p>
+— Alicia Oshlack (<span class="citation">@AliciaOshlack</span>) <a href="https://twitter.com/AliciaOshlack/status/1478518895166119937?ref_src=twsrc%5Etfw">January 5, 2022</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Un tweet del curso del año pasado (febrero 1, 2022):</p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Thinking on this a bit it is strange how few people are doing “medium-sized” meta analyses of transcriptiomics. One on end you have <a href="https://twitter.com/BenLangmead?ref_src=twsrc%5Etfw"><span class="citation">@BenLangmead</span></a> <a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw"><span class="citation">@lcolladotor</span></a> reprocessing (with a touch of analysis) most of SRA. And you see papers pulling an dataset or two to corroborate.
+</p>
+— David McGaughey (<span class="citation">@David_McGaughey</span>) <a href="https://twitter.com/David_McGaughey/status/1488596806313431044?ref_src=twsrc%5Etfw">February 1, 2022</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+</div>
+<div class="container">
+    <footer class="site-footer">
+
+      <center>
+<p class="powered-by">
+© 2011-2020. All thoughts and opinions here are my own. The icon was designed by <a href="https://www.linkedin.com/in/mauricio-guzman-6529b551/">Mauricio Guzmán</a> and is inspired by <a href="https://en.wikipedia.org/wiki/Huichol">Huichol culture</a>; it represents my community building interests.
+</p>
+
+<p class="powered-by copyright-license-text">
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+</p>
+
+<p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">
+      <img src="https://search.creativecommons.org/static/img/cc_icon.svg" alt="CC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-by_icon.svg" alt="CC by icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" alt="CC NC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" alt="CC SA icon" width="32px">
+    </a>
+</p>
+
+<div id="clustrmaps-widget"></div><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=m&d=Zo-deincaJGsqhqjIWsujtdoNOMJsnnZLefKmxDKVv8&co=124b73&cmo=dd53ff&cmn=4ec724'></script>
+
+<p class="powered-by">
+Published with <a href="https://bookdown.org/" target="_blank" rel="noopener">Bookdown</a>
+</p>
+
+</center>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45299226-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-45299226-1');
+</script>
+
+</footer>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="objetos-de-bioconductor-para-datos-de-expresión.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelos-estadísticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

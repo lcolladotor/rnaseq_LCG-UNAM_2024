@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Objetos de Bioconductor para datos de expresión | Intro RNA-seq LCG-UNAM 2024</title>
+  <meta name="description" content="3 Objetos de Bioconductor para datos de expresión | Intro RNA-seq LCG-UNAM 2024" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Objetos de Bioconductor para datos de expresión | Intro RNA-seq LCG-UNAM 2024" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="lcolladotor/rnaseq_LCG-UNAM_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Objetos de Bioconductor para datos de expresión | Intro RNA-seq LCG-UNAM 2024" />
+  
+  
+  
+
+<meta name="author" content="Leonardo Collado-Torres" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="icon_32.png" type="image/x-icon" />
+<link rel="prev" href="introducción-a-bioconductor.html"/>
+<link rel="next" href="datos-de-rna-seq-a-través-de-recount3.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#external-links"><i class="fa fa-check"></i>External links</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-prerequisites"><i class="fa fa-check"></i>Course Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i>Course Evaluation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-session-information"><i class="fa fa-check"></i>R session information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introducción a R y RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#github"><i class="fa fa-check"></i><b>1.2</b> GitHub</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#material-del-curso"><i class="fa fa-check"></i><b>1.4</b> Material del curso</a></li>
+<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards-opcional"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html"><i class="fa fa-check"></i><b>2</b> Introducción a Bioconductor</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#encontrando-paquetes-de-bioconductor"><i class="fa fa-check"></i><b>2.1</b> Encontrando paquetes de Bioconductor</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#estructura-de-un-paquete-de-bioc"><i class="fa fa-check"></i><b>2.2</b> Estructura de un paquete de BioC</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#las-dos-ramas-de-bioconductor-release-y-devel"><i class="fa fa-check"></i><b>2.3</b> Las dos ramas de Bioconductor: release y devel</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#cursos-y-eventos"><i class="fa fa-check"></i><b>2.4</b> Cursos y eventos</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#comunidad"><i class="fa fa-check"></i><b>2.5</b> Comunidad</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#ejercicio-grupal"><i class="fa fa-check"></i><b>2.6</b> Ejercicio grupal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html"><i class="fa fa-check"></i><b>3</b> Objetos de Bioconductor para datos de expresión</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#summarizedexperiment"><i class="fa fa-check"></i><b>3.1</b> SummarizedExperiment</a></li>
+<li class="chapter" data-level="3.2" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio"><i class="fa fa-check"></i><b>3.2</b> Ejercicio</a></li>
+<li class="chapter" data-level="3.3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#isee"><i class="fa fa-check"></i><b>3.3</b> iSEE</a></li>
+<li class="chapter" data-level="3.4" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio-con-spatiallibd"><i class="fa fa-check"></i><b>3.4</b> Ejercicio con spatialLIBD</a></li>
+<li class="chapter" data-level="3.5" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#comunidad-1"><i class="fa fa-check"></i><b>3.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html"><i class="fa fa-check"></i><b>4</b> Datos de RNA-seq a través de recount3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#procesar-datos-crudos-fastq-con-speaqeasy"><i class="fa fa-check"></i><b>4.1</b> Procesar datos crudos (FASTQ) con SPEAQeasy</a></li>
+<li class="chapter" data-level="4.2" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#proyectos-recount"><i class="fa fa-check"></i><b>4.2</b> Proyectos recount</a></li>
+<li class="chapter" data-level="4.3" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#usar-recount3"><i class="fa fa-check"></i><b>4.3</b> Usar recount3</a></li>
+<li class="chapter" data-level="4.4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#ejercicio-1"><i class="fa fa-check"></i><b>4.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="4.5" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#comunidad-2"><i class="fa fa-check"></i><b>4.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html"><i class="fa fa-check"></i><b>5</b> Modelos estadísticos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#exploremodelmatrix"><i class="fa fa-check"></i><b>5.1</b> ExploreModelMatrix</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-1"><i class="fa fa-check"></i><b>5.1.1</b> Ejemplo 1</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-2"><i class="fa fa-check"></i><b>5.1.2</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.1.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-3"><i class="fa fa-check"></i><b>5.1.3</b> Ejemplo 3</a></li>
+<li class="chapter" data-level="5.1.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-2"><i class="fa fa-check"></i><b>5.1.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.1.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#para-aprender-más"><i class="fa fa-check"></i><b>5.1.5</b> Para aprender más</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#datos-de-srp045638"><i class="fa fa-check"></i><b>5.2</b> Datos de SRP045638</a></li>
+<li class="chapter" data-level="5.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#normalización-de-datos"><i class="fa fa-check"></i><b>5.3</b> Normalización de datos</a></li>
+<li class="chapter" data-level="5.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#expresión-diferencial"><i class="fa fa-check"></i><b>5.4</b> Expresión diferencial</a></li>
+<li class="chapter" data-level="5.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#visualizando-genes-de"><i class="fa fa-check"></i><b>5.5</b> Visualizando genes DE</a></li>
+<li class="chapter" data-level="5.6" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-3"><i class="fa fa-check"></i><b>5.6</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.7" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#comunidad-3"><i class="fa fa-check"></i><b>5.7</b> Comunidad</a></li>
+<li class="chapter" data-level="5.8" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-respuesta"><i class="fa fa-check"></i><b>5.8</b> Ejercicio: respuesta</a></li>
+<li class="chapter" data-level="5.9" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#sobre-centering-y-scaling-en-heatmaps"><i class="fa fa-check"></i><b>5.9</b> Sobre <em>centering</em> y <em>scaling</em> en heatmaps</a></li>
+<li class="chapter" data-level="5.10" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#específicaciones-del-proyecto"><i class="fa fa-check"></i><b>5.10</b> Específicaciones del proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="smokingmouse.html"><a href="smokingmouse.html"><i class="fa fa-check"></i><b>6</b> smokingMouse</a></li>
+<li class="chapter" data-level="7" data-path="revisión.html"><a href="revisión.html"><i class="fa fa-check"></i><b>7</b> Revisión</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="revisión.html"><a href="revisión.html#ejercicio-en-equipo"><i class="fa fa-check"></i><b>7.1</b> Ejercicio en equipo</a></li>
+<li class="chapter" data-level="7.2" data-path="revisión.html"><a href="revisión.html#respuestas"><i class="fa fa-check"></i><b>7.2</b> Respuestas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rbioconductor-powered-team-data-science.html"><a href="rbioconductor-powered-team-data-science.html"><i class="fa fa-check"></i><b>8</b> R/Bioconductor-powered Team Data Science</a></li>
+<li class="chapter" data-level="9" data-path="spatiallibd.html"><a href="spatiallibd.html"><i class="fa fa-check"></i><b>9</b> spatialLIBD</a></li>
+<li class="chapter" data-level="10" data-path="comunidad-4.html"><a href="comunidad-4.html"><i class="fa fa-check"></i><b>10</b> Comunidad</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="comunidad-4.html"><a href="comunidad-4.html#de-alumnos-lcg-2021"><i class="fa fa-check"></i><b>10.1</b> De alumnos LCG 2021</a></li>
+<li class="chapter" data-level="10.2" data-path="comunidad-4.html"><a href="comunidad-4.html#de-ustedes"><i class="fa fa-check"></i><b>10.2</b> De ustedes</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro RNA-seq LCG-UNAM 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="objetos-de-bioconductor-para-datos-de-expresión" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Objetos de Bioconductor para datos de expresión<a href="objetos-de-bioconductor-para-datos-de-expresión.html#objetos-de-bioconductor-para-datos-de-expresión" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="summarizedexperiment" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> SummarizedExperiment<a href="objetos-de-bioconductor-para-datos-de-expresión.html#summarizedexperiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lqxtgpD-heM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p><a href="https://docs.google.com/document/d/1umDODmdQldf5w2lNDoFe-unmezHPonpCiKD270VwkrQ/edit?usp=sharing"><em>Original notes in English</em></a></p>
+<ul>
+<li><code>rnaseqGene</code> workflow
+<ul>
+<li><a href="http://bioconductor.org/packages/release/BiocViews.html#___Workflow" class="uri">http://bioconductor.org/packages/release/BiocViews.html#___Workflow</a></li>
+<li><a href="http://bioconductor.org/packages/release/workflows/html/rnaseqGene.html" class="uri">http://bioconductor.org/packages/release/workflows/html/rnaseqGene.html</a></li>
+<li><a href="http://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html" class="uri">http://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html</a></li>
+</ul></li>
+<li><code>SummarizedExperiment</code>
+<ul>
+<li><a href="https://www.nature.com/articles/nmeth.3252" class="uri">https://www.nature.com/articles/nmeth.3252</a> Figure 2</li>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html" class="uri">http://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html</a></li>
+<li>Introducción a <code>SummarizedExperiment</code>: - <a href="http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html" class="uri">http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html</a></li>
+<li>Extendiendo <code>SummarizedExperiment</code>: <a href="http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/Extensions.html" class="uri">http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/Extensions.html</a></li>
+</ul></li>
+<li><code>GenomicRanges</code>
+<ul>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html" class="uri">http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html</a></li>
+<li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003118" class="uri">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003118</a></li>
+<li>Introducción a <code>GenomicRanges</code>: <a href="http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.html" class="uri">http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.html</a></li>
+</ul></li>
+<li><code>rtracklayer</code>
+<ul>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/rtracklayer.html" class="uri">http://bioconductor.org/packages/release/bioc/html/rtracklayer.html</a></li>
+<li><a href="http://bioconductor.org/packages/release/bioc/vignettes/rtracklayer/inst/doc/rtracklayer.pdf" class="uri">http://bioconductor.org/packages/release/bioc/vignettes/rtracklayer/inst/doc/rtracklayer.pdf</a></li>
+<li>Formato de archivos BED <a href="https://genome.ucsc.edu/FAQ/FAQformat.html#format1" class="uri">https://genome.ucsc.edu/FAQ/FAQformat.html#format1</a></li>
+<li>Formato de archivos GTF <a href="https://useast.ensembl.org/info/website/upload/gff.html" class="uri">https://useast.ensembl.org/info/website/upload/gff.html</a></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-1" tabindex="-1"></a><span class="do">## Lets build our first SummarizedExperiment object</span></span>
+<span id="cb24-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;SummarizedExperiment&quot;</span>)</span>
+<span id="cb24-3"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-3" tabindex="-1"></a><span class="do">## ?SummarizedExperiment</span></span>
+<span id="cb24-4"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-5" tabindex="-1"></a><span class="do">## De los ejemplos en la ayuda oficial</span></span>
+<span id="cb24-6"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-6" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-7" tabindex="-1"></a><span class="do">## Creamos los datos para nuestro objeto de tipo SummarizedExperiment</span></span>
+<span id="cb24-8"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-8" tabindex="-1"></a><span class="do">## para 200 genes a lo largo de 6 muestras</span></span>
+<span id="cb24-9"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-9" tabindex="-1"></a>nrows <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb24-10"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-10" tabindex="-1"></a>ncols <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb24-11"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-11" tabindex="-1"></a><span class="do">## Números al azar de cuentas</span></span>
+<span id="cb24-12"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-12" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20210223</span>)</span>
+<span id="cb24-13"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-13" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(nrows <span class="sc">*</span> ncols, <span class="dv">1</span>, <span class="fl">1e4</span>), nrows)</span>
+<span id="cb24-14"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-14" tabindex="-1"></a><span class="do">## Información de nuestros genes</span></span>
+<span id="cb24-15"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-15" tabindex="-1"></a>rowRanges <span class="ot">&lt;-</span> <span class="fu">GRanges</span>(</span>
+<span id="cb24-16"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-16" tabindex="-1"></a>    <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;chr1&quot;</span>, <span class="st">&quot;chr2&quot;</span>), <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">150</span>)),</span>
+<span id="cb24-17"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-17" tabindex="-1"></a>    <span class="fu">IRanges</span>(<span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">200</span>, <span class="fl">1e5</span>, <span class="fl">1e6</span>)), <span class="at">width =</span> <span class="dv">100</span>),</span>
+<span id="cb24-18"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-18" tabindex="-1"></a>    <span class="at">strand =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;+&quot;</span>, <span class="st">&quot;-&quot;</span>), <span class="dv">200</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb24-19"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-19" tabindex="-1"></a>    <span class="at">feature_id =</span> <span class="fu">sprintf</span>(<span class="st">&quot;ID%03d&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>)</span>
+<span id="cb24-20"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-20" tabindex="-1"></a>)</span>
+<span id="cb24-21"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-21" tabindex="-1"></a><span class="fu">names</span>(rowRanges) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;gene_&quot;</span>, <span class="fu">seq_len</span>(<span class="fu">length</span>(rowRanges)))</span>
+<span id="cb24-22"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-22" tabindex="-1"></a><span class="do">## Información de nuestras muestras</span></span>
+<span id="cb24-23"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-23" tabindex="-1"></a>colData <span class="ot">&lt;-</span> <span class="fu">DataFrame</span>(</span>
+<span id="cb24-24"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-24" tabindex="-1"></a>    <span class="at">Treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ChIP&quot;</span>, <span class="st">&quot;Input&quot;</span>), <span class="dv">3</span>),</span>
+<span id="cb24-25"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-25" tabindex="-1"></a>    <span class="at">row.names =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb24-26"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-26" tabindex="-1"></a>)</span>
+<span id="cb24-27"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-27" tabindex="-1"></a><span class="do">## Juntamos ahora toda la información en un solo objeto de R</span></span>
+<span id="cb24-28"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-28" tabindex="-1"></a>rse <span class="ot">&lt;-</span> <span class="fu">SummarizedExperiment</span>(</span>
+<span id="cb24-29"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-29" tabindex="-1"></a>    <span class="at">assays =</span> <span class="fu">SimpleList</span>(<span class="at">counts =</span> counts),</span>
+<span id="cb24-30"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-30" tabindex="-1"></a>    <span class="at">rowRanges =</span> rowRanges,</span>
+<span id="cb24-31"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-31" tabindex="-1"></a>    <span class="at">colData =</span> colData</span>
+<span id="cb24-32"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-32" tabindex="-1"></a>)</span>
+<span id="cb24-33"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-33" tabindex="-1"></a></span>
+<span id="cb24-34"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-34" tabindex="-1"></a><span class="do">## Exploremos el objeto resultante</span></span>
+<span id="cb24-35"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb24-35" tabindex="-1"></a>rse</span></code></pre></div>
+<pre><code>## class: RangedSummarizedExperiment 
+## dim: 200 6 
+## metadata(0):
+## assays(1): counts
+## rownames(200): gene_1 gene_2 ... gene_199 gene_200
+## rowData names(1): feature_id
+## colnames(6): A B ... E F
+## colData names(1): Treatment</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb26-1" tabindex="-1"></a><span class="do">## Número de genes y muestras</span></span>
+<span id="cb26-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb26-2" tabindex="-1"></a><span class="fu">dim</span>(rse)</span></code></pre></div>
+<pre><code>## [1] 200   6</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb28-1" tabindex="-1"></a><span class="do">## IDs de nuestros genes y muestras</span></span>
+<span id="cb28-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb28-2" tabindex="-1"></a><span class="fu">dimnames</span>(rse)</span></code></pre></div>
+<pre><code>## [[1]]
+##   [1] &quot;gene_1&quot;   &quot;gene_2&quot;   &quot;gene_3&quot;   &quot;gene_4&quot;   &quot;gene_5&quot;   &quot;gene_6&quot;   &quot;gene_7&quot;   &quot;gene_8&quot;   &quot;gene_9&quot;   &quot;gene_10&quot; 
+##  [11] &quot;gene_11&quot;  &quot;gene_12&quot;  &quot;gene_13&quot;  &quot;gene_14&quot;  &quot;gene_15&quot;  &quot;gene_16&quot;  &quot;gene_17&quot;  &quot;gene_18&quot;  &quot;gene_19&quot;  &quot;gene_20&quot; 
+##  [21] &quot;gene_21&quot;  &quot;gene_22&quot;  &quot;gene_23&quot;  &quot;gene_24&quot;  &quot;gene_25&quot;  &quot;gene_26&quot;  &quot;gene_27&quot;  &quot;gene_28&quot;  &quot;gene_29&quot;  &quot;gene_30&quot; 
+##  [31] &quot;gene_31&quot;  &quot;gene_32&quot;  &quot;gene_33&quot;  &quot;gene_34&quot;  &quot;gene_35&quot;  &quot;gene_36&quot;  &quot;gene_37&quot;  &quot;gene_38&quot;  &quot;gene_39&quot;  &quot;gene_40&quot; 
+##  [41] &quot;gene_41&quot;  &quot;gene_42&quot;  &quot;gene_43&quot;  &quot;gene_44&quot;  &quot;gene_45&quot;  &quot;gene_46&quot;  &quot;gene_47&quot;  &quot;gene_48&quot;  &quot;gene_49&quot;  &quot;gene_50&quot; 
+##  [51] &quot;gene_51&quot;  &quot;gene_52&quot;  &quot;gene_53&quot;  &quot;gene_54&quot;  &quot;gene_55&quot;  &quot;gene_56&quot;  &quot;gene_57&quot;  &quot;gene_58&quot;  &quot;gene_59&quot;  &quot;gene_60&quot; 
+##  [61] &quot;gene_61&quot;  &quot;gene_62&quot;  &quot;gene_63&quot;  &quot;gene_64&quot;  &quot;gene_65&quot;  &quot;gene_66&quot;  &quot;gene_67&quot;  &quot;gene_68&quot;  &quot;gene_69&quot;  &quot;gene_70&quot; 
+##  [71] &quot;gene_71&quot;  &quot;gene_72&quot;  &quot;gene_73&quot;  &quot;gene_74&quot;  &quot;gene_75&quot;  &quot;gene_76&quot;  &quot;gene_77&quot;  &quot;gene_78&quot;  &quot;gene_79&quot;  &quot;gene_80&quot; 
+##  [81] &quot;gene_81&quot;  &quot;gene_82&quot;  &quot;gene_83&quot;  &quot;gene_84&quot;  &quot;gene_85&quot;  &quot;gene_86&quot;  &quot;gene_87&quot;  &quot;gene_88&quot;  &quot;gene_89&quot;  &quot;gene_90&quot; 
+##  [91] &quot;gene_91&quot;  &quot;gene_92&quot;  &quot;gene_93&quot;  &quot;gene_94&quot;  &quot;gene_95&quot;  &quot;gene_96&quot;  &quot;gene_97&quot;  &quot;gene_98&quot;  &quot;gene_99&quot;  &quot;gene_100&quot;
+## [101] &quot;gene_101&quot; &quot;gene_102&quot; &quot;gene_103&quot; &quot;gene_104&quot; &quot;gene_105&quot; &quot;gene_106&quot; &quot;gene_107&quot; &quot;gene_108&quot; &quot;gene_109&quot; &quot;gene_110&quot;
+## [111] &quot;gene_111&quot; &quot;gene_112&quot; &quot;gene_113&quot; &quot;gene_114&quot; &quot;gene_115&quot; &quot;gene_116&quot; &quot;gene_117&quot; &quot;gene_118&quot; &quot;gene_119&quot; &quot;gene_120&quot;
+## [121] &quot;gene_121&quot; &quot;gene_122&quot; &quot;gene_123&quot; &quot;gene_124&quot; &quot;gene_125&quot; &quot;gene_126&quot; &quot;gene_127&quot; &quot;gene_128&quot; &quot;gene_129&quot; &quot;gene_130&quot;
+## [131] &quot;gene_131&quot; &quot;gene_132&quot; &quot;gene_133&quot; &quot;gene_134&quot; &quot;gene_135&quot; &quot;gene_136&quot; &quot;gene_137&quot; &quot;gene_138&quot; &quot;gene_139&quot; &quot;gene_140&quot;
+## [141] &quot;gene_141&quot; &quot;gene_142&quot; &quot;gene_143&quot; &quot;gene_144&quot; &quot;gene_145&quot; &quot;gene_146&quot; &quot;gene_147&quot; &quot;gene_148&quot; &quot;gene_149&quot; &quot;gene_150&quot;
+## [151] &quot;gene_151&quot; &quot;gene_152&quot; &quot;gene_153&quot; &quot;gene_154&quot; &quot;gene_155&quot; &quot;gene_156&quot; &quot;gene_157&quot; &quot;gene_158&quot; &quot;gene_159&quot; &quot;gene_160&quot;
+## [161] &quot;gene_161&quot; &quot;gene_162&quot; &quot;gene_163&quot; &quot;gene_164&quot; &quot;gene_165&quot; &quot;gene_166&quot; &quot;gene_167&quot; &quot;gene_168&quot; &quot;gene_169&quot; &quot;gene_170&quot;
+## [171] &quot;gene_171&quot; &quot;gene_172&quot; &quot;gene_173&quot; &quot;gene_174&quot; &quot;gene_175&quot; &quot;gene_176&quot; &quot;gene_177&quot; &quot;gene_178&quot; &quot;gene_179&quot; &quot;gene_180&quot;
+## [181] &quot;gene_181&quot; &quot;gene_182&quot; &quot;gene_183&quot; &quot;gene_184&quot; &quot;gene_185&quot; &quot;gene_186&quot; &quot;gene_187&quot; &quot;gene_188&quot; &quot;gene_189&quot; &quot;gene_190&quot;
+## [191] &quot;gene_191&quot; &quot;gene_192&quot; &quot;gene_193&quot; &quot;gene_194&quot; &quot;gene_195&quot; &quot;gene_196&quot; &quot;gene_197&quot; &quot;gene_198&quot; &quot;gene_199&quot; &quot;gene_200&quot;
+## 
+## [[2]]
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb30-1" tabindex="-1"></a><span class="do">## Nombres de tablas de cuentas que tenemos (RPKM, CPM, counts, logcounts, etc)</span></span>
+<span id="cb30-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb30-2" tabindex="-1"></a><span class="fu">assayNames</span>(rse)</span></code></pre></div>
+<pre><code>## [1] &quot;counts&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb32-1" tabindex="-1"></a><span class="do">## El inicio de nuestra tabla de cuentas</span></span>
+<span id="cb32-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb32-2" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">assay</span>(rse))</span></code></pre></div>
+<pre><code>##               A        B         C         D         E        F
+## gene_1 2577.960 8526.615 2226.3070 3615.8967 1723.8851 3267.954
+## gene_2 7793.183 3462.579  478.2716 7688.3839  295.2813 2698.921
+## gene_3 9571.769 5280.564 9772.1671 9916.0076 2621.2085 6880.067
+## gene_4 4641.969 2784.091 6670.6757  258.5218 2771.8970 8737.586
+## gene_5 6436.758 7053.276 9978.8199 3588.1194 1447.9821 7290.890
+## gene_6 6845.704 1502.045 4383.5686 9750.8286 3529.3153 2192.060</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb34-1" tabindex="-1"></a><span class="do">## Información de los genes en un objeto de Bioconductor</span></span>
+<span id="cb34-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb34-2" tabindex="-1"></a><span class="fu">rowRanges</span>(rse)</span></code></pre></div>
+<pre><code>## GRanges object with 200 ranges and 1 metadata column:
+##            seqnames        ranges strand |  feature_id
+##               &lt;Rle&gt;     &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt;
+##     gene_1     chr1 286235-286334      + |       ID001
+##     gene_2     chr1 586770-586869      - |       ID002
+##     gene_3     chr1 577897-577996      + |       ID003
+##     gene_4     chr1 494350-494449      + |       ID004
+##     gene_5     chr1 686692-686791      - |       ID005
+##        ...      ...           ...    ... .         ...
+##   gene_196     chr2 804998-805097      - |       ID196
+##   gene_197     chr2 177462-177561      - |       ID197
+##   gene_198     chr2 649993-650092      - |       ID198
+##   gene_199     chr2 275940-276039      - |       ID199
+##   gene_200     chr2 487418-487517      + |       ID200
+##   -------
+##   seqinfo: 2 sequences from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb36-1" tabindex="-1"></a><span class="do">## Tabla con información de los genes</span></span>
+<span id="cb36-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb36-2" tabindex="-1"></a><span class="fu">rowData</span>(rse) <span class="co"># es idéntico a &#39;mcols(rowRanges(rse))&#39;</span></span></code></pre></div>
+<pre><code>## DataFrame with 200 rows and 1 column
+##           feature_id
+##          &lt;character&gt;
+## gene_1         ID001
+## gene_2         ID002
+## gene_3         ID003
+## gene_4         ID004
+## gene_5         ID005
+## ...              ...
+## gene_196       ID196
+## gene_197       ID197
+## gene_198       ID198
+## gene_199       ID199
+## gene_200       ID200</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb38-1" tabindex="-1"></a><span class="do">## Tabla con información de las muestras</span></span>
+<span id="cb38-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb38-2" tabindex="-1"></a><span class="fu">colData</span>(rse)</span></code></pre></div>
+<pre><code>## DataFrame with 6 rows and 1 column
+##     Treatment
+##   &lt;character&gt;
+## A        ChIP
+## B       Input
+## C        ChIP
+## D       Input
+## E        ChIP
+## F       Input</code></pre>
+</div>
+<div id="ejercicio" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Ejercicio<a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Explica que sucede en las siguientes líneas de código de R.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb40-1" tabindex="-1"></a><span class="do">## Comando 1</span></span>
+<span id="cb40-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb40-2" tabindex="-1"></a>rse[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]</span></code></pre></div>
+<pre><code>## class: RangedSummarizedExperiment 
+## dim: 2 6 
+## metadata(0):
+## assays(1): counts
+## rownames(2): gene_1 gene_2
+## rowData names(1): feature_id
+## colnames(6): A B ... E F
+## colData names(1): Treatment</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb42-1" tabindex="-1"></a><span class="do">## Comando 2</span></span>
+<span id="cb42-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb42-2" tabindex="-1"></a>rse[, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;F&quot;</span>)]</span></code></pre></div>
+<pre><code>## class: RangedSummarizedExperiment 
+## dim: 200 3 
+## metadata(0):
+## assays(1): counts
+## rownames(200): gene_1 gene_2 ... gene_199 gene_200
+## rowData names(1): feature_id
+## colnames(3): A D F
+## colData names(1): Treatment</code></pre>
+</div>
+<div id="isee" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> iSEE<a href="objetos-de-bioconductor-para-datos-de-expresión.html#isee" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/iSEE.html" class="uri">http://bioconductor.org/packages/release/bioc/html/iSEE.html</a></li>
+<li><a href="http://bioconductor.org/packages/release/bioc/vignettes/iSEE/inst/doc/basic.html" class="uri">http://bioconductor.org/packages/release/bioc/vignettes/iSEE/inst/doc/basic.html</a></li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb44-1" tabindex="-1"></a><span class="do">## Explora el objeto rse de forma interactiva</span></span>
+<span id="cb44-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb44-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;iSEE&quot;</span>)</span>
+<span id="cb44-3"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb44-3" tabindex="-1"></a>iSEE<span class="sc">::</span><span class="fu">iSEE</span>(rse)</span></code></pre></div>
+</div>
+<div id="ejercicio-con-spatiallibd" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Ejercicio con spatialLIBD<a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio-con-spatiallibd" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Vamos a descargar datos de un objeto <code>SingleCellExperiment</code> que es similar a uno de <code>SummarizedExperiment</code>.
+<ul>
+<li><a href="http://bioconductor.org/packages/SingleCellExperiment" class="uri">http://bioconductor.org/packages/SingleCellExperiment</a></li>
+<li><a href="http://bioconductor.org/packages/spatialLIBD" class="uri">http://bioconductor.org/packages/spatialLIBD</a></li>
+<li><a href="https://doi.org/10.1038/s41593-020-00787-0" class="uri">https://doi.org/10.1038/s41593-020-00787-0</a></li>
+<li><a href="https://osca.bioconductor.org/" class="uri">https://osca.bioconductor.org/</a></li>
+<li><a href="https://www.nature.com/articles/s41592-019-0654-x" class="uri">https://www.nature.com/articles/s41592-019-0654-x</a> Figuras 2 y 3</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb45-1" tabindex="-1"></a><span class="do">## Descarguemos unos datos de spatialLIBD</span></span>
+<span id="cb45-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb45-2" tabindex="-1"></a>sce_layer <span class="ot">&lt;-</span> spatialLIBD<span class="sc">::</span><span class="fu">fetch_data</span>(<span class="st">&quot;sce_layer&quot;</span>)</span></code></pre></div>
+<pre><code>## adding rname &#39;https://www.dropbox.com/s/bg8xwysh2vnjwvg/Human_DLPFC_Visium_processedData_sce_scran_sce_layer_spatialLIBD.Rdata?dl=1&#39;</code></pre>
+<pre><code>## 2024-01-29 14:16:09.520022 loading file /github/home/.cache/R/BiocFileCache/29802d0f3aaa_Human_DLPFC_Visium_processedData_sce_scran_sce_layer_spatialLIBD.Rdata%3Fdl%3D1</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb48-1" tabindex="-1"></a>sce_layer</span></code></pre></div>
+<pre><code>## class: SingleCellExperiment 
+## dim: 22331 76 
+## metadata(0):
+## assays(2): counts logcounts
+## rownames(22331): ENSG00000243485 ENSG00000238009 ... ENSG00000278384 ENSG00000271254
+## rowData names(10): source type ... is_top_hvg is_top_hvg_sce_layer
+## colnames(76): 151507_Layer1 151507_Layer2 ... 151676_Layer6 151676_WM
+## colData names(13): sample_name layer_guess ... layer_guess_reordered_short spatialLIBD
+## reducedDimNames(6): PCA TSNE_perplexity5 ... UMAP_neighbors15 PCAsub
+## mainExpName: NULL
+## altExpNames(0):</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb50-1" tabindex="-1"></a><span class="do">## Revisemos el tamaño de este objeto</span></span>
+<span id="cb50-2"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb50-2" tabindex="-1"></a>lobstr<span class="sc">::</span><span class="fu">obj_size</span>(sce_layer)</span></code></pre></div>
+<pre><code>## 33.99 MB</code></pre>
+<ul>
+<li>Al igual que nuestro objeto <code>rse</code> podemos usar <code>iSEE::iSEE()</code> para explorar los datos.</li>
+</ul>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#cb52-1" tabindex="-1"></a>iSEE<span class="sc">::</span><span class="fu">iSEE</span>(sce_layer)</span></code></pre></div>
+<ul>
+<li>Descarga un PDF que reproduzca la imagen del lado derecho de la siguiente diapositiva. Incluye ese PDF en tu repositorio de notas del curso.</li>
+</ul>
+<script async class="speakerdeck-embed" data-slide="10" data-id="329db23f5f17460da31f45c7695a9f06" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+<ul>
+<li>Explora en con un <em>heatmap</em> la expresión de los genes <code>MOBP</code>, <code>MBP</code> y <code>PCP4</code>. Si hacemos un <em>clustering</em> (agrupamos los genes), ¿cúales genes se parecen más?</li>
+<li>¿En qué capas se expresan más los genes <em>MOBP</em> y <em>MBP</em>?</li>
+</ul>
+<pre><code>ENSG00000168314
+ENSG00000183036
+ENSG00000197971</code></pre>
+</div>
+<div id="comunidad-1" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Comunidad<a href="objetos-de-bioconductor-para-datos-de-expresión.html#comunidad-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Autores de <code>iSEE</code>:</p>
+<ul>
+<li>Kévin Rue-Albrecht <a href="https://twitter.com/KevinRUE67" class="uri">https://twitter.com/KevinRUE67</a></li>
+<li>Federico Marini <a href="https://twitter.com/FedeBioinfo" class="uri">https://twitter.com/FedeBioinfo</a></li>
+<li>Charlotte Soneson <a href="https://twitter.com/CSoneson" class="uri">https://twitter.com/CSoneson</a></li>
+<li>Aaron Lun <a href="https://twitter.com/realAaronLun" class="uri">https://twitter.com/realAaronLun</a></li>
+<li>Otro ejemplo de exploración de datos usando <code>SummarizedExperiment</code> y <code>iSEE</code>:</li>
+</ul>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Today we explored RNA-seq data from <a href="https://twitter.com/StefanoBerto83?ref_src=twsrc%5Etfw"><span class="citation">@StefanoBerto83</span></a> et al who made it easy to re-use. Thank you! ^^<a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw"><span class="citation">@lcolladotor</span></a> used <a href="https://twitter.com/hashtag/shiny?src=hash&amp;ref_src=twsrc%5Etfw">#shiny</a> + <a href="https://twitter.com/hashtag/ggpubr?src=hash&amp;ref_src=twsrc%5Etfw">#ggpubr</a> as well as <a href="https://twitter.com/hashtag/iSEE?src=hash&amp;ref_src=twsrc%5Etfw">#iSEE</a><br><br>📔 <a href="https://t.co/iUQHE0xqRc">https://t.co/iUQHE0xqRc</a><br>🗞️ <a href="https://t.co/qhAdXbhY9c">https://t.co/qhAdXbhY9c</a><a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/Bioconductor?ref_src=twsrc%5Etfw"><span class="citation">@Bioconductor</span></a><a href="https://t.co/OXTukByhoo">https://t.co/OXTukByhoo</a>
+</p>
+— LIBD rstats club (<span class="citation">@LIBDrstats</span>) <a href="https://twitter.com/LIBDrstats/status/1360349352250789890?ref_src=twsrc%5Etfw">February 12, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+</div>
+<div class="container">
+    <footer class="site-footer">
+
+      <center>
+<p class="powered-by">
+© 2011-2020. All thoughts and opinions here are my own. The icon was designed by <a href="https://www.linkedin.com/in/mauricio-guzman-6529b551/">Mauricio Guzmán</a> and is inspired by <a href="https://en.wikipedia.org/wiki/Huichol">Huichol culture</a>; it represents my community building interests.
+</p>
+
+<p class="powered-by copyright-license-text">
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+</p>
+
+<p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">
+      <img src="https://search.creativecommons.org/static/img/cc_icon.svg" alt="CC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-by_icon.svg" alt="CC by icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" alt="CC NC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" alt="CC SA icon" width="32px">
+    </a>
+</p>
+
+<div id="clustrmaps-widget"></div><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=m&d=Zo-deincaJGsqhqjIWsujtdoNOMJsnnZLefKmxDKVv8&co=124b73&cmo=dd53ff&cmn=4ec724'></script>
+
+<p class="powered-by">
+Published with <a href="https://bookdown.org/" target="_blank" rel="noopener">Bookdown</a>
+</p>
+
+</center>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45299226-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-45299226-1');
+</script>
+
+</footer>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introducción-a-bioconductor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="datos-de-rna-seq-a-través-de-recount3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

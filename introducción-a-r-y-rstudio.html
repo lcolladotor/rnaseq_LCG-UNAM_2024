@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Introducción a R y RStudio | Intro RNA-seq LCG-UNAM 2024</title>
+  <meta name="description" content="1 Introducción a R y RStudio | Intro RNA-seq LCG-UNAM 2024" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Introducción a R y RStudio | Intro RNA-seq LCG-UNAM 2024" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="lcolladotor/rnaseq_LCG-UNAM_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Introducción a R y RStudio | Intro RNA-seq LCG-UNAM 2024" />
+  
+  
+  
+
+<meta name="author" content="Leonardo Collado-Torres" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="icon_32.png" type="image/x-icon" />
+<link rel="prev" href="index.html"/>
+<link rel="next" href="introducción-a-bioconductor.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#external-links"><i class="fa fa-check"></i>External links</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-prerequisites"><i class="fa fa-check"></i>Course Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i>Course Evaluation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-session-information"><i class="fa fa-check"></i>R session information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introducción a R y RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#r"><i class="fa fa-check"></i><b>1.1</b> R</a></li>
+<li class="chapter" data-level="1.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#github"><i class="fa fa-check"></i><b>1.2</b> GitHub</a></li>
+<li class="chapter" data-level="1.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#material-del-curso"><i class="fa fa-check"></i><b>1.4</b> Material del curso</a></li>
+<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards-opcional"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html"><i class="fa fa-check"></i><b>2</b> Introducción a Bioconductor</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#encontrando-paquetes-de-bioconductor"><i class="fa fa-check"></i><b>2.1</b> Encontrando paquetes de Bioconductor</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#estructura-de-un-paquete-de-bioc"><i class="fa fa-check"></i><b>2.2</b> Estructura de un paquete de BioC</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#las-dos-ramas-de-bioconductor-release-y-devel"><i class="fa fa-check"></i><b>2.3</b> Las dos ramas de Bioconductor: release y devel</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#cursos-y-eventos"><i class="fa fa-check"></i><b>2.4</b> Cursos y eventos</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#comunidad"><i class="fa fa-check"></i><b>2.5</b> Comunidad</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html#ejercicio-grupal"><i class="fa fa-check"></i><b>2.6</b> Ejercicio grupal</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html"><i class="fa fa-check"></i><b>3</b> Objetos de Bioconductor para datos de expresión</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#summarizedexperiment"><i class="fa fa-check"></i><b>3.1</b> SummarizedExperiment</a></li>
+<li class="chapter" data-level="3.2" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio"><i class="fa fa-check"></i><b>3.2</b> Ejercicio</a></li>
+<li class="chapter" data-level="3.3" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#isee"><i class="fa fa-check"></i><b>3.3</b> iSEE</a></li>
+<li class="chapter" data-level="3.4" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#ejercicio-con-spatiallibd"><i class="fa fa-check"></i><b>3.4</b> Ejercicio con spatialLIBD</a></li>
+<li class="chapter" data-level="3.5" data-path="objetos-de-bioconductor-para-datos-de-expresión.html"><a href="objetos-de-bioconductor-para-datos-de-expresión.html#comunidad-1"><i class="fa fa-check"></i><b>3.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html"><i class="fa fa-check"></i><b>4</b> Datos de RNA-seq a través de recount3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#procesar-datos-crudos-fastq-con-speaqeasy"><i class="fa fa-check"></i><b>4.1</b> Procesar datos crudos (FASTQ) con SPEAQeasy</a></li>
+<li class="chapter" data-level="4.2" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#proyectos-recount"><i class="fa fa-check"></i><b>4.2</b> Proyectos recount</a></li>
+<li class="chapter" data-level="4.3" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#usar-recount3"><i class="fa fa-check"></i><b>4.3</b> Usar recount3</a></li>
+<li class="chapter" data-level="4.4" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#ejercicio-1"><i class="fa fa-check"></i><b>4.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="4.5" data-path="datos-de-rna-seq-a-través-de-recount3.html"><a href="datos-de-rna-seq-a-través-de-recount3.html#comunidad-2"><i class="fa fa-check"></i><b>4.5</b> Comunidad</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html"><i class="fa fa-check"></i><b>5</b> Modelos estadísticos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#exploremodelmatrix"><i class="fa fa-check"></i><b>5.1</b> ExploreModelMatrix</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-1"><i class="fa fa-check"></i><b>5.1.1</b> Ejemplo 1</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-2"><i class="fa fa-check"></i><b>5.1.2</b> Ejemplo 2</a></li>
+<li class="chapter" data-level="5.1.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejemplo-3"><i class="fa fa-check"></i><b>5.1.3</b> Ejemplo 3</a></li>
+<li class="chapter" data-level="5.1.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-2"><i class="fa fa-check"></i><b>5.1.4</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.1.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#para-aprender-más"><i class="fa fa-check"></i><b>5.1.5</b> Para aprender más</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#datos-de-srp045638"><i class="fa fa-check"></i><b>5.2</b> Datos de SRP045638</a></li>
+<li class="chapter" data-level="5.3" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#normalización-de-datos"><i class="fa fa-check"></i><b>5.3</b> Normalización de datos</a></li>
+<li class="chapter" data-level="5.4" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#expresión-diferencial"><i class="fa fa-check"></i><b>5.4</b> Expresión diferencial</a></li>
+<li class="chapter" data-level="5.5" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#visualizando-genes-de"><i class="fa fa-check"></i><b>5.5</b> Visualizando genes DE</a></li>
+<li class="chapter" data-level="5.6" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-3"><i class="fa fa-check"></i><b>5.6</b> Ejercicio</a></li>
+<li class="chapter" data-level="5.7" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#comunidad-3"><i class="fa fa-check"></i><b>5.7</b> Comunidad</a></li>
+<li class="chapter" data-level="5.8" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#ejercicio-respuesta"><i class="fa fa-check"></i><b>5.8</b> Ejercicio: respuesta</a></li>
+<li class="chapter" data-level="5.9" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#sobre-centering-y-scaling-en-heatmaps"><i class="fa fa-check"></i><b>5.9</b> Sobre <em>centering</em> y <em>scaling</em> en heatmaps</a></li>
+<li class="chapter" data-level="5.10" data-path="modelos-estadísticos.html"><a href="modelos-estadísticos.html#específicaciones-del-proyecto"><i class="fa fa-check"></i><b>5.10</b> Específicaciones del proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="smokingmouse.html"><a href="smokingmouse.html"><i class="fa fa-check"></i><b>6</b> smokingMouse</a></li>
+<li class="chapter" data-level="7" data-path="revisión.html"><a href="revisión.html"><i class="fa fa-check"></i><b>7</b> Revisión</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="revisión.html"><a href="revisión.html#ejercicio-en-equipo"><i class="fa fa-check"></i><b>7.1</b> Ejercicio en equipo</a></li>
+<li class="chapter" data-level="7.2" data-path="revisión.html"><a href="revisión.html#respuestas"><i class="fa fa-check"></i><b>7.2</b> Respuestas</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rbioconductor-powered-team-data-science.html"><a href="rbioconductor-powered-team-data-science.html"><i class="fa fa-check"></i><b>8</b> R/Bioconductor-powered Team Data Science</a></li>
+<li class="chapter" data-level="9" data-path="spatiallibd.html"><a href="spatiallibd.html"><i class="fa fa-check"></i><b>9</b> spatialLIBD</a></li>
+<li class="chapter" data-level="10" data-path="comunidad-4.html"><a href="comunidad-4.html"><i class="fa fa-check"></i><b>10</b> Comunidad</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="comunidad-4.html"><a href="comunidad-4.html#de-alumnos-lcg-2021"><i class="fa fa-check"></i><b>10.1</b> De alumnos LCG 2021</a></li>
+<li class="chapter" data-level="10.2" data-path="comunidad-4.html"><a href="comunidad-4.html#de-ustedes"><i class="fa fa-check"></i><b>10.2</b> De ustedes</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro RNA-seq LCG-UNAM 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción-a-r-y-rstudio" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introducción a R y RStudio<a href="introducción-a-r-y-rstudio.html#introducción-a-r-y-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="r" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> R<a href="introducción-a-r-y-rstudio.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>R: es gratis, de acceso libre, utilizado para muchos campos de trabajo, fuerte en la bioinformática a través de Bioconductor</li>
+<li>Instalación a través de CRAN: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></li>
+<li>Para explorar que se puede hacer con R:
+<ul>
+<li>R Weekly <a href="https://rweekly.org/" class="uri">https://rweekly.org/</a></li>
+<li>R Bloggers <a href="https://www.r-bloggers.com/" class="uri">https://www.r-bloggers.com/</a></li>
+<li>Twitter <a href="https://twitter.com/search?q=%23rstats&amp;src=typed_query" class="uri">https://twitter.com/search?q=%23rstats&amp;src=typed_query</a></li>
+<li>Twitter en español <a href="https://twitter.com/search?q=%23rstatsES&amp;src=typed_query" class="uri">https://twitter.com/search?q=%23rstatsES&amp;src=typed_query</a></li>
+<li>TidyTuesday <a href="https://twitter.com/search?q=%23TidyTuesday&amp;src=typed_query" class="uri">https://twitter.com/search?q=%23TidyTuesday&amp;src=typed_query</a></li>
+<li>DatosDeMiercoles <a href="https://twitter.com/search?q=%23datosdemiercoles&amp;src=typed_query" class="uri">https://twitter.com/search?q=%23datosdemiercoles&amp;src=typed_query</a></li>
+</ul></li>
+<li>Para pedir ayuda hay muchas opciones
+<ul>
+<li><a href="https://lcolladotor.github.io/bioc_team_ds/how-to-ask-for-help.html" class="uri">https://lcolladotor.github.io/bioc_team_ds/how-to-ask-for-help.html</a></li>
+</ul></li>
+<li>Material en el que estoy involucrado:
+<ul>
+<li><a href="https://twitter.com/lcolladotor" class="uri">https://twitter.com/lcolladotor</a></li>
+<li><a href="https://www.youtube.com/c/LeonardoColladoTorres/playlists" class="uri">https://www.youtube.com/c/LeonardoColladoTorres/playlists</a></li>
+<li>LIBD rstats club <a href="https://docs.google.com/spreadsheets/d/1is8dZSd0FZ9Qi1Zvq1uRhm-P1McnJRd_zxdAfCRoMfA/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1is8dZSd0FZ9Qi1Zvq1uRhm-P1McnJRd_zxdAfCRoMfA/edit?usp=sharing</a></li>
+<li><a href="https://twitter.com/CDSBMexico" class="uri">https://twitter.com/CDSBMexico</a> y <a href="https://twitter.com/LIBDrstats" class="uri">https://twitter.com/LIBDrstats</a></li>
+<li><a href="https://twitter.com/Bioconductor" class="uri">https://twitter.com/Bioconductor</a></li>
+</ul></li>
+</ul>
+<p><img src="icon_192.png"></p>
+</div>
+<div id="github" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> GitHub<a href="introducción-a-r-y-rstudio.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Permite compartir código</li>
+<li>Se complementa con Git que es para tener un control de versiones de tu código
+<ul>
+<li><a href="https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Introduccion-al-flujo-de-trabajo-orientado-a-proyectos.pdf" class="uri">https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Introduccion-al-flujo-de-trabajo-orientado-a-proyectos.pdf</a></li>
+</ul></li>
+<li>Puedes tener páginas web estáticas
+<ul>
+<li><a href="https://pages.github.com/" class="uri">https://pages.github.com/</a></li>
+<li><a href="https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024" class="uri">https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024</a>. En especial <a href="https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024/tree/gh-pages" class="uri">https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024/tree/gh-pages</a> se convierte en <a href="http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024/" class="uri">http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024/</a></li>
+<li>Página personal: <a href="https://github.com/lcolladotor/lcolladotor.github.com" class="uri">https://github.com/lcolladotor/lcolladotor.github.com</a> se convierte en <a href="http://lcolladotor.github.io/" class="uri">http://lcolladotor.github.io/</a>. Está todo hecho con <a href="https://github.com/lcolladotor/lcolladotorsource" class="uri">https://github.com/lcolladotor/lcolladotorsource</a></li>
+</ul></li>
+<li>Tip: usen el mismo nombre de usuario en GitHub, Twitter, Gmail, etc.
+<ul>
+<li>How to be a Modern Scientist: <a href="https://lcolladotor.github.io/bioc_team_ds/how-to-be-a-modern-scientist.html" class="uri">https://lcolladotor.github.io/bioc_team_ds/how-to-be-a-modern-scientist.html</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="rstudio" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> RStudio<a href="introducción-a-r-y-rstudio.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>RStudio Desktop es gratis <a href="http://www.rstudio.com/products/rstudio/download/preview/" class="uri">http://www.rstudio.com/products/rstudio/download/preview/</a></li>
+<li>Nos ayuda a realizar muchas cosas con R de forma más rápida
+<ul>
+<li>Demo <code>rsthemes</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introducción-a-r-y-rstudio.html#cb7-1" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="fu">c</span>(</span>
+<span id="cb7-2"><a href="introducción-a-r-y-rstudio.html#cb7-2" tabindex="-1"></a>    <span class="st">&quot;gadenbuie/rsthemes&quot;</span></span>
+<span id="cb7-3"><a href="introducción-a-r-y-rstudio.html#cb7-3" tabindex="-1"></a>))</span>
+<span id="cb7-4"><a href="introducción-a-r-y-rstudio.html#cb7-4" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_cran</span>(<span class="st">&quot;suncalc&quot;</span>)</span>
+<span id="cb7-5"><a href="introducción-a-r-y-rstudio.html#cb7-5" tabindex="-1"></a>rsthemes<span class="sc">::</span><span class="fu">install_rsthemes</span>(<span class="at">include_base16 =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introducción-a-r-y-rstudio.html#cb8-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_profile</span>()</span>
+<span id="cb8-2"><a href="introducción-a-r-y-rstudio.html#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="introducción-a-r-y-rstudio.html#cb8-3" tabindex="-1"></a><span class="do">## From https://www.garrickadenbuie.com/project/rsthemes/</span></span>
+<span id="cb8-4"><a href="introducción-a-r-y-rstudio.html#cb8-4" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">interactive</span>() <span class="sc">&amp;&amp;</span> <span class="fu">requireNamespace</span>(<span class="st">&quot;rsthemes&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb8-5"><a href="introducción-a-r-y-rstudio.html#cb8-5" tabindex="-1"></a>    <span class="co"># Set preferred themes if not handled elsewhere..</span></span>
+<span id="cb8-6"><a href="introducción-a-r-y-rstudio.html#cb8-6" tabindex="-1"></a>    rsthemes<span class="sc">::</span><span class="fu">set_theme_light</span>(<span class="st">&quot;Solarized Light {rsthemes}&quot;</span>) <span class="co"># light theme</span></span>
+<span id="cb8-7"><a href="introducción-a-r-y-rstudio.html#cb8-7" tabindex="-1"></a>    rsthemes<span class="sc">::</span><span class="fu">set_theme_dark</span>(<span class="st">&quot;base16 Monokai {rsthemes}&quot;</span>) <span class="co"># dark theme</span></span>
+<span id="cb8-8"><a href="introducción-a-r-y-rstudio.html#cb8-8" tabindex="-1"></a>    rsthemes<span class="sc">::</span><span class="fu">set_theme_favorite</span>(<span class="fu">c</span>(</span>
+<span id="cb8-9"><a href="introducción-a-r-y-rstudio.html#cb8-9" tabindex="-1"></a>        <span class="st">&quot;Solarized Light {rsthemes}&quot;</span>,</span>
+<span id="cb8-10"><a href="introducción-a-r-y-rstudio.html#cb8-10" tabindex="-1"></a>        <span class="st">&quot;base16 Monokai {rsthemes}&quot;</span>,</span>
+<span id="cb8-11"><a href="introducción-a-r-y-rstudio.html#cb8-11" tabindex="-1"></a>        <span class="st">&quot;One Dark {rsthemes}&quot;</span></span>
+<span id="cb8-12"><a href="introducción-a-r-y-rstudio.html#cb8-12" tabindex="-1"></a>    ))</span>
+<span id="cb8-13"><a href="introducción-a-r-y-rstudio.html#cb8-13" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="introducción-a-r-y-rstudio.html#cb8-14" tabindex="-1"></a>    <span class="co"># Whenever the R session restarts inside RStudio...</span></span>
+<span id="cb8-15"><a href="introducción-a-r-y-rstudio.html#cb8-15" tabindex="-1"></a>    <span class="fu">setHook</span>(<span class="st">&quot;rstudio.sessionInit&quot;</span>, <span class="cf">function</span>(isNewSession) {</span>
+<span id="cb8-16"><a href="introducción-a-r-y-rstudio.html#cb8-16" tabindex="-1"></a>        <span class="co"># Automatically choose the correct theme based on time of day</span></span>
+<span id="cb8-17"><a href="introducción-a-r-y-rstudio.html#cb8-17" tabindex="-1"></a>        <span class="do">## Used rsthemes::geolocate() once</span></span>
+<span id="cb8-18"><a href="introducción-a-r-y-rstudio.html#cb8-18" tabindex="-1"></a>        rsthemes<span class="sc">::</span><span class="fu">use_theme_auto</span>(<span class="at">lat =</span> <span class="fl">39.2891</span>, <span class="at">lon =</span> <span class="sc">-</span><span class="fl">76.5583</span>)</span>
+<span id="cb8-19"><a href="introducción-a-r-y-rstudio.html#cb8-19" tabindex="-1"></a>    }, <span class="at">action =</span> <span class="st">&quot;append&quot;</span>)</span>
+<span id="cb8-20"><a href="introducción-a-r-y-rstudio.html#cb8-20" tabindex="-1"></a>}</span>
+<span id="cb8-21"><a href="introducción-a-r-y-rstudio.html#cb8-21" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="introducción-a-r-y-rstudio.html#cb8-22" tabindex="-1"></a><span class="do">## https://blog.rstudio.com/2013/06/10/rstudio-cran-mirror/</span></span>
+<span id="cb8-23"><a href="introducción-a-r-y-rstudio.html#cb8-23" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&quot;https://cloud.r-project.org&quot;</span>))</span></code></pre></div>
+<ul>
+<li>Es actualizado con bastante frecuencia</li>
+<li>RStudio cheatsheets <a href="https://posit.co/resources/cheatsheets/" class="uri">https://posit.co/resources/cheatsheets/</a>
+<ul>
+<li><a href="https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf" class="uri">https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf</a></li>
+</ul></li>
+<li>RStudio projects: usalos para organizar tu código
+<ul>
+<li><a href="https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Trabajando-con-proyectos.pdf" class="uri">https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Trabajando-con-proyectos.pdf</a></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introducción-a-r-y-rstudio.html#cb9-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_project</span>(<span class="st">&quot;~/rnaseq_2024_notas&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introducción-a-r-y-rstudio.html#cb10-1" tabindex="-1"></a><span class="do">## Start a setup file</span></span>
+<span id="cb10-2"><a href="introducción-a-r-y-rstudio.html#cb10-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;01-notas.R&quot;</span>)</span></code></pre></div>
+<p>O por ejemplo el archivo <a href="https://github.com/lcolladotor/rnaseq_2022_notas_envivo/blob/master/R/02-visualizar-mtcars.R">02-visualizar-mtcars.R</a></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introducción-a-r-y-rstudio.html#cb11-1" tabindex="-1"></a><span class="do">## Creemos el archivo R/02-visualizar-mtcars.R</span></span>
+<span id="cb11-2"><a href="introducción-a-r-y-rstudio.html#cb11-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">&quot;02-visualizar-mtcars.R&quot;</span>)</span></code></pre></div>
+<p>con el siguiente contenido:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introducción-a-r-y-rstudio.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;sessioninfo&quot;</span>)</span>
+<span id="cb12-2"><a href="introducción-a-r-y-rstudio.html#cb12-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;here&quot;</span>)</span>
+<span id="cb12-3"><a href="introducción-a-r-y-rstudio.html#cb12-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb12-4"><a href="introducción-a-r-y-rstudio.html#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="introducción-a-r-y-rstudio.html#cb12-5" tabindex="-1"></a><span class="do">## Hello world</span></span>
+<span id="cb12-6"><a href="introducción-a-r-y-rstudio.html#cb12-6" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Soy Leo&quot;</span>)</span>
+<span id="cb12-7"><a href="introducción-a-r-y-rstudio.html#cb12-7" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="introducción-a-r-y-rstudio.html#cb12-8" tabindex="-1"></a><span class="do">## Directorios</span></span>
+<span id="cb12-9"><a href="introducción-a-r-y-rstudio.html#cb12-9" tabindex="-1"></a>dir_plots <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;figuras&quot;</span>)</span>
+<span id="cb12-10"><a href="introducción-a-r-y-rstudio.html#cb12-10" tabindex="-1"></a>dir_rdata <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;processed-data&quot;</span>)</span>
+<span id="cb12-11"><a href="introducción-a-r-y-rstudio.html#cb12-11" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="introducción-a-r-y-rstudio.html#cb12-12" tabindex="-1"></a><span class="do">## Crear directorio para las figuras y archivos</span></span>
+<span id="cb12-13"><a href="introducción-a-r-y-rstudio.html#cb12-13" tabindex="-1"></a><span class="fu">dir.create</span>(dir_plots, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-14"><a href="introducción-a-r-y-rstudio.html#cb12-14" tabindex="-1"></a><span class="fu">dir.create</span>(dir_rdata, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-15"><a href="introducción-a-r-y-rstudio.html#cb12-15" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="introducción-a-r-y-rstudio.html#cb12-16" tabindex="-1"></a><span class="do">## Hacer una imagen de ejemplo</span></span>
+<span id="cb12-17"><a href="introducción-a-r-y-rstudio.html#cb12-17" tabindex="-1"></a><span class="fu">pdf</span>(<span class="fu">file.path</span>(dir_plots, <span class="st">&quot;mtcars_gear_vs_mpg.pdf&quot;</span>),</span>
+<span id="cb12-18"><a href="introducción-a-r-y-rstudio.html#cb12-18" tabindex="-1"></a>    <span class="at">useDingbats =</span> <span class="cn">FALSE</span></span>
+<span id="cb12-19"><a href="introducción-a-r-y-rstudio.html#cb12-19" tabindex="-1"></a>)</span>
+<span id="cb12-20"><a href="introducción-a-r-y-rstudio.html#cb12-20" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">group =</span> gear, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb12-21"><a href="introducción-a-r-y-rstudio.html#cb12-21" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span>
+<span id="cb12-22"><a href="introducción-a-r-y-rstudio.html#cb12-22" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb12-23"><a href="introducción-a-r-y-rstudio.html#cb12-23" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="introducción-a-r-y-rstudio.html#cb12-24" tabindex="-1"></a><span class="do">## Para reproducir mi código</span></span>
+<span id="cb12-25"><a href="introducción-a-r-y-rstudio.html#cb12-25" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
+<span id="cb12-26"><a href="introducción-a-r-y-rstudio.html#cb12-26" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<ul>
+<li>Un video de mi club de R sobre RStudio y el uso de <code>here</code>:</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XTuJ8vGnzBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>También hay videos en el <a href="https://www.youtube.com/channel/UCHCdYfAXVzJIUkMoMSGiZMw">canal de YouTube de la CDSB</a> sobre <code>here</code> como pueden ver <a href="https://www.youtube.com/channel/UCHCdYfAXVzJIUkMoMSGiZMw/search?query=here">aquí</a>.</p>
+<ul>
+<li><p>Para una guía más detallada de cómo organizar tus archivos, revisa <a href="https://lcolladotor.github.io/bioc_team_ds/organizing-your-work.html#.YflDV-rMJD8" class="uri">https://lcolladotor.github.io/bioc_team_ds/organizing-your-work.html#.YflDV-rMJD8</a>. En particular, <a href="https://github.com/LieberInstitute/template_project">LieberInstitute/template_project</a>.</p></li>
+<li><p>Acá está la guía de mi equipo de configuración de R: <a href="https://lcolladotor.github.io/bioc_team_ds/config-files.html#r-setup" class="uri">https://lcolladotor.github.io/bioc_team_ds/config-files.html#r-setup</a>.</p></li>
+<li><p>Configura <code>usethis</code> con GitHub vía <a href="https://usethis.r-lib.org/articles/articles/git-credentials.html" class="uri">https://usethis.r-lib.org/articles/articles/git-credentials.html</a></p></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introducción-a-r-y-rstudio.html#cb13-1" tabindex="-1"></a><span class="do">## Para poder conectar tu compu con GitHub</span></span>
+<span id="cb13-2"><a href="introducción-a-r-y-rstudio.html#cb13-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>() <span class="do">## Abrirá una página web, escoje un nombre único</span></span>
+<span id="cb13-3"><a href="introducción-a-r-y-rstudio.html#cb13-3" tabindex="-1"></a><span class="do">## y luego da click en el botón verde al final. Después copia el token</span></span>
+<span id="cb13-4"><a href="introducción-a-r-y-rstudio.html#cb13-4" tabindex="-1"></a><span class="do">## (son 40 caracteres)</span></span></code></pre></div>
+<ul>
+<li>Para Mac o Windows:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introducción-a-r-y-rstudio.html#cb14-1" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>() <span class="do">## Ojo, copia el token, no tu password de git!</span></span>
+<span id="cb14-2"><a href="introducción-a-r-y-rstudio.html#cb14-2" tabindex="-1"></a><span class="do">## Si no, terminaras en la situación descrita en</span></span>
+<span id="cb14-3"><a href="introducción-a-r-y-rstudio.html#cb14-3" tabindex="-1"></a><span class="do">## https://github.com/r-lib/usethis/issues/1347</span></span></code></pre></div>
+<ul>
+<li>Para Linux:</li>
+</ul>
+<p>En el servidor de <a href="http://132.248.220.108:8787/">RStudio de la LCG-UNAM</a> no funciona bien <code>gitcreds::gitcreds_set()</code> (porque esa función solo corre bien en macOS o winOS) así que tenemos que editar el archivo <code>.Renviron</code> donde nuestro token no se guarda de forma privada, y por lo cual hoy en día no es lo que recomienda <a href="https://twitter.com/JennyBryan">Jenny Bryan</a>. Pero es lo que funciona en este caso tal como lo hablamos con el autor de <a href="https://github.com/r-lib/gitcreds/issues/29"><code>gitcreds</code> vía GitHub</a>. Usando el siguiente comando podemos abrir el archivo <code>.Renviron</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introducción-a-r-y-rstudio.html#cb15-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div>
+<p>Después guarden su token de GitHub usando la siguiente sintáxis (ojo con la línea en blanco al final, las mayúsculas al inicio, y el que no hay espacios antes y después del <code>=</code>).</p>
+<pre><code>GITHUB_PAT=TU_CLAVE_DE_40_LETRAS
+</code></pre>
+<p>Después de guardar el <code>.Renviron</code>, vayan a <code>Session</code> hasta arriba y reinicien la sesión de R para que se cargue el <code>.Renviron</code> antes de continuar.</p>
+<ul>
+<li>Continuemos con tu configuración de GitHub</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introducción-a-r-y-rstudio.html#cb17-1" tabindex="-1"></a><span class="do">## Configura tu usuario de GitHub</span></span>
+<span id="cb17-2"><a href="introducción-a-r-y-rstudio.html#cb17-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_git_config</span>()</span></code></pre></div>
+<pre><code>[user]
+    name = Leonardo Collado Torres
+    email = lcolladotor@gmail.com</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introducción-a-r-y-rstudio.html#cb19-1" tabindex="-1"></a><span class="do">## Para inicializar el repositorio de Git</span></span>
+<span id="cb19-2"><a href="introducción-a-r-y-rstudio.html#cb19-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span>
+<span id="cb19-3"><a href="introducción-a-r-y-rstudio.html#cb19-3" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="introducción-a-r-y-rstudio.html#cb19-4" tabindex="-1"></a><span class="do">## Para conectar tu repositorio local de Git con los servidores de GitHub</span></span>
+<span id="cb19-5"><a href="introducción-a-r-y-rstudio.html#cb19-5" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
+<p>Resultado ejemplo: <a href="https://github.com/lcolladotor/rnaseq_2021_notas" class="uri">https://github.com/lcolladotor/rnaseq_2021_notas</a>. El que hice en vivo está disponible vía <a href="https://github.com/lcolladotor/rnaseq_2023_notas_en_vivo" class="uri">https://github.com/lcolladotor/rnaseq_2023_notas_en_vivo</a>.</p>
+<p>Una vez que termines, agrega la liga al repositorio con tus notas del curso en el <a href="https://cursos.lcg.unam.mx/course/view.php?id=161#section-3">la página del curso</a>.</p>
+</div>
+<div id="material-del-curso" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Material del curso<a href="introducción-a-r-y-rstudio.html#material-del-curso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Pueden descargar la versión estática con <code>usethis::use_course('lcolladotor/rnaseq_LCG-UNAM_2024')</code></li>
+<li>Pueden verlo en línea a través de <a href="http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024"><strong>lcolladotor.github.io/rnaseq_LCG-UNAM_2024</strong></a></li>
+<li>Pueden <strong>clonarlo</strong> desde GitHub de tal forma que podrán actualizarlo fácilmente usando <em>git pull</em></li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="introducción-a-r-y-rstudio.html#cb20-1" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024.git</span>
+<span id="cb20-2"><a href="introducción-a-r-y-rstudio.html#cb20-2" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="introducción-a-r-y-rstudio.html#cb20-3" tabindex="-1"></a><span class="co">## Si tienen su SSH key configurarda pueden usar</span></span>
+<span id="cb20-4"><a href="introducción-a-r-y-rstudio.html#cb20-4" tabindex="-1"></a><span class="co">## Info sobre SSH keys de GitHub: </span></span>
+<span id="cb20-5"><a href="introducción-a-r-y-rstudio.html#cb20-5" tabindex="-1"></a><span class="co">## https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</span></span>
+<span id="cb20-6"><a href="introducción-a-r-y-rstudio.html#cb20-6" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:lcolladotor/rnaseq_LCG-UNAM_2024.git</span></code></pre></div>
+<p>O desde R con:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introducción-a-r-y-rstudio.html#cb21-1" tabindex="-1"></a><span class="do">## Opción más nueva:</span></span>
+<span id="cb21-2"><a href="introducción-a-r-y-rstudio.html#cb21-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;gert&quot;</span>)</span>
+<span id="cb21-3"><a href="introducción-a-r-y-rstudio.html#cb21-3" tabindex="-1"></a>repo <span class="ot">&lt;-</span> <span class="fu">git_clone</span>(</span>
+<span id="cb21-4"><a href="introducción-a-r-y-rstudio.html#cb21-4" tabindex="-1"></a>    <span class="st">&quot;https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024&quot;</span>,</span>
+<span id="cb21-5"><a href="introducción-a-r-y-rstudio.html#cb21-5" tabindex="-1"></a>    <span class="st">&quot;~/rnaseq_LCG-UNAM_2024&quot;</span></span>
+<span id="cb21-6"><a href="introducción-a-r-y-rstudio.html#cb21-6" tabindex="-1"></a>)</span>
+<span id="cb21-7"><a href="introducción-a-r-y-rstudio.html#cb21-7" tabindex="-1"></a><span class="fu">setwd</span>(repo)</span>
+<span id="cb21-8"><a href="introducción-a-r-y-rstudio.html#cb21-8" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="introducción-a-r-y-rstudio.html#cb21-9" tabindex="-1"></a><span class="do">## Otra opción:</span></span>
+<span id="cb21-10"><a href="introducción-a-r-y-rstudio.html#cb21-10" tabindex="-1"></a>git2r<span class="sc">::</span><span class="fu">clone</span>(</span>
+<span id="cb21-11"><a href="introducción-a-r-y-rstudio.html#cb21-11" tabindex="-1"></a>    <span class="st">&quot;https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024&quot;</span>,</span>
+<span id="cb21-12"><a href="introducción-a-r-y-rstudio.html#cb21-12" tabindex="-1"></a>    <span class="st">&quot;~/rnaseq_LCG-UNAM_2024&quot;</span></span>
+<span id="cb21-13"><a href="introducción-a-r-y-rstudio.html#cb21-13" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="actividad-postcards-opcional" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Actividad postcards (opcional)<a href="introducción-a-r-y-rstudio.html#actividad-postcards-opcional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/b7d3bbee06d14a548a664e76ea9110d8" title="Updating spatialLIBD: from SingleCellExperiment to VisiumExperiment classes" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 420px;" data-ratio="1.3333333333333333">
+</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q6eRD8Nyxfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0S_tRne5UNk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<ul>
+<li>Similar a <a href="https://pages.github.com/" class="uri">https://pages.github.com/</a></li>
+<li><code>postcards</code> tiene 4 templados de páginas web <a href="https://github.com/seankross/postcards" class="uri">https://github.com/seankross/postcards</a></li>
+<li>Tu página web debe describir decir algo sobre ti, tus intereses, y tus proyectos además de cómo contactarte
+<ul>
+<li>Ejemplo <a href="https://amy-peterson.github.io/" class="uri">https://amy-peterson.github.io/</a> vía <a href="https://github.com/amy-peterson/amy-peterson.github.com" class="uri">https://github.com/amy-peterson/amy-peterson.github.com</a></li>
+<li><a href="http://jtleek.com/" class="uri">http://jtleek.com/</a> vía <a href="https://github.com/jtleek/jtleek.github.io" class="uri">https://github.com/jtleek/jtleek.github.io</a></li>
+<li><a href="http://aejaffe.com/" class="uri">http://aejaffe.com/</a> vía <a href="https://github.com/andrewejaffe/andrewejaffe.github.io" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io</a></li>
+<li><a href="https://hadley.nz/" class="uri">https://hadley.nz/</a> vía <a href="https://github.com/hadley/hadley.github.com" class="uri">https://github.com/hadley/hadley.github.com</a></li>
+<li><a href="https://emarquezz.github.io/" class="uri">https://emarquezz.github.io/</a> vía <a href="https://github.com/emarquezz/emarquezz.github.io" class="uri">https://github.com/emarquezz/emarquezz.github.io</a></li>
+<li><a href="https://bpardo99.github.io/" class="uri">https://bpardo99.github.io/</a> vía <a href="https://github.com/bpardo99/bpardo99.github.io" class="uri">https://github.com/bpardo99/bpardo99.github.io</a></li>
+<li><a href="https://daianna21.github.io/" class="uri">https://daianna21.github.io/</a> vía <a href="https://github.com/daianna21/daianna21.github.io" class="uri">https://github.com/daianna21/daianna21.github.io</a>.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introducción-a-r-y-rstudio.html#cb22-1" tabindex="-1"></a><span class="do">## Creen el RStudio project</span></span>
+<span id="cb22-2"><a href="introducción-a-r-y-rstudio.html#cb22-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_project</span>(<span class="st">&quot;Su_Usuario.github.io&quot;</span>)</span>
+<span id="cb22-3"><a href="introducción-a-r-y-rstudio.html#cb22-3" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="introducción-a-r-y-rstudio.html#cb22-4" tabindex="-1"></a><span class="do">## Configura Git y GitHub</span></span>
+<span id="cb22-5"><a href="introducción-a-r-y-rstudio.html#cb22-5" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span>
+<span id="cb22-6"><a href="introducción-a-r-y-rstudio.html#cb22-6" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
+<p>Creen su templado usando <code>postcards</code>. Va a crear un archivo <code>index.Rmd</code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introducción-a-r-y-rstudio.html#cb23-1" tabindex="-1"></a><span class="do">## Solo uno de estos, de acurdo al templado que más les gustó</span></span>
+<span id="cb23-2"><a href="introducción-a-r-y-rstudio.html#cb23-2" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;jolla&quot;</span>)</span>
+<span id="cb23-3"><a href="introducción-a-r-y-rstudio.html#cb23-3" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;jolla-blue&quot;</span>)</span>
+<span id="cb23-4"><a href="introducción-a-r-y-rstudio.html#cb23-4" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;trestles&quot;</span>)</span>
+<span id="cb23-5"><a href="introducción-a-r-y-rstudio.html#cb23-5" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;onofre&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Llenen su información usando el formato <code>Markdown</code>. Por ejemplo <a href="https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31</a>.</li>
+<li>Agreguen sus perfiles estilo <a href="https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12</a></li>
+<li>Den click en el botón azul de <code>knit</code> en RStudio. Es equivalente a <code>rmarkdown::render("index.Rmd")</code>. Esto creará el archivo <code>index.html</code>.</li>
+<li>Hagan un <code>commit</code> para guardar los archivos nuevos incluyendo <code>index.html</code> y luego un <code>push</code> para subir los archivos a GitHub.</li>
+<li>Comparte tu repositorio vía el Slack de la CDSB en el canal <a href="https://comunidadbioinfo.slack.com/archives/C06GEV1JJE5"><code>intro_rnaseq_lcg_2024</code></a>.</li>
+<li>(opcional) Anuncien su nueva página web en Twitter/X o Bluesky usando el hashtag <code>#rstats</code> y/o etiquen al autor de <code>postcards</code> <a href="https://twitter.com/seankross" class="uri">https://twitter.com/seankross</a>. Pueden después incluir su página web en su introducción en el canal <code>#bienvenida</code> del Slack de la CDSB ^^ al cual pueden unirse a través de <a href="https://join.slack.com/t/comunidadbioinfo/shared_invite/zt-8lsvpm84-Fne1W0hadk6cpjgJS17Tnw">esta liga</a>.</li>
+</ul>
+
+</div>
+</div>
+<div class="container">
+    <footer class="site-footer">
+
+      <center>
+<p class="powered-by">
+© 2011-2020. All thoughts and opinions here are my own. The icon was designed by <a href="https://www.linkedin.com/in/mauricio-guzman-6529b551/">Mauricio Guzmán</a> and is inspired by <a href="https://en.wikipedia.org/wiki/Huichol">Huichol culture</a>; it represents my community building interests.
+</p>
+
+<p class="powered-by copyright-license-text">
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+</p>
+
+<p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">
+      <img src="https://search.creativecommons.org/static/img/cc_icon.svg" alt="CC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-by_icon.svg" alt="CC by icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" alt="CC NC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" alt="CC SA icon" width="32px">
+    </a>
+</p>
+
+<div id="clustrmaps-widget"></div><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=m&d=Zo-deincaJGsqhqjIWsujtdoNOMJsnnZLefKmxDKVv8&co=124b73&cmo=dd53ff&cmn=4ec724'></script>
+
+<p class="powered-by">
+Published with <a href="https://bookdown.org/" target="_blank" rel="noopener">Bookdown</a>
+</p>
+
+</center>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45299226-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-45299226-1');
+</script>
+
+</footer>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introducción-a-bioconductor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

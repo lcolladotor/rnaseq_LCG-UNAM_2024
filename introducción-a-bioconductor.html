@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Intro RNA-seq LCG-UNAM 2024</title>
-  <meta name="description" content="Page not found | Intro RNA-seq LCG-UNAM 2024" />
+  <title>2 Introducción a Bioconductor | Intro RNA-seq LCG-UNAM 2024</title>
+  <meta name="description" content="2 Introducción a Bioconductor | Intro RNA-seq LCG-UNAM 2024" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Intro RNA-seq LCG-UNAM 2024" />
+  <meta property="og:title" content="2 Introducción a Bioconductor | Intro RNA-seq LCG-UNAM 2024" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="lcolladotor/rnaseq_LCG-UNAM_2024" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Intro RNA-seq LCG-UNAM 2024" />
+  <meta name="twitter:title" content="2 Introducción a Bioconductor | Intro RNA-seq LCG-UNAM 2024" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="icon_32.png" type="image/x-icon" />
-
-
+<link rel="prev" href="introducción-a-r-y-rstudio.html"/>
+<link rel="next" href="objetos-de-bioconductor-para-datos-de-expresión.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -236,11 +236,168 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="introducción-a-bioconductor" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Introducción a Bioconductor<a href="introducción-a-bioconductor.html#introducción-a-bioconductor" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/c0Ch_sXiGDQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p><a href="https://docs.google.com/document/d/1VZ4dOesHjbWhrvSIXO8Ne1Qk4ZdGEhAySNviZOHPqjI/edit?usp=sharing"><em>Original Notes in English</em></a></p>
+<p>Bioconductor, the R package repository for the “analysis and comprehension of high-throughput genomic data” <a href="http://bioconductor.org/" class="uri">http://bioconductor.org/</a></p>
+<ul>
+<li><p>Blog post que escribí en 2014: Where do I start using Bioconductor? <a href="http://lcolladotor.github.io/2014/10/16/startbioc/#.XqxNGRNKiuo" class="uri">http://lcolladotor.github.io/2014/10/16/startbioc/#.XqxNGRNKiuo</a></p></li>
+<li><p>Sobre Bioconductor: <a href="http://bioconductor.org/about/" class="uri">http://bioconductor.org/about/</a></p>
+<ul>
+<li>Soy parte del Community Advisory Board <a href="http://bioconductor.org/about/community-advisory-board/" class="uri">http://bioconductor.org/about/community-advisory-board/</a> ^^</li>
+</ul></li>
+</ul>
+<p><img src="http://bioconductor.org/images/cab/cab.png" width="400px" /></p>
+<ul>
+<li>Artículos principales
+<ul>
+<li>2004 artículo: <a href="http://genomebiology.com/content/pdf/gb-2004-5-10-r80.pdf" class="uri">http://genomebiology.com/content/pdf/gb-2004-5-10-r80.pdf</a></li>
+<li>2005 libro: <a href="https://www.amazon.com/Bioinformatics-Computational-Solutions-Bioconductor-Statistics/dp/0387251464" class="uri">https://www.amazon.com/Bioinformatics-Computational-Solutions-Bioconductor-Statistics/dp/0387251464</a></li>
+<li>2015 artículo: <a href="http://www.nature.com/nmeth/journal/v12/n2/abs/nmeth.3252.html" class="uri">http://www.nature.com/nmeth/journal/v12/n2/abs/nmeth.3252.html</a></li>
+</ul></li>
+</ul>
+<div id="encontrando-paquetes-de-bioconductor" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Encontrando paquetes de Bioconductor<a href="introducción-a-bioconductor.html#encontrando-paquetes-de-bioconductor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Tipos de paquetes de Bioconductor:
+<ul>
+<li>Software: tipo de paquete principal; la mayoría los hacen usuarios aunque algunos los hacen gente pagada directamente por Bioconductor</li>
+<li>Annotation: facilitan el interactuar con bases de datos de anotación</li>
+<li>Experiment Data: contienen datos para algún artículo o datos que se usan en ejemplos más exhaustivos</li>
+<li>Workflows: demuestran como puedes usar varios paquetes de Bioconductor para ciertos tipos de análisis</li>
+</ul></li>
+<li>Para descubrir paquetes:
+<ul>
+<li>Software: <a href="http://bioconductor.org/packages/release/bioc/" class="uri">http://bioconductor.org/packages/release/bioc/</a></li>
+<li>Annotation: <a href="http://bioconductor.org/packages/release/data/annotation/" class="uri">http://bioconductor.org/packages/release/data/annotation/</a></li>
+<li>Experiment Data: <a href="http://bioconductor.org/packages/release/data/experiment/" class="uri">http://bioconductor.org/packages/release/data/experiment/</a></li>
+<li>Workflows: <a href="http://bioconductor.org/packages/release/workflows/" class="uri">http://bioconductor.org/packages/release/workflows/</a></li>
+</ul></li>
+<li>Paquetes de R de Leo: <a href="https://lcolladotor.github.io/pkgs/" class="uri">https://lcolladotor.github.io/pkgs/</a></li>
+<li>Encontrando paquetes a través de <code>biocViews</code>: <a href="http://bioconductor.org/packages/release/BiocViews.html#___Software" class="uri">http://bioconductor.org/packages/release/BiocViews.html#___Software</a>
+<ul>
+<li>Estructura tipo árbol</li>
+<li>Son 4 árboles principales: software, annotation, experiment, workflow</li>
+<li>Dentro de cada árbol, un paquete puede ser parte de varias ramas</li>
+<li>Tiene una búsqueda de texto simple</li>
+<li>Ejemplo: Software → WorkflowStep → Visualization → <a href="http://bioconductor.org/packages/release/BiocViews.html#___Visualization" class="uri">http://bioconductor.org/packages/release/BiocViews.html#___Visualization</a> (486 paquetes en BioC 3.11 abril-octubre 2020, 506 en BioC 3.12 octubre 2020-abril 2021, 536 en BioC 3.14 octubre 2021-abril 2022, 542 en BioC 3.16 octubre 2022-abril 2023)</li>
+</ul></li>
+</ul>
+</div>
+<div id="estructura-de-un-paquete-de-bioc" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Estructura de un paquete de BioC<a href="introducción-a-bioconductor.html#estructura-de-un-paquete-de-bioc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Usa <code>https://bioconductor.org/packages/&lt;pkg_name&gt;</code>
+<ul>
+<li>Ejemplo: <a href="https://bioconductor.org/packages/recount" class="uri">https://bioconductor.org/packages/recount</a></li>
+<li>Otro ejemplo: <a href="https://bioconductor.org/packages/SummarizedExperiment" class="uri">https://bioconductor.org/packages/SummarizedExperiment</a></li>
+</ul></li>
+<li>Badges (etiquetas): rápidamente podemos evaluar como está</li>
+<li>Parráfo de descripción del paquete</li>
+<li>Cómo citar al paquete de Bioconductor</li>
+<li>Cómo instalarlo. Más detalles en <a href="http://bioconductor.org/install/" class="uri">http://bioconductor.org/install/</a></li>
+<li>Documentación
+<ul>
+<li>Una líga por cada vignette en formato PDF o HTML. Es la documentación <strong>principal</strong>!</li>
+<li>Una vignette es donde lxs autores del paquete explican cómo usar las diferentes funciones del paquete y en qué orden</li>
+</ul></li>
+<li>Detalles
+<ul>
+<li>Términos de <code>biocViews</code></li>
+<li>Cómo se relaciona a otros paquetes (depends, imports, linking to, suggests, depends on me, …)</li>
+<li>URL: donde puedes encontrar el código fuente</li>
+<li>BugReports: donde puedes pedir ayuda</li>
+</ul></li>
+<li>Más detalles sobre el paquete
+<ul>
+<li>Estadísticas de descargas</li>
+</ul></li>
+</ul>
+</div>
+<div id="las-dos-ramas-de-bioconductor-release-y-devel" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Las dos ramas de Bioconductor: release y devel<a href="introducción-a-bioconductor.html#las-dos-ramas-de-bioconductor-release-y-devel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Dos ramas
+<ul>
+<li><code>release</code>, actualmente 3.16</li>
+<li><code>devel</code>, actualmente 3.17</li>
+<li>Ejemplo: <a href="http://bioconductor.org/packages/devel/bioc/html/recount.html" class="uri">http://bioconductor.org/packages/devel/bioc/html/recount.html</a></li>
+</ul></li>
+<li>Bioconductor tiene es actualizado cada 6 meses (abril y octubre). R lo actualizan 1 vez al año (abril).</li>
+<li>Todo el software lo prueban en macOS, Windows y linux
+<ul>
+<li>Ejemplo: <a href="http://bioconductor.org/checkResults/release/bioc-LATEST/recount/" class="uri">http://bioconductor.org/checkResults/release/bioc-LATEST/recount/</a> y <a href="http://bioconductor.org/checkResults/devel/bioc-LATEST/recount/" class="uri">http://bioconductor.org/checkResults/devel/bioc-LATEST/recount/</a></li>
+</ul></li>
+<li>Resumen BioC 3.16 <a href="http://bioconductor.org/news/bioc_3_16_release/" class="uri">http://bioconductor.org/news/bioc_3_16_release/</a>
+<ul>
+<li>Blog post en LIBD rstats club: Quick overview on the new Bioconductor 3.8 release <a href="http://research.libd.org/rstatsclub/2018/11/02/quick-overview-on-the-new-bioconductor-3-8-release/" class="uri">http://research.libd.org/rstatsclub/2018/11/02/quick-overview-on-the-new-bioconductor-3-8-release/</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="cursos-y-eventos" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Cursos y eventos<a href="introducción-a-bioconductor.html#cursos-y-eventos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="http://bioconductor.org/help/events/" class="uri">http://bioconductor.org/help/events/</a></li>
+<li><a href="http://bioconductor.org/help/course-materials/" class="uri">http://bioconductor.org/help/course-materials/</a></li>
+<li>BioC2022: conferencia principal anual <a href="https://bioc2022.bioconductor.org/" class="uri">https://bioc2022.bioconductor.org/</a>
+<ul>
+<li>Talleres del BioC2019: <a href="https://rebrand.ly/biocworkshops2019" class="uri">https://rebrand.ly/biocworkshops2019</a></li>
+</ul></li>
+</ul>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Teach online data science, bioinformatics, or other computational skills interactively using the Orchestra platform:<a href="https://t.co/r4aJ2xAZbh">https://t.co/r4aJ2xAZbh</a> <br>Nearly 50 workshop environments preloaded with <a href="https://twitter.com/hashtag/jupyter?src=hash&amp;ref_src=twsrc%5Etfw">#jupyter</a>, <a href="https://twitter.com/hashtag/rstudio?src=hash&amp;ref_src=twsrc%5Etfw">#rstudio</a>, <a href="https://twitter.com/hashtag/shell?src=hash&amp;ref_src=twsrc%5Etfw">#shell</a>. <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>, or <a href="https://twitter.com/hashtag/python?src=hash&amp;ref_src=twsrc%5Etfw">#python</a>.<a href="https://twitter.com/NIHSTRIDES?ref_src=twsrc%5Etfw"><span class="citation">@NIHSTRIDES</span></a> <a href="https://twitter.com/NIHDataScience?ref_src=twsrc%5Etfw"><span class="citation">@NIHDataScience</span></a> <a href="https://twitter.com/Bioconductor?ref_src=twsrc%5Etfw"><span class="citation">@Bioconductor</span></a> <a href="https://t.co/HyWVLBJxGU">pic.twitter.com/HyWVLBJxGU</a>
+</p>
+— Sean Davis (<span class="citation">@seandavis12</span>) <a href="https://twitter.com/seandavis12/status/1348291911090626560?ref_src=twsrc%5Etfw">January 10, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<ul>
+<li>El que ayudo a organizar en México: CDSB Workshop 2021 <a href="https://comunidadbioinfo.github.io/post/cdsb-2021-workshops/#.YflG7erMJD8" class="uri">https://comunidadbioinfo.github.io/post/cdsb-2021-workshops/#.YflG7erMJD8</a></li>
+</ul>
+</div>
+<div id="comunidad" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Comunidad<a href="introducción-a-bioconductor.html#comunidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Slack: <a href="https://bioc-community.herokuapp.com/" class="uri">https://bioc-community.herokuapp.com/</a></li>
+<li>Sitio web de ayuda: <a href="https://support.bioconductor.org/" class="uri">https://support.bioconductor.org/</a>
+<ul>
+<li>Usa la(s) etiqueta(s) adecuada(s) para que lxs autores de los paquetes reciban email de forma automática</li>
+<li>Ejemplo: <a href="https://support.bioconductor.org/tag/recount/" class="uri">https://support.bioconductor.org/tag/recount/</a></li>
+<li>Pueden revisar ese sitio web y usarlo para aprender cómo en <a href="https://lcolladotor.github.io/bioc_team_ds/helping-others.html#bioconductor-support-practice-grounds" class="uri">https://lcolladotor.github.io/bioc_team_ds/helping-others.html#bioconductor-support-practice-grounds</a></li>
+</ul></li>
+<li>Twitter: <a href="https://twitter.com/bioconductor" class="uri">https://twitter.com/bioconductor</a></li>
+</ul>
+</div>
+<div id="ejercicio-grupal" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Ejercicio grupal<a href="introducción-a-bioconductor.html#ejercicio-grupal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Exploren en <a href="http://bioconductor.org/news/bioc_3_16_release/" class="uri">http://bioconductor.org/news/bioc_3_16_release/</a> la lista de nuevos paquetes de Bioconductor (BioC 3.16)</li>
+<li>Cada quien escoja un paquete o dos</li>
+<li>Exploren la documentación del paquete, si es que está pasando las pruebas en los diferentes sistemas operativos, si es que lxs autores han respondido a las preguntas de lxs usuarixs, etc.</li>
+<li>Discutan cuales paquetes les interesaron más como equipo y escriban un resumen de su discusión en sus notas en GitHub.</li>
+<li>Ejemplo de una actividad similar:</li>
+</ul>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Today was different, so no video. We used breakout rooms to work in pairs &amp; highlight new <a href="https://twitter.com/Bioconductor?ref_src=twsrc%5Etfw"><span class="citation">@Bioconductor</span></a> 3.12 📦s in a spreadsheet, then we chatted about them<a href="https://t.co/GDVDmGshIr">https://t.co/GDVDmGshIr</a><br><br>125 new software 📦s + much more! Lots of new toys to look at!<a href="https://t.co/C4qXfrQMm7">https://t.co/C4qXfrQMm7</a><a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/niGUP6Tns8">pic.twitter.com/niGUP6Tns8</a>
+</p>
+— LIBD rstats club (<span class="citation">@LIBDrstats</span>) <a href="https://twitter.com/LIBDrstats/status/1324861604488503300?ref_src=twsrc%5Etfw">November 6, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+At the end of October we did a "<a href="https://twitter.com/Bioconductor?ref_src=twsrc%5Etfw"><span class="citation">@Bioconductor</span></a> 3.14 release overview" led by <a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw"><span class="citation">@lcolladotor</span></a><br><br>There's lots of new interesting packages out there! <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a><br><br>📔 <a href="https://t.co/PAfcnAGN9a">https://t.co/PAfcnAGN9a</a><br>📹 <a href="https://t.co/w8o8BxoBBo">https://t.co/w8o8BxoBBo</a>
+</p>
+— LIBD rstats club (<span class="citation">@LIBDrstats</span>) <a href="https://twitter.com/LIBDrstats/status/1466104192682975232?ref_src=twsrc%5Etfw">December 1, 2021</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<ul>
+<li>(Opcional) Escriban un tweet promocionando el paquete que más les gustó y etiqueten a lxs autores si es que están en Twitter. Está plática de Mara Averick para <code>rstudio::conf(2018)</code> explica cómo comunicar información vía tweets <a href="https://rstudio.com/resources/rstudioconf-2018/phrasing-communicating-data-science-through-tweets-gifs-and-classic-misdirection/" class="uri">https://rstudio.com/resources/rstudioconf-2018/phrasing-communicating-data-science-through-tweets-gifs-and-classic-misdirection/</a>.</li>
+</ul>
+
+</div>
 </div>
 <div class="container">
     <footer class="site-footer">
@@ -290,8 +447,8 @@ Published with <a href="https://bookdown.org/" target="_blank" rel="noopener">Bo
           </div>
         </div>
       </div>
-
-
+<a href="introducción-a-r-y-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="objetos-de-bioconductor-para-datos-de-expresión.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
