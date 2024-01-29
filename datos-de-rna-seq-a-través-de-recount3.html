@@ -306,11 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb59-1" tabindex="-1"></a><span class="do">## Revisemos todos los proyectos con datos de humano en recount3</span></span>
 <span id="cb59-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb59-2" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
-<pre><code>## 2024-01-29 18:47:44.17151 caching file sra.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:00.424616 caching file sra.recount_project.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/sra.recount_project.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:44.451069 caching file gtex.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:00.683336 caching file gtex.recount_project.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/gtex/metadata/gtex.recount_project.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:44.665858 caching file tcga.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:00.968951 caching file tcga.recount_project.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/tcga/metadata/tcga.recount_project.MD.gz&#39;</code></pre>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-1" tabindex="-1"></a><span class="do">## Encuentra tu proyecto de interés. Aquí usaremos</span></span>
 <span id="cb66-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-2" tabindex="-1"></a><span class="do">## SRP009615 de ejemplo</span></span>
@@ -321,24 +321,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb66-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-7" tabindex="-1"></a><span class="do">## Crea un objeto de tipo RangedSummarizedExperiment (RSE)</span></span>
 <span id="cb66-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-8" tabindex="-1"></a><span class="do">## con la información a nivel de genes</span></span>
 <span id="cb66-9"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-9" tabindex="-1"></a>rse_gene_SRP009615 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info)</span></code></pre></div>
-<pre><code>## 2024-01-29 18:47:49.35734 downloading and reading the metadata.</code></pre>
-<pre><code>## 2024-01-29 18:47:49.414864 caching file sra.sra.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:05.615292 downloading and reading the metadata.</code></pre>
+<pre><code>## 2024-01-29 18:52:05.644779 caching file sra.sra.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.sra.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:49.579397 caching file sra.recount_project.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:05.832235 caching file sra.recount_project.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_project.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:49.817981 caching file sra.recount_qc.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:06.016237 caching file sra.recount_qc.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_qc.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:49.965962 caching file sra.recount_seq_qc.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:06.224837 caching file sra.recount_seq_qc.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_seq_qc.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:50.136026 caching file sra.recount_pred.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:06.429358 caching file sra.recount_pred.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_pred.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:50.336777 downloading and reading the feature information.</code></pre>
-<pre><code>## 2024-01-29 18:47:50.350373 caching file human.gene_sums.G026.gtf.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:06.656217 downloading and reading the feature information.</code></pre>
+<pre><code>## 2024-01-29 18:52:06.67531 caching file human.gene_sums.G026.gtf.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/annotations/gene_sums/human.gene_sums.G026.gtf.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:50.954597 downloading and reading the counts: 12 samples across 63856 features.</code></pre>
-<pre><code>## 2024-01-29 18:47:50.978675 caching file sra.gene_sums.SRP009615.G026.gz.</code></pre>
+<pre><code>## 2024-01-29 18:52:07.305047 downloading and reading the counts: 12 samples across 63856 features.</code></pre>
+<pre><code>## 2024-01-29 18:52:07.323339 caching file sra.gene_sums.SRP009615.G026.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/gene_sums/15/SRP009615/sra.gene_sums.SRP009615.G026.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:47:51.379339 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
+<pre><code>## 2024-01-29 18:52:07.753673 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb85-1" tabindex="-1"></a><span class="do">## Explora el objeto RSE</span></span>
 <span id="cb85-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb85-2" tabindex="-1"></a>rse_gene_SRP009615</span></code></pre></div>
 <pre><code>## class: RangedSummarizedExperiment 
