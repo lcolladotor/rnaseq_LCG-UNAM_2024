@@ -2,8 +2,8 @@
 
 _Impartida por [Daianna González Padilla](https://daianna21.github.io/)_
 
-* [Presentación](https://docs.google.com/presentation/d/1Sh922_c_pLrM74313FbHaJPAES8Jeh4lLa8kHbkUsL8/edit?usp=sharing)
-* Código: [LieberInstitute/smokingMouse_Indirects](https://github.com/LieberInstitute/smokingMouse_Indirects)
+* [Tutorial Expresión diferencial](http://research.libd.org/SPEAQeasyWorkshop2023/articles/SPEAQeasyWorkshop2023.html)
+* Código: [LieberInstitute/smoking-nicotine-mouse](https://github.com/LieberInstitute/smoking-nicotine-mouse)
 * Notas públicas de Daianna: [Notion](https://unequaled-boursin-0e1.notion.site/Modeling-the-effects-of-nicotine-and-smoking-exposures-on-the-developing-brain-85c9d6f413da4fd3a7dc1a5255f667d4).
 
 # Revisión
