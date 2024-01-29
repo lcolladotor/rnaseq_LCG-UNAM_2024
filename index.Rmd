@@ -21,7 +21,7 @@ Here you can find the files for the February 2024 introduction to R, RStudio and
 
 Instructor:
 
-* [**Leonardo Collado-Torres**](http://lcolladotor.github.io/): [team website](https://lcolladotor.github.io/bioc_team_ds/), [Twitter](https://twitter.com/lcolladotor)
+* [**Leonardo Collado-Torres**](http://lcolladotor.github.io/): [team documentation website](https://lcolladotor.github.io/bioc_team_ds/), [Twitter](https://twitter.com/lcolladotor), [Bluesky](https://bsky.app/profile/lcolladotor.bsky.social)
 
 Teach assistants:
 
