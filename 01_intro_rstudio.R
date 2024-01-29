@@ -1,4 +1,4 @@
-## ----install_rsthemes, eval = FALSE---------------------------------------
+## ----install_rsthemes, eval = FALSE------------------------------------------
 ## remotes::install_github(c(
 ##     "gadenbuie/rsthemes"
 ## ))
@@ -6,7 +6,7 @@
 ## rsthemes::install_rsthemes(include_base16 = TRUE)
 
 
-## ----r_profile, eval = FALSE----------------------------------------------
+## ----r_profile, eval = FALSE-------------------------------------------------
 ## usethis::edit_r_profile()
 ## 
 ## ## From https://www.garrickadenbuie.com/project/rsthemes/
@@ -32,21 +32,21 @@
 ## options(repos = c(CRAN = "https://cloud.r-project.org"))
 
 
-## ----proj, eval = FALSE---------------------------------------------------
+## ----proj, eval = FALSE------------------------------------------------------
 ## usethis::create_project("~/rnaseq_2024_notas")
 
 
-## ----create_setup, eval = FALSE-------------------------------------------
+## ----create_setup, eval = FALSE----------------------------------------------
 ## ## Start a setup file
 ## usethis::use_r("01-notas.R")
 
 
-## ----create_01-visualizar-mtcars, eval = FALSE----------------------------
+## ----create_01-visualizar-mtcars, eval = FALSE-------------------------------
 ## ## Creemos el archivo R/02-visualizar-mtcars.R
 ## usethis::use_r("02-visualizar-mtcars.R")
 
 
-## ----vis_mtcars, eval = FALSE---------------------------------------------
+## ----vis_mtcars, eval = FALSE------------------------------------------------
 ## library("sessioninfo")
 ## library("here")
 ## library("ggplot2")
@@ -75,29 +75,29 @@
 ## sessioninfo::session_info()
 
 
-## ----use_git_init, eval = FALSE-------------------------------------------
+## ----use_git_init, eval = FALSE----------------------------------------------
 ## ## Para poder conectar tu compu con GitHub
 ## usethis::create_github_token() ## Abrirá una página web, escoje un nombre único
 ## ## y luego da click en el botón verde al final. Después copia el token
 ## ## (son 40 caracteres)
 
 
-## ----gitcreds_set, eval = FALSE-------------------------------------------
+## ----gitcreds_set, eval = FALSE----------------------------------------------
 ## gitcreds::gitcreds_set() ## Ojo, copia el token, no tu password de git!
 ## ## Si no, terminaras en la situación descrita en
 ## ## https://github.com/r-lib/usethis/issues/1347
 
 
-## ----edit_r_envir, eval = FALSE-------------------------------------------
+## ----edit_r_envir, eval = FALSE----------------------------------------------
 ## usethis::edit_r_environ()
 
 
-## ----use_git_cont_parte1, eval = FALSE------------------------------------
+## ----use_git_cont_parte1, eval = FALSE---------------------------------------
 ## ## Configura tu usuario de GitHub
 ## usethis::edit_git_config()
 
 
-## ----use_git_cont_parte2, eval = FALSE------------------------------------
+## ----use_git_cont_parte2, eval = FALSE---------------------------------------
 ## ## Para inicializar el repositorio de Git
 ## usethis::use_git()
 ## 
@@ -112,7 +112,7 @@
 ## ## https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 ## git clone git@github.com:lcolladotor/rnaseq_LCG-UNAM_2024.git
 
-## ----clone_repo, eval = FALSE---------------------------------------------
+## ----clone_repo, eval = FALSE------------------------------------------------
 ## ## Opción más nueva:
 ## library("gert")
 ## repo <- git_clone(
@@ -128,7 +128,7 @@
 ## )
 
 
-## ----postcards_proj, eval = FALSE-----------------------------------------
+## ----postcards_proj, eval = FALSE--------------------------------------------
 ## ## Creen el RStudio project
 ## usethis::create_project("Su_Usuario.github.io")
 ## 
@@ -137,7 +137,7 @@
 ## usethis::use_github()
 
 
-## ----postcards_create, eval = FALSE---------------------------------------
+## ----postcards_create, eval = FALSE------------------------------------------
 ## ## Solo uno de estos, de acurdo al templado que más les gustó
 ## postcards::create_postcard(template = "jolla")
 ## postcards::create_postcard(template = "jolla-blue")
