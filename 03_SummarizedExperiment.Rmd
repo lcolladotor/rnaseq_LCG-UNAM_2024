@@ -154,7 +154,7 @@ Autores de `iSEE`:
 
 * Kévin Rue-Albrecht https://twitter.com/KevinRUE67
 * Federico Marini https://twitter.com/FedeBioinfo
-* Charlotte Soneson https://twitter.com/CSoneson
+* Charlotte Soneson https://bsky.app/profile/csoneson.bsky.social
 * Aaron Lun https://twitter.com/realAaronLun
 * Otro ejemplo de exploración de datos usando `SummarizedExperiment` y `iSEE`:
 

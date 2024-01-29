@@ -327,7 +327,7 @@ Pistas:
 
 Algunxs de lxs autores de `ExploreModelMatrix`:
 
-* https://twitter.com/CSoneson
+* https://bsky.app/profile/csoneson.bsky.social
 * https://twitter.com/FedeBioinfo
 * https://twitter.com/mikelove
 
