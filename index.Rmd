@@ -1,0 +1,184 @@
+---
+title: "Intro RNA-seq LCG-UNAM 2024"
+author: "Leonardo Collado-Torres"
+site: bookdown::bookdown_site
+apple-touch-sin: "icon_192.png"
+apple-touch-icon-size: 192
+favicon: "icon_32.png"
+github-repo: "lcolladotor/rnaseq_LCG-UNAM_2024"
+documentclass: book
+output:
+  bookdown::gitbook:
+    includes:
+      after_body: map_and_ga.html
+    css: "style.css"
+    
+---
+
+# Overview {-}
+
+Here you can find the files for the February 2023 introduction to R, RStudio and RNA-sequencing (RNA-seq) course for [LCG-UNAM](https://lcg.unam.mx/) at [CCG-UNAM](https://ccg.unam.mx/) (January 30 - February 2, 2024). The rest of the chapters will be in Spanish.
+
+Instructor:
+
+* [**Leonardo Collado-Torres**](http://lcolladotor.github.io/): [team website](https://lcolladotor.github.io/bioc_team_ds/), [Twitter](https://twitter.com/lcolladotor)
+
+Teach assistants:
+
+* [Mateo Maya Martínez](mailto:mateom@lcg.unam.mx), [Twitter](https://twitter.com/mateomayam)
+
+Guest presenters:
+
+* [Melissa Mayén Quiroz](https://melii99.github.io/), [Twitter](http://twitter.com/meli_mq99)
+* [Daianna González Padilla](https://daianna21.github.io/), [Twitter](https://twitter.com/Daianna27635327/)
+
+Course Coordinators:
+
+* Heladia Salgado
+* Julio Collado Vides
+
+Download the materials for this course with `usethis::use_course('lcolladotor/rnaseq_LCG-UNAM_2024')` or view online at [**lcolladotor.github.io/rnaseq_LCG-UNAM_2024**](http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024).
+
+## Code of Conduct {-}
+
+We'll follow the CDSB code of conduct [comunidadbioinfo.github.io/codigo-de-conducta/](https://comunidadbioinfo.github.io/codigo-de-conducta/) as well as version 1.2.0 of the Bioconductor code of conduct [bioconductor.github.io/bioc_coc_multilingual/](https://bioconductor.github.io/bioc_coc_multilingual/). 
+
+For reporting any violations of the code of conduct, report them to the Instructor and/or Course Coordinators.
+
+## Course Schedule {-}
+
+_Local times in Cuernavaca, Mexico_
+
+* Tuesday January 30:
+  - 9-11 am: introduction to R, RStudio, `r BiocStyle::CRANpkg("usethis")` and `r BiocStyle::CRANpkg("here")`
+    - Making your own website with `r BiocStyle::CRANpkg("postcards")` activity led by [Melissa Mayén Quiroz](https://melii99.github.io/)
+  - 12-2 pm: introduction to Bioconductor
+* Wednesday January 31:
+  - 9-11 am: expression data R/Bioconductor objects and visualization: `r BiocStyle::Biocpkg("SummarizedExperiment")` and `r BiocStyle::Biocpkg("iSEE")`
+  - 12-2 pm: Downloading RNA-seq data using `r BiocStyle::Biocpkg("recount3")`
+* Thursday February 1:
+  - 9-11 am: statistical models with `r BiocStyle::Biocpkg("ExploreModelMatrix")`
+  - 12-2 pm: [LieberInstitute/smoking-nicotine-mouse](https://github.com/LieberInstitute/smoking-nicotine-mouse) results + code by [Daianna González Padilla](https://daianna21.github.io/). Looking beyond this course!
+* Friday February 2:
+  - 9-11 am: differential expression analysis with `r BiocStyle::Biocpkg("limma")`
+  - 12-2 pm: review + _R/Bioconductor-powered Team Data Science_ overview + open discussion (career paths, networking, etc)
+    - [2024 LIBD summer internship program](https://www.libd.org/summer-internship): application closes ??.
+  
+## External links {-}
+
+* [Cursos LCG](https://cursos.lcg.unam.mx/course/view.php?id=161)
+* [GitHub source code](https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024)
+* Zoom (ask)
+* [LCG-UNAM RStudio server](http://132.248.220.108:8787/)
+* [CDSB](https://comunidadbioinfo.github.io/). 
+* [Slack CDSB Mexico](https://comunidadbioinfo.slack.com), in particular the [`intro_rnaseq_lcg_2024` channel](https://comunidadbioinfo.slack.com/archives/C06GEV1JJE5). You can join this Slack workspace through [this link](https://join.slack.com/t/comunidadbioinfo/shared_invite/zt-8lsvpm84-Fne1W0hadk6cpjgJS17Tnw).
+* [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project)
+* Example real project (by Daianna): [LieberInstitute/smoking-nicotine-mouse](https://github.com/LieberInstitute/smoking-nicotine-mouse)
+  
+
+## Course Prerequisites {-}
+
+Install R 4.3.x from [CRAN](https://cran.r-project.org/) then install the following R packages:
+
+```{r install, eval = FALSE}
+## For installing Bioconductor packages
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+## Install required packages
+BiocManager::install(
+    c(
+        "usethis", ## Utilities
+        "here",
+        "biocthis",
+        "lobstr",
+        "postcards",
+        "sessioninfo",
+        "SummarizedExperiment", ## Main containers / vis
+        "iSEE",
+        "edgeR", ## RNA-seq
+        "ExploreModelMatrix",
+        "limma",
+        "recount3",
+        "pheatmap", ## Visualization
+        "ggplot2",
+        "patchwork",
+        "RColorBrewer",
+        "ComplexHeatmap",
+        "spatialLIBD" ## Advanced
+    )
+)
+```
+
+You will also need to install [RStudio](https://rstudio.com/products/rstudio/download/#download) version RStudio 2023.06.1+524 or newer.
+
+## Course Evaluation {-}
+
+* Participation
+  - (main evidence) written and/or verbal participation during class
+  - (optional, strongly encouraged for your own career) Community building: CDSB Slack (introduce yourself), Twitter, GitHub, etc.
+* Public work
+  - (main evidence) Taking notes on GitHub
+  - (optional) Deploy an iSEE `shiny` app on shinyapps.io
+  - (advanced and optional) R package with notes following `usethis::create_package()` + `biocthis::use_bioc_pkg_templates()`.
+* Final project
+  - (main evidence) code in a public GitHub repository (different from the notes one) following the structure from [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project)
+  - (optional) a rendered Rmd file (RPubs, GitHub, etc) on a public URL
+  - (optional advanced) Copy this repository, remove all the Rmds except the index.Rmd and edit accordingly. GitHub Actions will then help you render it. You'll need to fetch the `gh-pages` branch and at least make one commit for the HTML to be available such as this [commit](https://github.com/lcolladotor/rnaseq_LCG-UNAM_2021/commit/e15bd6c234dd0ca4233050a4a0a42184994fef3b). You might also run into [this GitHub default permission setting](https://github.com/ad-m/github-push-action/issues/96#issuecomment-1396347833) that you'll need to change.
+  
+The final grade will be a weighted average from the evaluation by the TA (20%), your public work (40%) and your final project (40%).
+
+Projects, public work and notes are due at 9 am US Eastern on Monday February 12th, though we recommend doing any work related to this course by Friday February 9th.
+
+## R session information {-}
+
+Details on the R version used for making this book. The source code is available at [`lcolladotor/rnaseq_LCG-UNAM_2024`](https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024).
+
+```{r session_packages, eval = TRUE, message = FALSE}
+## Load the package at the top of your script
+library("sessioninfo")
+
+##  Utilities
+library("BiocStyle")
+library("biocthis")
+library("here")
+library("lobstr")
+library("postcards")
+library("usethis")
+library("sessioninfo")
+
+## Main containers / vis
+library("SummarizedExperiment")
+library("iSEE")
+
+## RNA-seq
+library("edgeR")
+library("ExploreModelMatrix")
+library("limma")
+library("recount3")
+
+## Visualization
+library("ComplexHeatmap")
+library("ggplot2")
+library("patchwork")
+library("pheatmap")
+library("RColorBrewer")
+
+## Advanced
+library("spatialLIBD")
+```
+
+```{r session_info}
+## Reproducibility information
+options(width = 120)
+session_info()
+proc.time()
+```
+
+This book was last updated at `r Sys.time()`.
+
+## License  {-}
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
