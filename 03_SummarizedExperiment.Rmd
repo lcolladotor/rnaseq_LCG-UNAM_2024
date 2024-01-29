@@ -1,0 +1,162 @@
+# Objetos de Bioconductor para datos de expresión
+
+## SummarizedExperiment
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lqxtgpD-heM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[_Original notes in English_](https://docs.google.com/document/d/1umDODmdQldf5w2lNDoFe-unmezHPonpCiKD270VwkrQ/edit?usp=sharing)
+
+* `rnaseqGene` workflow
+    - http://bioconductor.org/packages/release/BiocViews.html#___Workflow
+    - http://bioconductor.org/packages/release/workflows/html/rnaseqGene.html
+    - http://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html
+
+* `SummarizedExperiment`
+    - https://www.nature.com/articles/nmeth.3252 Figure 2
+    - http://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
+    - Introducción a `SummarizedExperiment`:     - http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html
+    - Extendiendo `SummarizedExperiment`: http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/Extensions.html
+
+* `GenomicRanges`
+    - http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html
+    - https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003118
+    - Introducción a `GenomicRanges`: http://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.html
+
+* `rtracklayer`
+    - http://bioconductor.org/packages/release/bioc/html/rtracklayer.html
+    - http://bioconductor.org/packages/release/bioc/vignettes/rtracklayer/inst/doc/rtracklayer.pdf
+    - Formato de archivos BED https://genome.ucsc.edu/FAQ/FAQformat.html#format1
+    - Formato de archivos GTF https://useast.ensembl.org/info/website/upload/gff.html
+    
+```{r first_rse}
+## Lets build our first SummarizedExperiment object
+library("SummarizedExperiment")
+## ?SummarizedExperiment
+
+## De los ejemplos en la ayuda oficial
+
+## Creamos los datos para nuestro objeto de tipo SummarizedExperiment
+## para 200 genes a lo largo de 6 muestras
+nrows <- 200
+ncols <- 6
+## Números al azar de cuentas
+set.seed(20210223)
+counts <- matrix(runif(nrows * ncols, 1, 1e4), nrows)
+## Información de nuestros genes
+rowRanges <- GRanges(
+    rep(c("chr1", "chr2"), c(50, 150)),
+    IRanges(floor(runif(200, 1e5, 1e6)), width = 100),
+    strand = sample(c("+", "-"), 200, TRUE),
+    feature_id = sprintf("ID%03d", 1:200)
+)
+names(rowRanges) <- paste0("gene_", seq_len(length(rowRanges)))
+## Información de nuestras muestras
+colData <- DataFrame(
+    Treatment = rep(c("ChIP", "Input"), 3),
+    row.names = LETTERS[1:6]
+)
+## Juntamos ahora toda la información en un solo objeto de R
+rse <- SummarizedExperiment(
+    assays = SimpleList(counts = counts),
+    rowRanges = rowRanges,
+    colData = colData
+)
+
+## Exploremos el objeto resultante
+rse
+
+## Número de genes y muestras
+dim(rse)
+
+## IDs de nuestros genes y muestras
+dimnames(rse)
+
+## Nombres de tablas de cuentas que tenemos (RPKM, CPM, counts, logcounts, etc)
+assayNames(rse)
+
+## El inicio de nuestra tabla de cuentas
+head(assay(rse))
+
+## Información de los genes en un objeto de Bioconductor
+rowRanges(rse)
+
+## Tabla con información de los genes
+rowData(rse) # es idéntico a 'mcols(rowRanges(rse))'
+
+## Tabla con información de las muestras
+colData(rse)
+```
+
+## Ejercicio
+
+Explica que sucede en las siguientes líneas de código de R.
+
+```{r rse_exercise}
+## Comando 1
+rse[1:2, ]
+## Comando 2
+rse[, c("A", "D", "F")]
+```
+
+
+## iSEE
+
+* http://bioconductor.org/packages/release/bioc/html/iSEE.html
+* http://bioconductor.org/packages/release/bioc/vignettes/iSEE/inst/doc/basic.html
+
+
+```{r isee_basic, eval = FALSE}
+## Explora el objeto rse de forma interactiva
+library("iSEE")
+iSEE::iSEE(rse)
+```
+
+## Ejercicio con spatialLIBD
+
+* Vamos a descargar datos de un objeto `SingleCellExperiment` que es similar a uno de `SummarizedExperiment`.
+    - http://bioconductor.org/packages/SingleCellExperiment
+    - http://bioconductor.org/packages/spatialLIBD
+    - https://doi.org/10.1038/s41593-020-00787-0
+    - https://osca.bioconductor.org/
+    - https://www.nature.com/articles/s41592-019-0654-x Figuras 2 y 3
+
+```{r download_sce_layer}
+## Descarguemos unos datos de spatialLIBD
+sce_layer <- spatialLIBD::fetch_data("sce_layer")
+sce_layer
+
+## Revisemos el tamaño de este objeto
+lobstr::obj_size(sce_layer)
+```
+
+* Al igual que nuestro objeto `rse` podemos usar `iSEE::iSEE()` para explorar los datos.
+
+```{r explore_sce_layer, eval = FALSE}
+iSEE::iSEE(sce_layer)
+```
+
+* Descarga un PDF que reproduzca la imagen del lado derecho de la siguiente diapositiva. Incluye ese PDF en tu repositorio de notas del curso.
+
+<script async class="speakerdeck-embed" data-slide="10" data-id="329db23f5f17460da31f45c7695a9f06" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+* Explora en con un _heatmap_ la expresión de los genes `MOBP`, `MBP` y `PCP4`. Si hacemos un _clustering_ (agrupamos los genes), ¿cúales genes se parecen más?
+* ¿En qué capas se expresan más los genes _MOBP_ y _MBP_?
+
+```
+ENSG00000168314
+ENSG00000183036
+ENSG00000197971
+```
+
+## Comunidad
+
+Autores de `iSEE`:
+
+* Kévin Rue-Albrecht https://twitter.com/KevinRUE67
+* Federico Marini https://twitter.com/FedeBioinfo
+* Charlotte Soneson https://twitter.com/CSoneson
+* Aaron Lun https://twitter.com/realAaronLun
+* Otro ejemplo de exploración de datos usando `SummarizedExperiment` y `iSEE`:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today we explored RNA-seq data from <a href="https://twitter.com/StefanoBerto83?ref_src=twsrc%5Etfw">@StefanoBerto83</a> et al who made it easy to re-use. Thank you! ^^<a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw">@lcolladotor</a> used <a href="https://twitter.com/hashtag/shiny?src=hash&amp;ref_src=twsrc%5Etfw">#shiny</a> + <a href="https://twitter.com/hashtag/ggpubr?src=hash&amp;ref_src=twsrc%5Etfw">#ggpubr</a> as well as <a href="https://twitter.com/hashtag/iSEE?src=hash&amp;ref_src=twsrc%5Etfw">#iSEE</a><br><br>📔 <a href="https://t.co/iUQHE0xqRc">https://t.co/iUQHE0xqRc</a><br>🗞️ <a href="https://t.co/qhAdXbhY9c">https://t.co/qhAdXbhY9c</a><a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/Bioconductor?ref_src=twsrc%5Etfw">@Bioconductor</a><a href="https://t.co/OXTukByhoo">https://t.co/OXTukByhoo</a></p>&mdash; LIBD rstats club (@LIBDrstats) <a href="https://twitter.com/LIBDrstats/status/1360349352250789890?ref_src=twsrc%5Etfw">February 12, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+

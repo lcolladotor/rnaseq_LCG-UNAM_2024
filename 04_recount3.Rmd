@@ -1,0 +1,163 @@
+# Datos de RNA-seq a través de recount3
+
+## Procesar datos crudos (FASTQ) con SPEAQeasy
+
+<img src="http://research.libd.org/SPEAQeasy/images/4_workflow.png" width="800px"/>
+
+* Pre-print de diciembre 2020 https://www.biorxiv.org/content/10.1101/2020.12.11.386789v1
+* Artículo de mayo 2021 https://doi.org/10.1186/s12859-021-04142-3
+* Documentación del software http://research.libd.org/SPEAQeasy/
+* Ejemplo de como usar el software y analizar los datos http://research.libd.org/SPEAQeasy-example/
+* Taller de 3 días (aprox 6 horas en total) sobre expresión diferencial usando estos datos https://lcolladotor.github.io/bioc_team_ds/differential-expression-analysis.html
+
+## Proyectos recount
+
+* `ReCount`: datos de unos 20 estudios
+    - http://bowtie-bio.sourceforge.net/recount/index.shtml
+    - Artículo del 2011 https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-449
+
+* `recount`: 70 mil muestras de RNA-seq uniformemente procesadas
+    - https://jhubiostatistics.shinyapps.io/recount/
+    - Documentación con `pkgdown`: http://leekgroup.github.io/recount/
+    - Documentación en Bioconductor: http://bioconductor.org/packages/recount
+    - Artículo principal de 2017 http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html
+    - Artículo que explica porque las cuentas (_counts_) son diferentes a las usuales https://f1000research.com/articles/6-1558/v1
+    - Algunos análisis ejemplo que hicimos http://leekgroup.github.io/recount-analyses/
+
+* `recount3`: 700 mil muestras de RNA-seq de humano y ratón
+    - http://rna.recount.bio/
+    - Documentación con `pkgdown`: http://research.libd.org/recount3/
+    - Documentación en Bioconductor: http://bioconductor.org/packages/recount3
+    - Pre-print: mayo 2021 https://doi.org/10.1101/2021.05.21.445138
+    - Artículo: noviembre 2021 https://doi.org/10.1186/s13059-021-02533-6
+    
+* Ayuda a que todxs podamos analizar los datos sin importar quien tiene acceso a _high performance computing_ (HPC) (clústers para procesar datos).
+* Es como democratizar el acceso a los datos ^^
+
+## Usar recount3
+
+_Check the original documentation in English [here](http://rna.recount.bio/docs/quick-access.html#quick-recount3) and [here](http://rna.recount.bio/docs/bioconductor.html#recount3)._
+
+Primero cargamos el paquete de R que automáticamente carga todas las dependencias incluyendo a `SummarizedExperiment`.
+
+```{r 'start', message=FALSE}
+## Load recount3 R package
+library("recount3")
+```
+
+Después tenemos que identificar un estudio de interes y determinar si queremos accesar la información a nivel de genes, exones, etc. Sabiendo el estudio de interes, podemos descargar los datos usando la función `create_rse()` como mostramos a continuación. `create_rse()` tiene argumentos con los cuales podemos especificar la **anotación** que queremos usar (las opciones dependen del organismo).
+
+
+```{r 'quick_example'}
+## Cambiaremos el URL de recount3 a Amazon (AWS)
+## para evitar problems de TLS versión 1.2 en
+## Windows (luego tiene una versión más vieja).
+
+## Primero vemos el URL actual
+getOption(
+    "recount3_url",
+    "http://duffel.rail.bio/recount3"
+)
+
+## Ahora si lo cambiamos
+options(recount3_url = "https://recount-opendata.s3.amazonaws.com/recount3/release")
+
+## Y vemos que ya funcionó el cambio.
+getOption(
+    "recount3_url",
+    "http://duffel.rail.bio/recount3"
+)
+
+## Revisemos todos los proyectos con datos de humano en recount3
+human_projects <- available_projects()
+
+## Encuentra tu proyecto de interés. Aquí usaremos
+## SRP009615 de ejemplo
+proj_info <- subset(
+    human_projects,
+    project == "SRP009615" & project_type == "data_sources"
+)
+## Crea un objeto de tipo RangedSummarizedExperiment (RSE)
+## con la información a nivel de genes
+rse_gene_SRP009615 <- create_rse(proj_info)
+## Explora el objeto RSE
+rse_gene_SRP009615
+```
+
+De forma interactiva también podemos escoger nuestro estudio de interés usando el siguiente código o vía [el explorar de estudios](http://rna.recount.bio/docs/index.html#study-explorer) que creamos.
+
+```{r "interactive_display", eval = FALSE}
+## Explora los proyectos disponibles de forma interactiva
+proj_info_interactive <- interactiveDisplayBase::display(human_projects)
+## Selecciona un solo renglón en la tabla y da click en "send".
+
+## Aquí verificamos que solo seleccionaste un solo renglón.
+stopifnot(nrow(proj_info_interactive) == 1)
+## Crea el objeto RSE
+rse_gene_interactive <- create_rse(proj_info_interactive)
+```
+
+Una vez que tenemos las cuentas, podemos usar `transform_counts()` o `compute_read_counts()` para convertir en los formatos esperados por otras herramientas. Revisen el artículo de 2017 del `recountWorkflow` para [más detalles](https://f1000research.com/articles/6-1558/v1).
+
+
+```{r "tranform_counts"}
+## Convirtamos las cuentas por nucleotido a cuentas por lectura
+## usando compute_read_counts().
+## Para otras transformaciones como RPKM y TPM, revisa transform_counts().
+assay(rse_gene_SRP009615, "counts") <- compute_read_counts(rse_gene_SRP009615)
+```
+
+```{r "expand_attributes"}
+## Para este estudio en específico, hagamos más fácil de usar la
+## información del experimento
+rse_gene_SRP009615 <- expand_sra_attributes(rse_gene_SRP009615)
+colData(rse_gene_SRP009615)[
+    ,
+    grepl("^sra_attribute", colnames(colData(rse_gene_SRP009615)))
+]
+```
+
+
+Ahora estamos listos para usar otras herramientas para el análisis de los datos.
+
+
+## Ejercicio
+
+* Utiliza `iSEE` para reproducir la siguiente imagen
+
+<img src="images/iSEE_SRP009615.PNG" width="500px" />
+
+* Pistas:
+    - Utiliza el _dynamic feature selection_
+    - Utiliza información de las columnas para el eje X
+    - Utiliza información de las columnas para los colores
+* (opcional) Crea tu cuenta gratis de https://www.shinyapps.io/ y comparte tu visualización de los datos usando `iSEE` de esa forma. Ejemplos reales: https://github.com/LieberInstitute/10xPilot_snRNAseq-human#explore-the-data-interactively. Ejemplo: https://libd.shinyapps.io/SRP009615/ creado con https://github.com/lcolladotor/rnaseq_2023_notas_en_vivo/blob/main/app.R.
+
+## Comunidad
+
+* Autores de recount2 y 3 en Twitter:
+    - https://twitter.com/chrisnwilks
+    - https://twitter.com/BenLangmead
+    - https://twitter.com/KasperDHansen
+    - https://twitter.com/AbhiNellore
+    - https://twitter.com/Shannon_E_Ellis
+    - https://twitter.com/jtleek
+* Más sobre los tipos de cuentas:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If I&#39;m using recount2 data for a differential analysis in DEseq2, should I be using the original counts, or the scaled counts?<a href="https://twitter.com/mikelove?ref_src=twsrc%5Etfw">@mikelove</a> <a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw">@lcolladotor</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/Bioconductor?src=hash&amp;ref_src=twsrc%5Etfw">#Bioconductor</a></p>&mdash; Dr. Robert M Flight, PhD (@rmflight) <a href="https://twitter.com/rmflight/status/1354981737525366786?ref_src=twsrc%5Etfw">January 29, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+* Ejemplos de tweets de la comunidad
+
+Un tweet de un alumno del 2021:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw">@lcolladotor</a> <br>Earlier I was looking for some data to analyze in recount, they have so much, I seriously can&#39;t decide what to use! <a href="https://t.co/fIJwXq46Tz">https://t.co/fIJwXq46Tz</a><br><br>Thanks for such an useful package!<a href="https://twitter.com/chrisnwilks?ref_src=twsrc%5Etfw">@chrisnwilks</a> <a href="https://twitter.com/BenLangmead?ref_src=twsrc%5Etfw">@BenLangmead</a> <a href="https://twitter.com/KasperDHansen?ref_src=twsrc%5Etfw">@KasperDHansen</a> <a href="https://twitter.com/AbhiNellore?ref_src=twsrc%5Etfw">@AbhiNellore</a> <a href="https://twitter.com/Shannon_E_Ellis?ref_src=twsrc%5Etfw">@Shannon_E_Ellis</a> <a href="https://twitter.com/jtleek?ref_src=twsrc%5Etfw">@jtleek</a></p>&mdash; Axel Zagal Norman (@NormanZagal) <a href="https://twitter.com/NormanZagal/status/1364762134014398467?ref_src=twsrc%5Etfw">February 25, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Explorando la posibilidad de hacer análisis con `recount3` (enero 2022):
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I have found a novel exon expressed in a cancer sample. I would like to search TCGA/SRA to identify other samples with the same/similar exon. It will be rare. Can I use Recount3, megadepth for this? <a href="https://twitter.com/jtleek?ref_src=twsrc%5Etfw">@jtleek</a> <a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw">@lcolladotor</a> <a href="https://twitter.com/BenLangmead?ref_src=twsrc%5Etfw">@BenLangmead</a></p>&mdash; Alicia Oshlack (@AliciaOshlack) <a href="https://twitter.com/AliciaOshlack/status/1478518895166119937?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Un tweet del curso del año pasado (febrero 1, 2022):
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thinking on this a bit it is strange how few people are doing “medium-sized” meta analyses of transcriptiomics. One on end you have <a href="https://twitter.com/BenLangmead?ref_src=twsrc%5Etfw">@BenLangmead</a> <a href="https://twitter.com/lcolladotor?ref_src=twsrc%5Etfw">@lcolladotor</a> reprocessing (with a touch of analysis) most of SRA. And you see papers pulling an dataset or two to corroborate.</p>&mdash; David McGaughey (@David_McGaughey) <a href="https://twitter.com/David_McGaughey/status/1488596806313431044?ref_src=twsrc%5Etfw">February 1, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
