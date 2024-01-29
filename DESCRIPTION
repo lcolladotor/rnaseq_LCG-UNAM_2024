@@ -1,0 +1,36 @@
+Package: introRNA2024
+Title: Introductory RNA-seq course for LCG-UNAM Feb 2024
+Version: 0.99.0
+Date: 2024-01-29
+Authors@R:
+    person("Leonardo", "Collado-Torres", , "lcolladotor@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-2140-308X"))
+Description: Introductory RNA-seq course for LCG-UNAM Feb 2024 (in Spanish).
+License: Artistic-2.0
+URL:
+BugReports: https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024/issues
+biocViews: Software
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    BiocStyle,
+    biocthis,
+    bookdown,
+    ComplexHeatmap,
+    edgeR,
+    ExploreModelMatrix,
+    ggplot2,
+    here,
+    iSEE,
+    limma,
+    lobstr,
+    patchwork,
+    pheatmap,
+    postcards,
+    RColorBrewer,
+    recount3,
+    sessioninfo,
+    spatialLIBD,
+    SummarizedExperiment,
+    usethis
