@@ -380,32 +380,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb101-3"><a href="modelos-estadísticos.html#cb101-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">recount3_url =</span> <span class="st">&quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</span>)</span>
 <span id="cb101-4"><a href="modelos-estadísticos.html#cb101-4" tabindex="-1"></a></span>
 <span id="cb101-5"><a href="modelos-estadísticos.html#cb101-5" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
-<pre><code>## 2024-01-29 15:21:02.393639 caching file sra.recount_project.MD.gz.</code></pre>
-<pre><code>## 2024-01-29 15:21:02.452139 caching file gtex.recount_project.MD.gz.</code></pre>
-<pre><code>## 2024-01-29 15:21:02.517133 caching file tcga.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:42.452386 caching file sra.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:42.585112 caching file gtex.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:42.716188 caching file tcga.recount_project.MD.gz.</code></pre>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="modelos-estadísticos.html#cb105-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(</span>
 <span id="cb105-2"><a href="modelos-estadísticos.html#cb105-2" tabindex="-1"></a>    <span class="fu">subset</span>(</span>
 <span id="cb105-3"><a href="modelos-estadísticos.html#cb105-3" tabindex="-1"></a>        human_projects,</span>
 <span id="cb105-4"><a href="modelos-estadísticos.html#cb105-4" tabindex="-1"></a>        project <span class="sc">==</span> <span class="st">&quot;SRP045638&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
 <span id="cb105-5"><a href="modelos-estadísticos.html#cb105-5" tabindex="-1"></a>    )</span>
 <span id="cb105-6"><a href="modelos-estadísticos.html#cb105-6" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## 2024-01-29 15:21:04.335458 downloading and reading the metadata.</code></pre>
-<pre><code>## 2024-01-29 15:21:04.362935 caching file sra.sra.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:45.489433 downloading and reading the metadata.</code></pre>
+<pre><code>## 2024-01-29 15:25:45.58491 caching file sra.sra.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.sra.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 15:21:04.532198 caching file sra.recount_project.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:45.955186 caching file sra.recount_project.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_project.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 15:21:04.706223 caching file sra.recount_qc.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:46.371715 caching file sra.recount_qc.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_qc.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 15:21:04.881034 caching file sra.recount_seq_qc.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:46.798833 caching file sra.recount_seq_qc.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_seq_qc.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 15:21:05.056151 caching file sra.recount_pred.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:47.168769 caching file sra.recount_pred.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_pred.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 15:21:05.264038 downloading and reading the feature information.</code></pre>
-<pre><code>## 2024-01-29 15:21:05.280736 caching file human.gene_sums.G026.gtf.gz.</code></pre>
-<pre><code>## 2024-01-29 15:21:05.86021 downloading and reading the counts: 66 samples across 63856 features.</code></pre>
-<pre><code>## 2024-01-29 15:21:05.876508 caching file sra.gene_sums.SRP045638.G026.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:47.512674 downloading and reading the feature information.</code></pre>
+<pre><code>## 2024-01-29 15:25:47.594573 caching file human.gene_sums.G026.gtf.gz.</code></pre>
+<pre><code>## 2024-01-29 15:25:48.035303 downloading and reading the counts: 66 samples across 63856 features.</code></pre>
+<pre><code>## 2024-01-29 15:25:48.120411 caching file sra.gene_sums.SRP045638.G026.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/gene_sums/38/SRP045638/sra.gene_sums.SRP045638.G026.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 15:21:06.568606 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
+<pre><code>## 2024-01-29 15:25:48.969103 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="modelos-estadísticos.html#cb123-1" tabindex="-1"></a><span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene_SRP045638)</span></code></pre></div>
 <p>Una vez descargados y con los números de lecturas podemos usar <code>expand_sra_attributes()</code>. Sin embargo, tenemos un problema con estos datos.</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelos-estadísticos.html#cb124-1" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
@@ -690,7 +690,7 @@ Por ejemplo, usando el paquete de <a href="https://bioconductor.org/packages/var
 <h2><span class="header-section-number">5.7</span> Comunidad<a href="modelos-estadísticos.html#comunidad-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Algunxs de lxs autores de <code>ExploreModelMatrix</code>:</p>
 <ul>
-<li><a href="https://twitter.com/CSoneson" class="uri">https://twitter.com/CSoneson</a></li>
+<li><a href="https://bsky.app/profile/csoneson.bsky.social" class="uri">https://bsky.app/profile/csoneson.bsky.social</a></li>
 <li><a href="https://twitter.com/FedeBioinfo" class="uri">https://twitter.com/FedeBioinfo</a></li>
 <li><a href="https://twitter.com/mikelove" class="uri">https://twitter.com/mikelove</a></li>
 </ul>
