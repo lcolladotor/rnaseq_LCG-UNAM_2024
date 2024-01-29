@@ -257,6 +257,8 @@ _Impartida por [Melissa Mayén Quiroz](https://melii99.github.io/)_
   - https://emarquezz.github.io/ vía https://github.com/emarquezz/emarquezz.github.io
   - https://bpardo99.github.io/ vía https://github.com/bpardo99/bpardo99.github.io
   - https://daianna21.github.io/ vía https://github.com/daianna21/daianna21.github.io.
+  - https://cfausto.github.io/ vía https://github.com/cfausto/cfausto.github.io/.
+  - https://davidgonilski.github.io/ vía https://github.com/davidgonilski/davidgonilski.github.io.
 
 
 ```{r postcards_proj, eval = FALSE}
