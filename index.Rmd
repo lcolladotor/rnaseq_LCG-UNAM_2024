@@ -17,7 +17,7 @@ output:
 
 # Overview {-}
 
-Here you can find the files for the February 2023 introduction to R, RStudio and RNA-sequencing (RNA-seq) course for [LCG-UNAM](https://lcg.unam.mx/) at [CCG-UNAM](https://ccg.unam.mx/) (January 30 - February 2, 2024). The rest of the chapters will be in Spanish.
+Here you can find the files for the February 2024 introduction to R, RStudio and RNA-sequencing (RNA-seq) course for [LCG-UNAM](https://lcg.unam.mx/) at [CCG-UNAM](https://ccg.unam.mx/) (January 30 - February 2, 2024). The rest of the chapters will be in Spanish.
 
 Instructor:
 
