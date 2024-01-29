@@ -17,6 +17,7 @@
 
 * Material en el que estoy involucrado:
   - https://twitter.com/lcolladotor
+  - https://bsky.app/profile/lcolladotor.bsky.social
   - https://www.youtube.com/c/LeonardoColladoTorres/playlists
   - LIBD rstats club https://docs.google.com/spreadsheets/d/1is8dZSd0FZ9Qi1Zvq1uRhm-P1McnJRd_zxdAfCRoMfA/edit?usp=sharing
   - https://twitter.com/CDSBMexico y https://twitter.com/LIBDrstats
@@ -200,7 +201,7 @@ usethis::use_github()
 
 Resultado ejemplo: https://github.com/lcolladotor/rnaseq_2021_notas. El que hice en vivo está disponible vía https://github.com/lcolladotor/rnaseq_2024_notas_en_vivo.
 
-Una vez que termines, agrega la liga al repositorio con tus notas del curso en el [la página del curso](https://cursos.lcg.unam.mx/course/view.php?id=161#section-3).
+Una vez que termines, agrega la liga al repositorio con tus notas del curso en el [la página del curso](https://cursos.lcg.unam.mx/course/view.php?id=197#section-2).
 
 ## Material del curso
 
