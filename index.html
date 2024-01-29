@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Intro RNA-seq LCG-UNAM 2024</title>
+  <meta name="description" content="Intro RNA-seq LCG-UNAM 2024" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Intro RNA-seq LCG-UNAM 2024" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="lcolladotor/rnaseq_LCG-UNAM_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Intro RNA-seq LCG-UNAM 2024" />
+  
+  
+  
+
+<meta name="author" content="Leonardo Collado-Torres" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="icon_32.png" type="image/x-icon" />
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path=""><a href="#overview"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#code-of-conduct"><i class="fa fa-check"></i>Code of Conduct</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#course-schedule"><i class="fa fa-check"></i>Course Schedule</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#external-links"><i class="fa fa-check"></i>External links</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#course-prerequisites"><i class="fa fa-check"></i>Course Prerequisites</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#course-evaluation"><i class="fa fa-check"></i>Course Evaluation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#r-session-information"><i class="fa fa-check"></i>R session information</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro RNA-seq LCG-UNAM 2024</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Intro RNA-seq LCG-UNAM 2024</h1>
+<p class="author"><em>Leonardo Collado-Torres</em></p>
+</div>
+<div id="overview" class="section level1 unnumbered hasAnchor">
+<h1>Overview<a href="#overview" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Here you can find the files for the February 2023 introduction to R, RStudio and RNA-sequencing (RNA-seq) course for <a href="https://lcg.unam.mx/">LCG-UNAM</a> at <a href="https://ccg.unam.mx/">CCG-UNAM</a> (January 30 - February 2, 2024). The rest of the chapters will be in Spanish.</p>
+<p>Instructor:</p>
+<ul>
+<li><a href="http://lcolladotor.github.io/"><strong>Leonardo Collado-Torres</strong></a>: <a href="https://lcolladotor.github.io/bioc_team_ds/">team website</a>, <a href="https://twitter.com/lcolladotor">Twitter</a></li>
+</ul>
+<p>Teach assistants:</p>
+<ul>
+<li><a href="mailto:mateom@lcg.unam.mx">Mateo Maya Martínez</a>, <a href="https://twitter.com/mateomayam">Twitter</a></li>
+</ul>
+<p>Guest presenters:</p>
+<ul>
+<li><a href="https://melii99.github.io/">Melissa Mayén Quiroz</a>, <a href="http://twitter.com/meli_mq99">Twitter</a></li>
+<li><a href="https://daianna21.github.io/">Daianna González Padilla</a>, <a href="https://twitter.com/Daianna27635327/">Twitter</a></li>
+</ul>
+<p>Course Coordinators:</p>
+<ul>
+<li>Heladia Salgado</li>
+<li>Julio Collado Vides</li>
+</ul>
+<p>Download the materials for this course with <code>usethis::use_course('lcolladotor/rnaseq_LCG-UNAM_2024')</code> or view online at <a href="http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024"><strong>lcolladotor.github.io/rnaseq_LCG-UNAM_2024</strong></a>.</p>
+<div id="code-of-conduct" class="section level2 unnumbered hasAnchor">
+<h2>Code of Conduct<a href="#code-of-conduct" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll follow the CDSB code of conduct <a href="https://comunidadbioinfo.github.io/codigo-de-conducta/">comunidadbioinfo.github.io/codigo-de-conducta/</a> as well as version 1.2.0 of the Bioconductor code of conduct <a href="https://bioconductor.github.io/bioc_coc_multilingual/">bioconductor.github.io/bioc_coc_multilingual/</a>.</p>
+<p>For reporting any violations of the code of conduct, report them to the Instructor and/or Course Coordinators.</p>
+</div>
+<div id="course-schedule" class="section level2 unnumbered hasAnchor">
+<h2>Course Schedule<a href="#course-schedule" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Local times in Cuernavaca, Mexico</em></p>
+<ul>
+<li>Tuesday January 30:
+<ul>
+<li>9-11 am: introduction to R, RStudio, <em><a href="https://CRAN.R-project.org/package=usethis">usethis</a></em> and <em><a href="https://CRAN.R-project.org/package=here">here</a></em>
+<ul>
+<li>Making your own website with <em><a href="https://CRAN.R-project.org/package=postcards">postcards</a></em> activity led by <a href="https://melii99.github.io/">Melissa Mayén Quiroz</a></li>
+</ul></li>
+<li>12-2 pm: introduction to Bioconductor</li>
+</ul></li>
+<li>Wednesday January 31:
+<ul>
+<li>9-11 am: expression data R/Bioconductor objects and visualization: <em><a href="https://bioconductor.org/packages/3.18/SummarizedExperiment">SummarizedExperiment</a></em> and <em><a href="https://bioconductor.org/packages/3.18/iSEE">iSEE</a></em></li>
+<li>12-2 pm: Downloading RNA-seq data using <em><a href="https://bioconductor.org/packages/3.18/recount3">recount3</a></em></li>
+</ul></li>
+<li>Thursday February 1:
+<ul>
+<li>9-11 am: statistical models with <em><a href="https://bioconductor.org/packages/3.18/ExploreModelMatrix">ExploreModelMatrix</a></em></li>
+<li>12-2 pm: <a href="https://github.com/LieberInstitute/smoking-nicotine-mouse">LieberInstitute/smoking-nicotine-mouse</a> results + code by <a href="https://daianna21.github.io/">Daianna González Padilla</a>. Looking beyond this course!</li>
+</ul></li>
+<li>Friday February 2:
+<ul>
+<li>9-11 am: differential expression analysis with <em><a href="https://bioconductor.org/packages/3.18/limma">limma</a></em></li>
+<li>12-2 pm: review + <em>R/Bioconductor-powered Team Data Science</em> overview + open discussion (career paths, networking, etc)
+<ul>
+<li><a href="https://www.libd.org/summer-internship">2024 LIBD summer internship program</a>: application closes ??.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="external-links" class="section level2 unnumbered hasAnchor">
+<h2>External links<a href="#external-links" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://cursos.lcg.unam.mx/course/view.php?id=161">Cursos LCG</a></li>
+<li><a href="https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024">GitHub source code</a></li>
+<li>Zoom (ask)</li>
+<li><a href="http://132.248.220.108:8787/">LCG-UNAM RStudio server</a></li>
+<li><a href="https://comunidadbioinfo.github.io/">CDSB</a>.</li>
+<li><a href="https://comunidadbioinfo.slack.com">Slack CDSB Mexico</a>, in particular the <a href="https://comunidadbioinfo.slack.com/archives/C06GEV1JJE5"><code>intro_rnaseq_lcg_2024</code> channel</a>. You can join this Slack workspace through <a href="https://join.slack.com/t/comunidadbioinfo/shared_invite/zt-8lsvpm84-Fne1W0hadk6cpjgJS17Tnw">this link</a>.</li>
+<li><a href="https://github.com/LieberInstitute/template_project">LieberInstitute/template_project</a></li>
+<li>Example real project (by Daianna): <a href="https://github.com/LieberInstitute/smoking-nicotine-mouse">LieberInstitute/smoking-nicotine-mouse</a></li>
+</ul>
+</div>
+<div id="course-prerequisites" class="section level2 unnumbered hasAnchor">
+<h2>Course Prerequisites<a href="#course-prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Install R 4.3.x from <a href="https://cran.r-project.org/">CRAN</a> then install the following R packages:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="do">## For installing Bioconductor packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="do">## Install required packages</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="fu">c</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>        <span class="st">&quot;usethis&quot;</span>, <span class="do">## Utilities</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>        <span class="st">&quot;here&quot;</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>        <span class="st">&quot;biocthis&quot;</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>        <span class="st">&quot;lobstr&quot;</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>        <span class="st">&quot;postcards&quot;</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>        <span class="st">&quot;sessioninfo&quot;</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>        <span class="st">&quot;SummarizedExperiment&quot;</span>, <span class="do">## Main containers / vis</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>        <span class="st">&quot;iSEE&quot;</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>        <span class="st">&quot;edgeR&quot;</span>, <span class="do">## RNA-seq</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>        <span class="st">&quot;ExploreModelMatrix&quot;</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>        <span class="st">&quot;limma&quot;</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>        <span class="st">&quot;recount3&quot;</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>        <span class="st">&quot;pheatmap&quot;</span>, <span class="do">## Visualization</span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>        <span class="st">&quot;ggplot2&quot;</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>        <span class="st">&quot;patchwork&quot;</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>        <span class="st">&quot;RColorBrewer&quot;</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>        <span class="st">&quot;ComplexHeatmap&quot;</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a>        <span class="st">&quot;spatialLIBD&quot;</span> <span class="do">## Advanced</span></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a>    )</span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a>)</span></code></pre></div>
+<p>You will also need to install <a href="https://rstudio.com/products/rstudio/download/#download">RStudio</a> version RStudio 2023.06.1+524 or newer.</p>
+</div>
+<div id="course-evaluation" class="section level2 unnumbered hasAnchor">
+<h2>Course Evaluation<a href="#course-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Participation
+<ul>
+<li>(main evidence) written and/or verbal participation during class</li>
+<li>(optional, strongly encouraged for your own career) Community building: CDSB Slack (introduce yourself), Twitter, GitHub, etc.</li>
+</ul></li>
+<li>Public work
+<ul>
+<li>(main evidence) Taking notes on GitHub</li>
+<li>(optional) Deploy an iSEE <code>shiny</code> app on shinyapps.io</li>
+<li>(advanced and optional) R package with notes following <code>usethis::create_package()</code> + <code>biocthis::use_bioc_pkg_templates()</code>.</li>
+</ul></li>
+<li>Final project
+<ul>
+<li>(main evidence) code in a public GitHub repository (different from the notes one) following the structure from <a href="https://github.com/LieberInstitute/template_project">LieberInstitute/template_project</a></li>
+<li>(optional) a rendered Rmd file (RPubs, GitHub, etc) on a public URL</li>
+<li>(optional advanced) Copy this repository, remove all the Rmds except the index.Rmd and edit accordingly. GitHub Actions will then help you render it. You’ll need to fetch the <code>gh-pages</code> branch and at least make one commit for the HTML to be available such as this <a href="https://github.com/lcolladotor/rnaseq_LCG-UNAM_2021/commit/e15bd6c234dd0ca4233050a4a0a42184994fef3b">commit</a>. You might also run into <a href="https://github.com/ad-m/github-push-action/issues/96#issuecomment-1396347833">this GitHub default permission setting</a> that you’ll need to change.</li>
+</ul></li>
+</ul>
+<p>The final grade will be a weighted average from the evaluation by the TA (20%), your public work (40%) and your final project (40%).</p>
+<p>Projects, public work and notes are due at 9 am US Eastern on Monday February 12th, though we recommend doing any work related to this course by Friday February 9th.</p>
+</div>
+<div id="r-session-information" class="section level2 unnumbered hasAnchor">
+<h2>R session information<a href="#r-session-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Details on the R version used for making this book. The source code is available at <a href="https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024"><code>lcolladotor/rnaseq_LCG-UNAM_2024</code></a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="do">## Load the package at the top of your script</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;sessioninfo&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="do">##  Utilities</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;BiocStyle&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;biocthis&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;here&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;lobstr&quot;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;postcards&quot;</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;sessioninfo&quot;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="do">## Main containers / vis</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;SummarizedExperiment&quot;</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;iSEE&quot;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="do">## RNA-seq</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;edgeR&quot;</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ExploreModelMatrix&quot;</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;limma&quot;</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="do">## Visualization</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ComplexHeatmap&quot;</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;patchwork&quot;</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;pheatmap&quot;</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="do">## Advanced</span></span>
+<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;spatialLIBD&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="do">## Reproducibility information</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">session_info</span>()</span></code></pre></div>
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+##  setting  value
+##  version  R version 4.3.2 (2023-10-31)
+##  os       Ubuntu 22.04.3 LTS
+##  system   x86_64, linux-gnu
+##  ui       X11
+##  language (EN)
+##  collate  en_US.UTF-8
+##  ctype    en_US.UTF-8
+##  tz       UTC
+##  date     2024-01-29
+##  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
+## 
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+##  package                * version     date (UTC) lib source
+##  abind                    1.4-5       2016-07-21 [1] RSPM (R 4.3.0)
+##  AnnotationDbi            1.64.1      2023-11-03 [1] Bioconductor
+##  AnnotationHub            3.10.0      2023-10-24 [1] Bioconductor
+##  attempt                  0.3.1       2020-05-03 [1] RSPM (R 4.3.0)
+##  beachmat                 2.18.0      2023-10-24 [1] Bioconductor
+##  beeswarm                 0.4.0       2021-06-01 [1] RSPM (R 4.3.0)
+##  benchmarkme              1.0.8       2022-06-12 [1] RSPM (R 4.3.0)
+##  benchmarkmeData          1.0.4       2020-04-23 [1] RSPM (R 4.3.0)
+##  Biobase                * 2.62.0      2023-10-24 [1] Bioconductor
+##  BiocFileCache            2.10.1      2023-10-26 [1] Bioconductor
+##  BiocGenerics           * 0.48.1      2023-11-01 [1] Bioconductor
+##  BiocIO                   1.12.0      2023-10-24 [1] Bioconductor
+##  BiocManager              1.30.22     2023-08-08 [2] CRAN (R 4.3.2)
+##  BiocNeighbors            1.20.2      2024-01-07 [1] Bioconductor 3.18 (R 4.3.2)
+##  BiocParallel             1.36.0      2023-10-24 [1] Bioconductor
+##  BiocSingular             1.18.0      2023-10-24 [1] Bioconductor
+##  BiocStyle              * 2.30.0      2023-10-24 [1] Bioconductor
+##  biocthis               * 1.12.0      2023-10-24 [1] Bioconductor
+##  BiocVersion              3.18.1      2023-11-15 [2] Bioconductor
+##  Biostrings               2.70.1      2023-10-25 [1] Bioconductor
+##  bit                      4.0.5       2022-11-15 [1] RSPM (R 4.3.0)
+##  bit64                    4.0.5       2020-08-30 [1] RSPM (R 4.3.0)
+##  bitops                   1.0-7       2021-04-24 [1] RSPM (R 4.3.0)
+##  blob                     1.2.4       2023-03-17 [1] RSPM (R 4.3.0)
+##  bookdown                 0.37        2023-12-01 [1] RSPM (R 4.3.0)
+##  bslib                    0.6.1       2023-11-28 [2] RSPM (R 4.3.0)
+##  cachem                   1.0.8       2023-05-01 [2] RSPM (R 4.3.0)
+##  circlize                 0.4.15      2022-05-10 [1] RSPM (R 4.3.0)
+##  cli                      3.6.2       2023-12-11 [2] RSPM (R 4.3.0)
+##  clue                     0.3-65      2023-09-23 [1] RSPM (R 4.3.0)
+##  cluster                  2.1.6       2023-12-01 [3] RSPM (R 4.3.0)
+##  codetools                0.2-19      2023-02-01 [3] CRAN (R 4.3.2)
+##  colorspace               2.1-0       2023-01-23 [1] RSPM (R 4.3.0)
+##  colourpicker             1.3.0       2023-08-21 [1] RSPM (R 4.3.0)
+##  ComplexHeatmap         * 2.18.0      2023-10-24 [1] Bioconductor
+##  config                   0.3.2       2023-08-30 [1] RSPM (R 4.3.0)
+##  cowplot                  1.1.3       2024-01-22 [1] RSPM (R 4.3.0)
+##  crayon                   1.5.2       2022-09-29 [2] RSPM (R 4.3.0)
+##  curl                     5.2.0       2023-12-08 [2] RSPM (R 4.3.0)
+##  data.table               1.14.10     2023-12-08 [1] RSPM (R 4.3.0)
+##  DBI                      1.2.1       2024-01-12 [1] RSPM (R 4.3.0)
+##  dbplyr                   2.4.0       2023-10-26 [1] RSPM (R 4.3.0)
+##  DelayedArray             0.28.0      2023-10-24 [1] Bioconductor
+##  DelayedMatrixStats       1.24.0      2023-10-24 [1] Bioconductor
+##  digest                   0.6.34      2024-01-11 [2] RSPM (R 4.3.0)
+##  doParallel               1.0.17      2022-02-07 [1] RSPM (R 4.3.0)
+##  dotCall64                1.1-1       2023-11-28 [1] RSPM (R 4.3.0)
+##  dplyr                    1.1.4       2023-11-17 [1] RSPM (R 4.3.0)
+##  DT                       0.31        2023-12-09 [1] RSPM (R 4.3.0)
+##  edgeR                  * 4.0.12      2024-01-21 [1] Bioconductor 3.18 (R 4.3.2)
+##  ellipsis                 0.3.2       2021-04-29 [2] RSPM (R 4.3.0)
+##  evaluate                 0.23        2023-11-01 [2] RSPM (R 4.3.0)
+##  ExperimentHub            2.10.0      2023-10-24 [1] Bioconductor
+##  ExploreModelMatrix     * 1.14.0      2023-10-24 [1] Bioconductor
+##  fansi                    1.0.6       2023-12-08 [2] RSPM (R 4.3.0)
+##  fastmap                  1.1.1       2023-02-24 [2] RSPM (R 4.3.0)
+##  fields                   15.2        2023-08-17 [1] RSPM (R 4.3.0)
+##  filelock                 1.0.3       2023-12-11 [1] RSPM (R 4.3.0)
+##  foreach                  1.5.2       2022-02-02 [1] RSPM (R 4.3.0)
+##  fs                       1.6.3       2023-07-20 [2] RSPM (R 4.3.0)
+##  generics                 0.1.3       2022-07-05 [1] RSPM (R 4.3.0)
+##  GenomeInfoDb           * 1.38.5      2023-12-28 [1] Bioconductor 3.18 (R 4.3.2)
+##  GenomeInfoDbData         1.2.11      2024-01-29 [1] Bioconductor
+##  GenomicAlignments        1.38.2      2024-01-16 [1] Bioconductor 3.18 (R 4.3.2)
+##  GenomicRanges          * 1.54.1      2023-10-29 [1] Bioconductor
+##  GetoptLong               1.0.5       2020-12-15 [1] RSPM (R 4.3.0)
+##  ggbeeswarm               0.7.2       2023-04-29 [1] RSPM (R 4.3.0)
+##  ggplot2                * 3.4.4       2023-10-12 [1] RSPM (R 4.3.0)
+##  ggrepel                  0.9.5       2024-01-10 [1] RSPM (R 4.3.0)
+##  GlobalOptions            0.1.2       2020-06-10 [1] RSPM (R 4.3.0)
+##  glue                     1.7.0       2024-01-09 [2] RSPM (R 4.3.0)
+##  golem                    0.4.1       2023-06-05 [1] RSPM (R 4.3.0)
+##  gridExtra                2.3         2017-09-09 [1] RSPM (R 4.3.0)
+##  gtable                   0.3.4       2023-08-21 [1] RSPM (R 4.3.0)
+##  here                   * 1.0.1       2020-12-13 [1] RSPM (R 4.3.0)
+##  htmltools                0.5.7       2023-11-03 [2] RSPM (R 4.3.0)
+##  htmlwidgets              1.6.4       2023-12-06 [2] RSPM (R 4.3.0)
+##  httpuv                   1.6.13      2023-12-06 [2] RSPM (R 4.3.0)
+##  httr                     1.4.7       2023-08-15 [2] RSPM (R 4.3.0)
+##  igraph                   1.6.0       2023-12-11 [1] RSPM (R 4.3.0)
+##  interactiveDisplayBase   1.40.0      2023-10-24 [1] Bioconductor
+##  IRanges                * 2.36.0      2023-10-24 [1] Bioconductor
+##  irlba                    2.3.5.1     2022-10-03 [1] RSPM (R 4.3.0)
+##  iSEE                   * 2.14.0      2023-10-24 [1] Bioconductor
+##  iterators                1.0.14      2022-02-05 [1] RSPM (R 4.3.0)
+##  jquerylib                0.1.4       2021-04-26 [2] RSPM (R 4.3.0)
+##  jsonlite                 1.8.8       2023-12-04 [2] RSPM (R 4.3.0)
+##  KEGGREST                 1.42.0      2023-10-24 [1] Bioconductor
+##  knitr                    1.45        2023-10-30 [2] RSPM (R 4.3.0)
+##  later                    1.3.2       2023-12-06 [2] RSPM (R 4.3.0)
+##  lattice                  0.22-5      2023-10-24 [3] RSPM (R 4.3.0)
+##  lazyeval                 0.2.2       2019-03-15 [1] RSPM (R 4.3.0)
+##  lifecycle                1.0.4       2023-11-07 [2] RSPM (R 4.3.0)
+##  limma                  * 3.58.1      2023-10-31 [1] Bioconductor
+##  lobstr                 * 1.1.2       2022-06-22 [1] RSPM (R 4.3.0)
+##  locfit                   1.5-9.8     2023-06-11 [1] RSPM (R 4.3.0)
+##  magick                   2.8.2       2023-12-20 [1] RSPM (R 4.3.0)
+##  magrittr                 2.0.3       2022-03-30 [2] RSPM (R 4.3.0)
+##  maps                     3.4.2       2023-12-15 [1] RSPM (R 4.3.0)
+##  MASS                     7.3-60.0.1  2024-01-13 [3] RSPM (R 4.3.0)
+##  Matrix                   1.6-5       2024-01-11 [3] RSPM (R 4.3.0)
+##  MatrixGenerics         * 1.14.0      2023-10-24 [1] Bioconductor
+##  matrixStats            * 1.2.0       2023-12-11 [1] RSPM (R 4.3.0)
+##  memoise                  2.0.1       2021-11-26 [2] RSPM (R 4.3.0)
+##  mgcv                     1.9-1       2023-12-21 [3] RSPM (R 4.3.0)
+##  mime                     0.12        2021-09-28 [2] RSPM (R 4.3.0)
+##  miniUI                   0.1.1.1     2018-05-18 [2] RSPM (R 4.3.0)
+##  munsell                  0.5.0       2018-06-12 [1] RSPM (R 4.3.0)
+##  nlme                     3.1-164     2023-11-27 [3] RSPM (R 4.3.0)
+##  paletteer                1.6.0       2024-01-21 [1] RSPM (R 4.3.0)
+##  patchwork              * 1.2.0       2024-01-08 [1] RSPM (R 4.3.0)
+##  pheatmap               * 1.0.12      2019-01-04 [1] RSPM (R 4.3.0)
+##  pillar                   1.9.0       2023-03-22 [2] RSPM (R 4.3.0)
+##  pkgconfig                2.0.3       2019-09-22 [2] RSPM (R 4.3.0)
+##  plotly                   4.10.4      2024-01-13 [1] RSPM (R 4.3.0)
+##  png                      0.1-8       2022-11-29 [1] RSPM (R 4.3.0)
+##  postcards              * 0.2.3       2022-01-07 [1] RSPM (R 4.3.0)
+##  promises                 1.2.1       2023-08-10 [2] RSPM (R 4.3.0)
+##  purrr                    1.0.2       2023-08-10 [2] RSPM (R 4.3.0)
+##  R.cache                  0.16.0      2022-07-21 [1] RSPM (R 4.3.0)
+##  R.methodsS3              1.8.2       2022-06-13 [1] RSPM (R 4.3.0)
+##  R.oo                     1.26.0      2024-01-24 [1] RSPM (R 4.3.0)
+##  R.utils                  2.12.3      2023-11-18 [1] RSPM (R 4.3.0)
+##  R6                       2.5.1       2021-08-19 [2] RSPM (R 4.3.0)
+##  rappdirs                 0.3.3       2021-01-31 [2] RSPM (R 4.3.0)
+##  RColorBrewer           * 1.1-3       2022-04-03 [1] RSPM (R 4.3.0)
+##  Rcpp                     1.0.12      2024-01-09 [2] RSPM (R 4.3.0)
+##  RCurl                    1.98-1.14   2024-01-09 [1] RSPM (R 4.3.0)
+##  recount3               * 1.12.0      2023-10-24 [1] Bioconductor
+##  rematch2                 2.1.2       2020-05-01 [2] RSPM (R 4.3.0)
+##  restfulr                 0.0.15      2022-06-16 [1] RSPM (R 4.3.2)
+##  rintrojs                 0.3.4       2024-01-11 [1] RSPM (R 4.3.0)
+##  rjson                    0.2.21      2022-01-09 [1] RSPM (R 4.3.0)
+##  rlang                    1.1.3       2024-01-10 [2] RSPM (R 4.3.0)
+##  rmarkdown                2.25        2023-09-18 [2] RSPM (R 4.3.0)
+##  rprojroot                2.0.4       2023-11-05 [2] RSPM (R 4.3.0)
+##  Rsamtools                2.18.0      2023-10-24 [1] Bioconductor
+##  RSQLite                  2.3.5       2024-01-21 [1] RSPM (R 4.3.0)
+##  rstudioapi               0.15.0      2023-07-07 [2] RSPM (R 4.3.0)
+##  rsvd                     1.0.5       2021-04-16 [1] RSPM (R 4.3.0)
+##  rtracklayer              1.62.0      2023-10-24 [1] Bioconductor
+##  S4Arrays                 1.2.0       2023-10-24 [1] Bioconductor
+##  S4Vectors              * 0.40.2      2023-11-23 [1] Bioconductor 3.18 (R 4.3.2)
+##  sass                     0.4.8       2023-12-06 [2] RSPM (R 4.3.0)
+##  ScaledMatrix             1.10.0      2023-10-24 [1] Bioconductor
+##  scales                   1.3.0       2023-11-28 [1] RSPM (R 4.3.0)
+##  scater                   1.30.1      2023-11-16 [1] Bioconductor
+##  scuttle                  1.12.0      2023-10-24 [1] Bioconductor
+##  sessioninfo            * 1.2.2       2021-12-06 [2] RSPM (R 4.3.0)
+##  shape                    1.4.6       2021-05-19 [1] RSPM (R 4.3.0)
+##  shiny                    1.8.0       2023-11-17 [2] RSPM (R 4.3.0)
+##  shinyAce                 0.4.2       2022-05-06 [1] RSPM (R 4.3.0)
+##  shinydashboard           0.7.2       2021-09-30 [1] RSPM (R 4.3.0)
+##  shinyjs                  2.1.0       2021-12-23 [1] RSPM (R 4.3.0)
+##  shinyWidgets             0.8.1       2024-01-10 [1] RSPM (R 4.3.0)
+##  SingleCellExperiment   * 1.24.0      2023-10-24 [1] Bioconductor
+##  spam                     2.10-0      2023-10-23 [1] RSPM (R 4.3.0)
+##  SparseArray              1.2.3       2023-12-25 [1] Bioconductor 3.18 (R 4.3.2)
+##  sparseMatrixStats        1.14.0      2023-10-24 [1] Bioconductor
+##  SpatialExperiment      * 1.12.0      2023-10-24 [1] Bioconductor
+##  spatialLIBD            * 1.14.1      2023-11-30 [1] Bioconductor 3.18 (R 4.3.2)
+##  statmod                  1.5.0       2023-01-06 [1] RSPM (R 4.3.0)
+##  styler                   1.10.2      2023-08-29 [1] RSPM (R 4.3.0)
+##  SummarizedExperiment   * 1.32.0      2023-10-24 [1] Bioconductor
+##  tibble                   3.2.1       2023-03-20 [2] RSPM (R 4.3.0)
+##  tidyr                    1.3.1       2024-01-24 [1] RSPM (R 4.3.0)
+##  tidyselect               1.2.0       2022-10-10 [1] RSPM (R 4.3.0)
+##  usethis                * 2.2.2       2023-07-06 [2] RSPM (R 4.3.0)
+##  utf8                     1.2.4       2023-10-22 [2] RSPM (R 4.3.0)
+##  vctrs                    0.6.5       2023-12-01 [2] RSPM (R 4.3.0)
+##  vipor                    0.4.7       2023-12-18 [1] RSPM (R 4.3.0)
+##  viridis                  0.6.4       2023-07-22 [1] RSPM (R 4.3.0)
+##  viridisLite              0.4.2       2023-05-02 [1] RSPM (R 4.3.0)
+##  withr                    3.0.0       2024-01-16 [2] RSPM (R 4.3.0)
+##  xfun                     0.41        2023-11-01 [2] RSPM (R 4.3.0)
+##  XML                      3.99-0.16.1 2024-01-22 [1] RSPM (R 4.3.0)
+##  xtable                   1.8-4       2019-04-21 [2] RSPM (R 4.3.0)
+##  XVector                  0.42.0      2023-10-24 [1] Bioconductor
+##  yaml                     2.3.8       2023-12-11 [2] RSPM (R 4.3.0)
+##  zlibbioc                 1.48.0      2023-10-24 [1] Bioconductor
+## 
+##  [1] /__w/_temp/Library
+##  [2] /usr/local/lib/R/site-library
+##  [3] /usr/local/lib/R/library
+## 
+## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">proc.time</span>()</span></code></pre></div>
+<pre><code>##    user  system elapsed 
+##  12.798   0.895  13.353</code></pre>
+<p>This book was last updated at 2024-01-29 14:14:03.274458.</p>
+</div>
+<div id="license" class="section level2 unnumbered hasAnchor">
+<h2>License<a href="#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+
+</div>
+</div>
+<div class="container">
+    <footer class="site-footer">
+
+      <center>
+<p class="powered-by">
+© 2011-2020. All thoughts and opinions here are my own. The icon was designed by <a href="https://www.linkedin.com/in/mauricio-guzman-6529b551/">Mauricio Guzmán</a> and is inspired by <a href="https://en.wikipedia.org/wiki/Huichol">Huichol culture</a>; it represents my community building interests.
+</p>
+
+<p class="powered-by copyright-license-text">
+This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">CC BY NC SA 4.0</a>
+</p>
+
+<p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" rel="noopener noreferrer" target="_blank">
+      <img src="https://search.creativecommons.org/static/img/cc_icon.svg" alt="CC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-by_icon.svg" alt="CC by icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" alt="CC NC icon" width="32px">
+      <img src="https://search.creativecommons.org/static/img/cc-sa_icon.svg" alt="CC SA icon" width="32px">
+    </a>
+</p>
+
+<div id="clustrmaps-widget"></div><script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=m&d=Zo-deincaJGsqhqjIWsujtdoNOMJsnnZLefKmxDKVv8&co=124b73&cmo=dd53ff&cmn=4ec724'></script>
+
+<p class="powered-by">
+Published with <a href="https://bookdown.org/" target="_blank" rel="noopener">Bookdown</a>
+</p>
+
+</center>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45299226-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-45299226-1');
+</script>
+
+</footer>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
