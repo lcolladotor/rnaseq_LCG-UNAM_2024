@@ -219,8 +219,8 @@ Aquí hay una versión anterior:
 * Artículo: https://www.nature.com/articles/s41593-020-00787-0
 * Software: http://research.libd.org/spatialLIBD/ o `r BiocStyle::Biocpkg("spatialLIBD")`
 * Interfaz de shiny: http://spatial.libd.org/spatialLIBD/
-* Libro (en construcción) donde explicamos como usar varias herramientas: https://lmweber.org/OSTA-book/
-* Pre-print sobre `SpatialExperiment` https://www.biorxiv.org/content/10.1101/2021.01.27.428431v1
+* Libro (en construcción) donde explicamos como usar varias herramientas: https://lmweber.org/BestPracticesST/
+* Artículo sobre `SpatialExperiment` http://dx.doi.org/10.1093/bioinformatics/btac299
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Are you working with spatial transcriptomics data such as Visium from <a href="https://twitter.com/10xGenomics?ref_src=twsrc%5Etfw">@10xGenomics</a>? Then you&#39;ll be interested in <a href="https://twitter.com/hashtag/SpatialExperiment?src=hash&amp;ref_src=twsrc%5Etfw">#SpatialExperiment</a> 📦 led by <a href="https://twitter.com/drighelli?ref_src=twsrc%5Etfw">@drighelli</a> <a href="https://twitter.com/lmwebr?ref_src=twsrc%5Etfw">@lmwebr</a> <a href="https://twitter.com/CrowellHL?ref_src=twsrc%5Etfw">@CrowellHL</a> with contributions by <a href="https://twitter.com/PardoBree?ref_src=twsrc%5Etfw">@PardoBree</a> <a href="https://twitter.com/shazanfar?ref_src=twsrc%5Etfw">@shazanfar</a> A Lun <a href="https://twitter.com/stephaniehicks?ref_src=twsrc%5Etfw">@stephaniehicks</a> <a href="https://twitter.com/drisso1893?ref_src=twsrc%5Etfw">@drisso1893</a> 🌟<br><br>📜 <a href="https://t.co/r36qlakRJe">https://t.co/r36qlakRJe</a> <a href="https://t.co/cWIiwLFitV">pic.twitter.com/cWIiwLFitV</a></p>&mdash; 🇲🇽 Leonardo Collado-Torres (@lcolladotor) <a href="https://twitter.com/lcolladotor/status/1355208674856329218?ref_src=twsrc%5Etfw">January 29, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

@@ -194,7 +194,7 @@ Ahora ya estamos listos para continuar con el análisis de expresión diferencia
 ## Normalización de datos
 
 * Lean _A hypothetical scenario_ en uno de los artículos sobre `edgeR` https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25#Sec2 para entender un poco sobre el concepto de _composition bias_.
-* Sigue siendo relevante con datos de scRNA-seq como pueden ver en http://bioconductor.org/books/3.16/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis. Ahí descubren una serie de pasos para usar métodos desarrollados para bulk RNA-seq y como se pueden usar en scRNA-seq.
+* Sigue siendo relevante con datos de scRNA-seq como pueden ver en https://bioconductor.org/books/3.18/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis. Ahí descubren una serie de pasos para usar métodos desarrollados para bulk RNA-seq y como se pueden usar en scRNA-seq.
 
 
 ```{r normalize}
