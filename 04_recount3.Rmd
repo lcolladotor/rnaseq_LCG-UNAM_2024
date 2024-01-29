@@ -139,7 +139,7 @@ Ahora estamos listos para usar otras herramientas para el análisis de los datos
     - https://twitter.com/chrisnwilks
     - https://twitter.com/BenLangmead
     - https://twitter.com/KasperDHansen
-    - https://twitter.com/AbhiNellore
+    - https://bsky.app/profile/nav.bsky.social
     - https://twitter.com/Shannon_E_Ellis
     - https://twitter.com/jtleek
 * Más sobre los tipos de cuentas:
