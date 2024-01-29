@@ -3,7 +3,7 @@ r
 github
 rstudio
 material-del-curso
-actividad-postcards-opcional
+actividad-postcards
 introducción-a-bioconductor
 encontrando-paquetes-de-bioconductor
 estructura-de-un-paquete-de-bioc
