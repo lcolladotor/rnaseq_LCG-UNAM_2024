@@ -2,47 +2,45 @@
 
 ## R
 
-* R: es gratis, de acceso libre, utilizado para muchos campos de trabajo, fuerte en la bioinformática a través de Bioconductor
-* Instalación a través de CRAN: https://cran.r-project.org/
-* Para explorar que se puede hacer con R:
-  - R Weekly https://rweekly.org/
-  - R Bloggers https://www.r-bloggers.com/
-  - Twitter https://twitter.com/search?q=%23rstats&src=typed_query
-  - Twitter en español https://twitter.com/search?q=%23rstatsES&src=typed_query
-  - TidyTuesday https://twitter.com/search?q=%23TidyTuesday&src=typed_query
-  - DatosDeMiercoles https://twitter.com/search?q=%23datosdemiercoles&src=typed_query
-* Para pedir ayuda hay muchas opciones
-  - https://lcolladotor.github.io/bioc_team_ds/how-to-ask-for-help.html
-  
+-   R: es gratis, de acceso libre, utilizado para muchos campos de trabajo, fuerte en la bioinformática a través de Bioconductor
+-   Instalación a través de CRAN: <https://cran.r-project.org/>
+-   Para explorar que se puede hacer con R:
+    -   R Weekly <https://rweekly.org/>
+    -   R Bloggers <https://www.r-bloggers.com/>
+    -   Twitter <https://twitter.com/search?q=%23rstats&src=typed_query>
+    -   Twitter en español <https://twitter.com/search?q=%23rstatsES&src=typed_query>
+    -   TidyTuesday <https://twitter.com/search?q=%23TidyTuesday&src=typed_query>
+    -   DatosDeMiercoles <https://twitter.com/search?q=%23datosdemiercoles&src=typed_query>
+-   Para pedir ayuda hay muchas opciones
+    -   <https://lcolladotor.github.io/bioc_team_ds/how-to-ask-for-help.html>
+-   Material en el que estoy involucrado:
+    -   <https://twitter.com/lcolladotor>
+    -   <https://bsky.app/profile/lcolladotor.bsky.social>
+    -   <https://www.youtube.com/c/LeonardoColladoTorres/playlists>
+    -   LIBD rstats club <https://docs.google.com/spreadsheets/d/1is8dZSd0FZ9Qi1Zvq1uRhm-P1McnJRd_zxdAfCRoMfA/edit?usp=sharing>
+    -   <https://twitter.com/CDSBMexico> y <https://twitter.com/LIBDrstats>
+    -   <https://twitter.com/Bioconductor>
 
-* Material en el que estoy involucrado:
-  - https://twitter.com/lcolladotor
-  - https://bsky.app/profile/lcolladotor.bsky.social
-  - https://www.youtube.com/c/LeonardoColladoTorres/playlists
-  - LIBD rstats club https://docs.google.com/spreadsheets/d/1is8dZSd0FZ9Qi1Zvq1uRhm-P1McnJRd_zxdAfCRoMfA/edit?usp=sharing
-  - https://twitter.com/CDSBMexico y https://twitter.com/LIBDrstats
-  - https://twitter.com/Bioconductor
-
-<img src="icon_192.png">
+<img src="icon_192.png"/>
 
 ## GitHub
 
-* Permite compartir código
-* Se complementa con Git que es para tener un control de versiones de tu código
-  - https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Introduccion-al-flujo-de-trabajo-orientado-a-proyectos.pdf
-* Puedes tener páginas web estáticas
-  - https://pages.github.com/
-  - https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024. En especial https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024/tree/gh-pages se convierte en http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024/
-  - Página personal: https://github.com/lcolladotor/lcolladotor.github.com se convierte en http://lcolladotor.github.io/. Está todo hecho con https://github.com/lcolladotor/lcolladotorsource
-* Tip: usen el mismo nombre de usuario en GitHub, Twitter, Gmail, etc. 
-  - How to be a Modern Scientist: https://lcolladotor.github.io/bioc_team_ds/how-to-be-a-modern-scientist.html
-  
+-   Permite compartir código
+-   Se complementa con Git que es para tener un control de versiones de tu código
+    -   <https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Introduccion-al-flujo-de-trabajo-orientado-a-proyectos.pdf>
+-   Puedes tener páginas web estáticas
+    -   <https://pages.github.com/>
+    -   <https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024>. En especial <https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024/tree/gh-pages> se convierte en <http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024/>
+    -   Página personal: <https://github.com/lcolladotor/lcolladotor.github.com> se convierte en <http://lcolladotor.github.io/>. Está todo hecho con <https://github.com/lcolladotor/lcolladotorsource>
+-   Tip: usen el mismo nombre de usuario en GitHub, Twitter, Gmail, etc.
+    -   How to be a Modern Scientist: <https://lcolladotor.github.io/bioc_team_ds/how-to-be-a-modern-scientist.html>
+
 ## RStudio
 
-* RStudio Desktop es gratis http://www.rstudio.com/products/rstudio/download/preview/
-* Nos ayuda a realizar muchas cosas con R de forma más rápida
-  - Demo `rsthemes`
-  
+-   RStudio Desktop es gratis <http://www.rstudio.com/products/rstudio/download/preview/>
+-   Nos ayuda a realizar muchas cosas con R de forma más rápida
+    -   Demo `rsthemes`
+
 ```{r install_rsthemes, eval = FALSE}
 remotes::install_github(c(
     "gadenbuie/rsthemes"
@@ -51,7 +49,6 @@ remotes::install_cran("suncalc")
 rsthemes::install_rsthemes(include_base16 = TRUE)
 ```
 
-  
 ```{r r_profile, eval = FALSE}
 usethis::edit_r_profile()
 
@@ -78,12 +75,11 @@ if (interactive() && requireNamespace("rsthemes", quietly = TRUE)) {
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 ```
 
-* Es actualizado con bastante frecuencia
-* RStudio cheatsheets https://posit.co/resources/cheatsheets/
-  - https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf
-* RStudio projects: usalos para organizar tu código
-  - https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Trabajando-con-proyectos.pdf
-
+-   Es actualizado con bastante frecuencia
+-   RStudio cheatsheets <https://posit.co/resources/cheatsheets/>
+    -   <https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf>
+-   RStudio projects: usalos para organizar tu código
+    -   <https://github.com/ComunidadBioInfo/cdsb2020/blob/master/presentaciones_flujos-de-trabajo/Trabajando-con-proyectos.pdf>
 
 ```{r proj, eval = FALSE}
 usethis::create_project("~/rnaseq_2024_notas")
@@ -132,17 +128,19 @@ options(width = 120)
 sessioninfo::session_info()
 ```
 
-* Un video de mi club de R sobre RStudio y el uso de `here`:
+-   Un video de mi club de R sobre RStudio y el uso de `here`:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XTuJ8vGnzBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XTuJ8vGnzBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>
 
 También hay videos en el [canal de YouTube de la CDSB](https://www.youtube.com/channel/UCHCdYfAXVzJIUkMoMSGiZMw) sobre `here` como pueden ver [aquí](https://www.youtube.com/channel/UCHCdYfAXVzJIUkMoMSGiZMw/search?query=here).
 
-* Para una guía más detallada de cómo organizar tus archivos, revisa https://lcolladotor.github.io/bioc_team_ds/organizing-your-work.html#.YflDV-rMJD8. En particular, [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project).
+-   Para una guía más detallada de cómo organizar tus archivos, revisa <https://lcolladotor.github.io/bioc_team_ds/organizing-your-work.html#.YflDV-rMJD8>. En particular, [LieberInstitute/template_project](https://github.com/LieberInstitute/template_project).
 
-* Acá está la guía de mi equipo de configuración de R: https://lcolladotor.github.io/bioc_team_ds/config-files.html#r-setup.
+-   Acá está la guía de mi equipo de configuración de R: <https://lcolladotor.github.io/bioc_team_ds/config-files.html#r-setup>.
 
-* Configura `usethis` con GitHub vía https://usethis.r-lib.org/articles/articles/git-credentials.html
+-   Configura `usethis` con GitHub vía <https://usethis.r-lib.org/articles/articles/git-credentials.html>
 
 ```{r use_git_init, eval = FALSE}
 ## Para poder conectar tu compu con GitHub
@@ -151,7 +149,7 @@ usethis::create_github_token() ## Abrirá una página web, escoje un nombre úni
 ## (son 40 caracteres)
 ```
 
-* Para Mac o Windows:
+-   Para Mac o Windows:
 
 ```{r gitcreds_set, eval = FALSE}
 gitcreds::gitcreds_set() ## Ojo, copia el token, no tu password de git!
@@ -159,10 +157,9 @@ gitcreds::gitcreds_set() ## Ojo, copia el token, no tu password de git!
 ## https://github.com/r-lib/usethis/issues/1347
 ```
 
-* Para Linux:
+-   Para Linux:
 
 En el servidor de [RStudio de la LCG-UNAM](http://132.248.220.108:8787/) no funciona bien `gitcreds::gitcreds_set()` (porque esa función solo corre bien en macOS o winOS) así que tenemos que editar el archivo `.Renviron` donde nuestro token no se guarda de forma privada, y por lo cual hoy en día no es lo que recomienda [Jenny Bryan](https://twitter.com/JennyBryan). Pero es lo que funciona en este caso tal como lo hablamos con el autor de [`gitcreds` vía GitHub](https://github.com/r-lib/gitcreds/issues/29). Usando el siguiente comando podemos abrir el archivo `.Renviron`.
-
 
 ```{r edit_r_envir, eval = FALSE}
 usethis::edit_r_environ()
@@ -170,25 +167,23 @@ usethis::edit_r_environ()
 
 Después guarden su token de GitHub usando la siguiente sintáxis (ojo con la línea en blanco al final, las mayúsculas al inicio, y el que no hay espacios antes y después del `=`).
 
-```
+```         
 GITHUB_PAT=TU_CLAVE_DE_40_LETRAS
-
 ```
 
 Después de guardar el `.Renviron`, vayan a `Session` hasta arriba y reinicien la sesión de R para que se cargue el `.Renviron` antes de continuar.
 
-* Continuemos con tu configuración de GitHub
-
+-   Continuemos con tu configuración de GitHub
 
 ```{r use_git_cont_parte1, eval = FALSE}
 ## Configura tu usuario de GitHub
 usethis::edit_git_config()
 ```
 
-```
+```         
 [user]
-	name = Leonardo Collado Torres
-	email = lcolladotor@gmail.com
+    name = Leonardo Collado Torres
+    email = lcolladotor@gmail.com
 ```
 
 ```{r use_git_cont_parte2, eval = FALSE}
@@ -199,15 +194,15 @@ usethis::use_git()
 usethis::use_github()
 ```
 
-Resultado ejemplo: https://github.com/lcolladotor/rnaseq_2021_notas. El que hice en vivo está disponible vía https://github.com/lcolladotor/rnaseq_2024_notas_en_vivo.
+Resultado ejemplo: <https://github.com/lcolladotor/rnaseq_2021_notas>. El que hice en vivo está disponible vía <https://github.com/lcolladotor/rnaseq_2024_notas_en_vivo>.
 
 Una vez que termines, agrega la liga al repositorio con tus notas del curso en el [la página del curso](https://cursos.lcg.unam.mx/course/view.php?id=197#section-2).
 
 ## Material del curso
 
-* Pueden descargar la versión estática con `usethis::use_course('lcolladotor/rnaseq_LCG-UNAM_2024')`
-* Pueden verlo en línea a través de  [**lcolladotor.github.io/rnaseq_LCG-UNAM_2024**](http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024)
-* Pueden **clonarlo** desde GitHub de tal forma que podrán actualizarlo fácilmente usando *git pull*
+-   Pueden descargar la versión estática con `usethis::use_course('lcolladotor/rnaseq_LCG-UNAM_2024')`
+-   Pueden verlo en línea a través de [**lcolladotor.github.io/rnaseq_LCG-UNAM_2024**](http://lcolladotor.github.io/rnaseq_LCG-UNAM_2024)
+-   Pueden **clonarlo** desde GitHub de tal forma que podrán actualizarlo fácilmente usando *git pull*
 
 ```{bash clone_course, eval = FALSE}
 git clone https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024.git
@@ -238,54 +233,166 @@ git2r::clone(
 
 ## Actividad postcards
 
-_Impartida por [Melissa Mayén Quiroz](https://melii99.github.io/)_
+*Impartida por [Melissa Mayén Quiroz](https://melii99.github.io/)*
 
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/b7d3bbee06d14a548a664e76ea9110d8" title="Updating spatialLIBD: from SingleCellExperiment to VisiumExperiment classes" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 420px;" data-ratio="1.3333333333333333"></iframe>
+30/01/2024
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q6eRD8Nyxfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/b7d3bbee06d14a548a664e76ea9110d8" title="Updating spatialLIBD: from SingleCellExperiment to VisiumExperiment classes" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 420px;" data-ratio="1.3333333333333333">
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0S_tRne5UNk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q6eRD8Nyxfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0S_tRne5UNk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>
 
 
-* Similar a https://pages.github.com/
-* `postcards` tiene 4 templados de páginas web https://github.com/seankross/postcards
-* Tu página web debe describir decir algo sobre ti, tus intereses, y tus proyectos además de cómo contactarte
-  - Ejemplo https://amy-peterson.github.io/ vía https://github.com/amy-peterson/amy-peterson.github.com
-  - http://jtleek.com/ vía https://github.com/jtleek/jtleek.github.io
-  - http://aejaffe.com/ vía https://github.com/andrewejaffe/andrewejaffe.github.io
-  - https://hadley.nz/ vía https://github.com/hadley/hadley.github.com
-  - https://emarquezz.github.io/ vía https://github.com/emarquezz/emarquezz.github.io
-  - https://bpardo99.github.io/ vía https://github.com/bpardo99/bpardo99.github.io
-  - https://daianna21.github.io/ vía https://github.com/daianna21/daianna21.github.io.
-  - https://reneegf.github.io/ vía https://github.com/reneegf/reneegf.github.io.
-  - https://cfausto.github.io/ vía https://github.com/cfausto/cfausto.github.io/.
-  - https://davidgonilski.github.io/ vía https://github.com/davidgonilski/davidgonilski.github.io.
-* También pueden revisar https://lcolladotor.github.io/jhustatcomputing2023/projects/project-0/.
+Repositorio de GitHub para la actividad de Postcards: <https://github.com/Melii99/rnaseq_2024_postcards>
 
-```{r postcards_proj, eval = FALSE}
-## Creen el RStudio project
-usethis::create_project("Su_Usuario.github.io")
+En el mismo se encuentran las diapositivas: <https://github.com/Melii99/rnaseq_2024_postcards/blob/master/Postcards_Diapositivas.pdf>
 
-## Configura Git y GitHub
-usethis::use_git()
-usethis::use_github()
+### Create Beautiful, Simple Personal Websites
+
+*A collection of R Markdown templates for creating simple and easy to personalize single page websites.*
+
+"El objetivo del paquete es facilitar que cualquier persona pueda crear un sitio web personal de una sola página con un documento R Markdown."
+
+-   Autor: Sean Kross [aut, cre]
+
+-   Maintainer: Sean Kross \<sean at seankross.com\>
+
+-   <https://CRAN.R-project.org/package=postcards>
+
+-   GitHub: <https://github.com/seankross/postcards>
+
+-   Similar a <https://pages.github.com/>
+
+-   Tu página web debe describir decir algo sobre ti, tus intereses, y tus proyectos además de cómo contactarte
+
+    Algunos ejemplos:
+
+    -   <https://amy-peterson.github.io/> vía <https://github.com/amy-peterson/amy-peterson.github.com>
+    -   <http://jtleek.com/> vía <https://github.com/jtleek/jtleek.github.io>
+    -   <http://aejaffe.com/> vía <https://github.com/andrewejaffe/andrewejaffe.github.io>
+    -   <https://hadley.nz/> vía <https://github.com/hadley/hadley.github.com>
+    -   <https://emarquezz.github.io/> vía <https://github.com/emarquezz/emarquezz.github.io>
+    -   <https://bpardo99.github.io/> vía <https://github.com/bpardo99/bpardo99.github.io>
+    -   <https://daianna21.github.io/> vía <https://github.com/daianna21/daianna21.github.io>.
+
+### Instalación
+
+```{r, eval=FALSE}
+
+## Puedes instalar Postcards con el siguiente comando:
+install.packages("postcards")
+
+## O puedes instalar la última versión en desarrollo:
+remotes::install_github("seankross/postcards@main")
+
 ```
 
-Creen su templado usando `postcards`. Va a crear un archivo `index.Rmd`
+### Plantillas
 
-```{r postcards_create, eval = FALSE}
-## Solo uno de estos, de acurdo al templado que más les gustó
+Postcards incluye cinco plantillas: Jolla, Jolla Blue, Trestles, Onofre y Solana. Cada sitio está optimizado para ser visualizado tanto en computadoras de escritorio como en dispositivos móviles. El objetivo del paquete es facilitar que cualquier persona pueda crear un sitio web personal de una sola página con un documento R Markdown
+
+
+
+![Jolla](https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/jolla_preview.png)
+
+
+
+![Jolla Blue](https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/jolla_blue_preview.png)
+
+
+
+![Trestles](https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/trestles-preview.png)
+
+
+
+![Onofre](https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/onofre-preview.png)
+
+
+
+![Solana](https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/solana-preview.png)
+
+
+Para comenzar a personalizar una de estas plantillas, debes crear un nuevo proyecto.
+
+### Crear un nuevo proyecto en RStudio (selección interactiva)
+
+Si usas RStudio:
+
+-   selecciona "File", "New Project"...
+-   Elige "New Directory", "Postcards Website"
+-   Ingresar un nombre de directorio para tu proyecto en RStudio ("Tu_Usuario.github.io")
+-   Elegir una de las plantillas desde un menú desplegable
+
+Selecciona "Create Project" después de elegir un nombre para la carpeta que contendrá tu sitio. Esta carpeta contendrá dos archivos importantes:
+
+-   Un documento R Markdown con el contenido de tu sitio
+-   Una foto de muestra que debes reemplazar"
+
+### Crear un nuevo proyecto
+
+```{r, eval=FALSE}
+
+## Crearun nuevo proyecto 
+usethis::create_project("Su_Usuario.github.io")
+
+```
+
+### Configurar Git y GitHub
+
+Para poder guardar los cambios es necesario configurar Git y GitHub
+
+```{r, eval=FALSE}
+
+## Configurar Git y GitHub
+usethis::use_git() # Reiniciar la sesión
+usethis::use_github()
+
+```
+
+### Elegir una plantilla
+
+```{r, eval=FALSE}
+
+## Elegir solo una plantilla (la que más te guste)
 postcards::create_postcard(template = "jolla")
 postcards::create_postcard(template = "jolla-blue")
 postcards::create_postcard(template = "trestles")
 postcards::create_postcard(template = "onofre")
+postcards::create_postcard(template = "solana")
+
 ```
 
-* Llenen su información usando el formato `Markdown`. Por ejemplo https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31.
-* Agreguen sus perfiles estilo https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12
-* Den click en el botón azul de `knit` en RStudio. Es equivalente a `rmarkdown::render("index.Rmd")`. Esto creará el archivo `index.html`.
-* Hagan un `commit` para guardar los archivos nuevos incluyendo `index.html` y luego un `push` para subir los archivos a GitHub.
-* Comparte tu repositorio vía el Slack de la CDSB en el canal [`intro_rnaseq_lcg_2024`](https://comunidadbioinfo.slack.com/archives/C06GEV1JJE5).
-* (opcional) Anuncien su nueva página web en Twitter/X o Bluesky usando el hashtag `#rstats` y/o etiquen al autor de `postcards` https://twitter.com/seankross. Pueden después incluir su página web en su introducción en el canal `#bienvenida` del Slack de la CDSB ^^ al cual pueden unirse a través de  [esta liga](https://join.slack.com/t/comunidadbioinfo/shared_invite/zt-8lsvpm84-Fne1W0hadk6cpjgJS17Tnw).
+De esta manera también se obtienen los 2 archivos importantes:
 
+-   Un documento R Markdown con el contenido de tu sitio
 
+-   Una foto de muestra que debes reemplazar
+
+### Editar con su información
+
+-   Ahora deberán editar el documento R Markdown con su información y reemplazar la imágen con la que elijan :)
+
+-   Llenen su información usando el formato `Markdown`. Por ejemplo <https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31>.
+
+-   Agreguen sus perfiles estilo <https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12>
+
+### Desplegar la página
+
+Para compilar el archivo HTML autocontenido para el sitio:
+
+-   En RStudio puedes utilizar el botón "Knit"
+
+o directamente:
+
+```{r, eval=FALSE}
+
+## Desplegar la página GitHub
+rmarkdown::render("index.Rmd")
+```
