@@ -65,7 +65,7 @@ Bioconductor, the R package repository for the “analysis and comprehension of 
     - `release`, actualmente 3.18
     - `devel`, actualmente 3.19
     - Ejemplo: http://bioconductor.org/packages/devel/bioc/html/recount.html
-* Bioconductor tiene es actualizado cada 6 meses (abril y octubre). R lo actualizan 1 vez al año (abril).
+* Bioconductor es actualizado cada 6 meses (abril y octubre). R lo actualizan 1 vez al año (abril).
 * Todo el software lo prueban en macOS, Windows y linux
     - Ejemplo: http://bioconductor.org/checkResults/release/bioc-LATEST/recount/ y http://bioconductor.org/checkResults/devel/bioc-LATEST/recount/
 * Resumen BioC 3.18 http://bioconductor.org/news/bioc_3_18_release/
