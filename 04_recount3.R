@@ -1,9 +1,9 @@
-## ----'start', message=FALSE-----------
+## ----'start', message=FALSE----------------------------------------------------------
 ## Load recount3 R package
 library("recount3")
 
 
-## ----'quick_example'------------------
+## ----'quick_example'-----------------------------------------------------------------
 ## Cambiaremos el URL de recount3 a Amazon (AWS)
 ## para evitar problems de TLS versión 1.2 en
 ## Windows (luego tiene una versión más vieja).
@@ -39,7 +39,7 @@ rse_gene_SRP009615 <- create_rse(proj_info)
 rse_gene_SRP009615
 
 
-## ----"interactive_display", eval = FALSE----
+## ----"interactive_display", eval = FALSE---------------------------------------------
 ## ## Explora los proyectos disponibles de forma interactiva
 ## proj_info_interactive <- interactiveDisplayBase::display(human_projects)
 ## ## Selecciona un solo renglón en la tabla y da click en "send".
@@ -50,14 +50,14 @@ rse_gene_SRP009615
 ## rse_gene_interactive <- create_rse(proj_info_interactive)
 
 
-## ----"tranform_counts"----------------
+## ----"tranform_counts"---------------------------------------------------------------
 ## Convirtamos las cuentas por nucleotido a cuentas por lectura
 ## usando compute_read_counts().
 ## Para otras transformaciones como RPKM y TPM, revisa transform_counts().
 assay(rse_gene_SRP009615, "counts") <- compute_read_counts(rse_gene_SRP009615)
 
 
-## ----"expand_attributes"--------------
+## ----"expand_attributes"-------------------------------------------------------------
 ## Para este estudio en específico, hagamos más fácil de usar la
 ## información del experimento
 rse_gene_SRP009615 <- expand_sra_attributes(rse_gene_SRP009615)

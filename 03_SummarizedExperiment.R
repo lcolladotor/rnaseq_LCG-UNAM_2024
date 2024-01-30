@@ -1,4 +1,4 @@
-## ----first_rse---------------------
+## ----first_rse-----------------------------------------------------------------------
 ## Lets build our first SummarizedExperiment object
 library("SummarizedExperiment")
 ## ?SummarizedExperiment
@@ -57,20 +57,20 @@ rowData(rse) # es idéntico a 'mcols(rowRanges(rse))'
 colData(rse)
 
 
-## ----rse_exercise------------------
+## ----rse_exercise--------------------------------------------------------------------
 ## Comando 1
 rse[1:2, ]
 ## Comando 2
 rse[, c("A", "D", "F")]
 
 
-## ----isee_basic, eval = FALSE------
+## ----isee_basic, eval = FALSE--------------------------------------------------------
 ## ## Explora el objeto rse de forma interactiva
 ## library("iSEE")
 ## iSEE::iSEE(rse)
 
 
-## ----download_sce_layer------------
+## ----download_sce_layer--------------------------------------------------------------
 ## Descarguemos unos datos de spatialLIBD
 sce_layer <- spatialLIBD::fetch_data("sce_layer")
 sce_layer
@@ -79,6 +79,6 @@ sce_layer
 lobstr::obj_size(sce_layer)
 
 
-## ----explore_sce_layer, eval = FALSE----
+## ----explore_sce_layer, eval = FALSE-------------------------------------------------
 ## iSEE::iSEE(sce_layer)
 
