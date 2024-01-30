@@ -4,6 +4,15 @@ github
 rstudio
 material-del-curso
 actividad-postcards
+create-beautiful-simple-personal-websites
+instalación
+plantillas
+crear-un-nuevo-proyecto-en-rstudio-selección-interactiva
+crear-un-nuevo-proyecto
+configurar-git-y-github
+elegir-una-plantilla
+editar-con-su-información
+desplegar-la-página
 introducción-a-bioconductor
 encontrando-paquetes-de-bioconductor
 estructura-de-un-paquete-de-bioc

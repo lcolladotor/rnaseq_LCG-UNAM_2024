@@ -159,7 +159,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#github"><i class="fa fa-check"></i><b>1.2</b> GitHub</a></li>
 <li class="chapter" data-level="1.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
 <li class="chapter" data-level="1.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#material-del-curso"><i class="fa fa-check"></i><b>1.4</b> Material del curso</a></li>
-<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards</a></li>
+<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#create-beautiful-simple-personal-websites"><i class="fa fa-check"></i><b>1.5.1</b> Create Beautiful, Simple Personal Websites</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#instalación"><i class="fa fa-check"></i><b>1.5.2</b> Instalación</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#plantillas"><i class="fa fa-check"></i><b>1.5.3</b> Plantillas</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#crear-un-nuevo-proyecto-en-rstudio-selección-interactiva"><i class="fa fa-check"></i><b>1.5.4</b> Crear un nuevo proyecto en RStudio (selección interactiva)</a></li>
+<li class="chapter" data-level="1.5.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#crear-un-nuevo-proyecto"><i class="fa fa-check"></i><b>1.5.5</b> Crear un nuevo proyecto</a></li>
+<li class="chapter" data-level="1.5.6" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#configurar-git-y-github"><i class="fa fa-check"></i><b>1.5.6</b> Configurar Git y GitHub</a></li>
+<li class="chapter" data-level="1.5.7" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#elegir-una-plantilla"><i class="fa fa-check"></i><b>1.5.7</b> Elegir una plantilla</a></li>
+<li class="chapter" data-level="1.5.8" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#editar-con-su-información"><i class="fa fa-check"></i><b>1.5.8</b> Editar con su información</a></li>
+<li class="chapter" data-level="1.5.9" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#desplegar-la-página"><i class="fa fa-check"></i><b>1.5.9</b> Desplegar la página</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html"><i class="fa fa-check"></i><b>2</b> Introducción a Bioconductor</a>
 <ul>
@@ -266,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://twitter.com/Bioconductor" class="uri">https://twitter.com/Bioconductor</a></li>
 </ul></li>
 </ul>
-<p><img src="icon_192.png"></p>
+<p><img src="icon_192.png"/></p>
 </div>
 <div id="github" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> GitHub<a href="introducción-a-r-y-rstudio.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -396,8 +407,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>En el servidor de <a href="http://132.248.220.108:8787/">RStudio de la LCG-UNAM</a> no funciona bien <code>gitcreds::gitcreds_set()</code> (porque esa función solo corre bien en macOS o winOS) así que tenemos que editar el archivo <code>.Renviron</code> donde nuestro token no se guarda de forma privada, y por lo cual hoy en día no es lo que recomienda <a href="https://twitter.com/JennyBryan">Jenny Bryan</a>. Pero es lo que funciona en este caso tal como lo hablamos con el autor de <a href="https://github.com/r-lib/gitcreds/issues/29"><code>gitcreds</code> vía GitHub</a>. Usando el siguiente comando podemos abrir el archivo <code>.Renviron</code>.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introducción-a-r-y-rstudio.html#cb15-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div>
 <p>Después guarden su token de GitHub usando la siguiente sintáxis (ojo con la línea en blanco al final, las mayúsculas al inicio, y el que no hay espacios antes y después del <code>=</code>).</p>
-<pre><code>GITHUB_PAT=TU_CLAVE_DE_40_LETRAS
-</code></pre>
+<pre><code>GITHUB_PAT=TU_CLAVE_DE_40_LETRAS</code></pre>
 <p>Después de guardar el <code>.Renviron</code>, vayan a <code>Session</code> hasta arriba y reinicien la sesión de R para que se cargue el <code>.Renviron</code> antes de continuar.</p>
 <ul>
 <li>Continuemos con tu configuración de GitHub</li>
@@ -446,51 +456,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="actividad-postcards" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> Actividad postcards<a href="introducción-a-r-y-rstudio.html#actividad-postcards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>Impartida por <a href="https://melii99.github.io/">Melissa Mayén Quiroz</a></em></p>
+<p>30/01/2024</p>
 <iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/b7d3bbee06d14a548a664e76ea9110d8" title="Updating spatialLIBD: from SingleCellExperiment to VisiumExperiment classes" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 420px;" data-ratio="1.3333333333333333">
 </iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Q6eRD8Nyxfk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0S_tRne5UNk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
+<p>Repositorio de GitHub para la actividad de Postcards: <a href="https://github.com/Melii99/rnaseq_2024_postcards" class="uri">https://github.com/Melii99/rnaseq_2024_postcards</a></p>
+<p>En el mismo se encuentran las diapositivas: <a href="https://github.com/Melii99/rnaseq_2024_postcards/blob/master/Postcards_Diapositivas.pdf" class="uri">https://github.com/Melii99/rnaseq_2024_postcards/blob/master/Postcards_Diapositivas.pdf</a></p>
+<div id="create-beautiful-simple-personal-websites" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Create Beautiful, Simple Personal Websites<a href="introducción-a-r-y-rstudio.html#create-beautiful-simple-personal-websites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>A collection of R Markdown templates for creating simple and easy to personalize single page websites.</em></p>
+<p>“El objetivo del paquete es facilitar que cualquier persona pueda crear un sitio web personal de una sola página con un documento R Markdown.”</p>
 <ul>
-<li>Similar a <a href="https://pages.github.com/" class="uri">https://pages.github.com/</a></li>
-<li><code>postcards</code> tiene 4 templados de páginas web <a href="https://github.com/seankross/postcards" class="uri">https://github.com/seankross/postcards</a></li>
-<li>Tu página web debe describir decir algo sobre ti, tus intereses, y tus proyectos además de cómo contactarte
+<li><p>Autor: Sean Kross [aut, cre]</p></li>
+<li><p>Maintainer: Sean Kross &lt;sean at seankross.com&gt;</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=postcards" class="uri">https://CRAN.R-project.org/package=postcards</a></p></li>
+<li><p>GitHub: <a href="https://github.com/seankross/postcards" class="uri">https://github.com/seankross/postcards</a></p></li>
+<li><p>Similar a <a href="https://pages.github.com/" class="uri">https://pages.github.com/</a></p></li>
+<li><p>Tu página web debe describir decir algo sobre ti, tus intereses, y tus proyectos además de cómo contactarte</p>
+<p>Algunos ejemplos:</p>
 <ul>
-<li>Ejemplo <a href="https://amy-peterson.github.io/" class="uri">https://amy-peterson.github.io/</a> vía <a href="https://github.com/amy-peterson/amy-peterson.github.com" class="uri">https://github.com/amy-peterson/amy-peterson.github.com</a></li>
+<li><a href="https://amy-peterson.github.io/" class="uri">https://amy-peterson.github.io/</a> vía <a href="https://github.com/amy-peterson/amy-peterson.github.com" class="uri">https://github.com/amy-peterson/amy-peterson.github.com</a></li>
 <li><a href="http://jtleek.com/" class="uri">http://jtleek.com/</a> vía <a href="https://github.com/jtleek/jtleek.github.io" class="uri">https://github.com/jtleek/jtleek.github.io</a></li>
 <li><a href="http://aejaffe.com/" class="uri">http://aejaffe.com/</a> vía <a href="https://github.com/andrewejaffe/andrewejaffe.github.io" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io</a></li>
 <li><a href="https://hadley.nz/" class="uri">https://hadley.nz/</a> vía <a href="https://github.com/hadley/hadley.github.com" class="uri">https://github.com/hadley/hadley.github.com</a></li>
 <li><a href="https://emarquezz.github.io/" class="uri">https://emarquezz.github.io/</a> vía <a href="https://github.com/emarquezz/emarquezz.github.io" class="uri">https://github.com/emarquezz/emarquezz.github.io</a></li>
 <li><a href="https://bpardo99.github.io/" class="uri">https://bpardo99.github.io/</a> vía <a href="https://github.com/bpardo99/bpardo99.github.io" class="uri">https://github.com/bpardo99/bpardo99.github.io</a></li>
 <li><a href="https://daianna21.github.io/" class="uri">https://daianna21.github.io/</a> vía <a href="https://github.com/daianna21/daianna21.github.io" class="uri">https://github.com/daianna21/daianna21.github.io</a>.</li>
-<li><a href="https://reneegf.github.io/" class="uri">https://reneegf.github.io/</a> vía <a href="https://github.com/reneegf/reneegf.github.io" class="uri">https://github.com/reneegf/reneegf.github.io</a>.</li>
-<li><a href="https://cfausto.github.io/" class="uri">https://cfausto.github.io/</a> vía <a href="https://github.com/cfausto/cfausto.github.io/" class="uri">https://github.com/cfausto/cfausto.github.io/</a>.</li>
-<li><a href="https://davidgonilski.github.io/" class="uri">https://davidgonilski.github.io/</a> vía <a href="https://github.com/davidgonilski/davidgonilski.github.io" class="uri">https://github.com/davidgonilski/davidgonilski.github.io</a>.</li>
 </ul></li>
-<li>También pueden revisar <a href="https://lcolladotor.github.io/jhustatcomputing2023/projects/project-0/" class="uri">https://lcolladotor.github.io/jhustatcomputing2023/projects/project-0/</a>.</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introducción-a-r-y-rstudio.html#cb22-1" tabindex="-1"></a><span class="do">## Creen el RStudio project</span></span>
-<span id="cb22-2"><a href="introducción-a-r-y-rstudio.html#cb22-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_project</span>(<span class="st">&quot;Su_Usuario.github.io&quot;</span>)</span>
+</div>
+<div id="instalación" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Instalación<a href="introducción-a-r-y-rstudio.html#instalación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introducción-a-r-y-rstudio.html#cb22-1" tabindex="-1"></a><span class="do">## Puedes instalar Postcards con el siguiente comando:</span></span>
+<span id="cb22-2"><a href="introducción-a-r-y-rstudio.html#cb22-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;postcards&quot;</span>)</span>
 <span id="cb22-3"><a href="introducción-a-r-y-rstudio.html#cb22-3" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="introducción-a-r-y-rstudio.html#cb22-4" tabindex="-1"></a><span class="do">## Configura Git y GitHub</span></span>
-<span id="cb22-5"><a href="introducción-a-r-y-rstudio.html#cb22-5" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span>
-<span id="cb22-6"><a href="introducción-a-r-y-rstudio.html#cb22-6" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
-<p>Creen su templado usando <code>postcards</code>. Va a crear un archivo <code>index.Rmd</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introducción-a-r-y-rstudio.html#cb23-1" tabindex="-1"></a><span class="do">## Solo uno de estos, de acurdo al templado que más les gustó</span></span>
-<span id="cb23-2"><a href="introducción-a-r-y-rstudio.html#cb23-2" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;jolla&quot;</span>)</span>
-<span id="cb23-3"><a href="introducción-a-r-y-rstudio.html#cb23-3" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;jolla-blue&quot;</span>)</span>
-<span id="cb23-4"><a href="introducción-a-r-y-rstudio.html#cb23-4" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;trestles&quot;</span>)</span>
-<span id="cb23-5"><a href="introducción-a-r-y-rstudio.html#cb23-5" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;onofre&quot;</span>)</span></code></pre></div>
+<span id="cb22-4"><a href="introducción-a-r-y-rstudio.html#cb22-4" tabindex="-1"></a><span class="do">## O puedes instalar la última versión en desarrollo:</span></span>
+<span id="cb22-5"><a href="introducción-a-r-y-rstudio.html#cb22-5" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;seankross/postcards@main&quot;</span>)</span></code></pre></div>
+</div>
+<div id="plantillas" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Plantillas<a href="introducción-a-r-y-rstudio.html#plantillas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Postcards incluye cinco plantillas: Jolla, Jolla Blue, Trestles, Onofre y Solana. Cada sitio está optimizado para ser visualizado tanto en computadoras de escritorio como en dispositivos móviles. El objetivo del paquete es facilitar que cualquier persona pueda crear un sitio web personal de una sola página con un documento R Markdown</p>
+<div class="float">
+<img src="https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/jolla_preview.png" alt="Jolla" />
+<div class="figcaption">Jolla</div>
+</div>
+<div class="float">
+<img src="https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/jolla_blue_preview.png" alt="Jolla Blue" />
+<div class="figcaption">Jolla Blue</div>
+</div>
+<div class="float">
+<img src="https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/trestles-preview.png" alt="Trestles" />
+<div class="figcaption">Trestles</div>
+</div>
+<div class="float">
+<img src="https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/onofre-preview.png" alt="Onofre" />
+<div class="figcaption">Onofre</div>
+</div>
+<div class="float">
+<img src="https://raw.githubusercontent.com/Melii99/rnaseq_2024_postcards/master/Templates/solana-preview.png" alt="Solana" />
+<div class="figcaption">Solana</div>
+</div>
+<p>Para comenzar a personalizar una de estas plantillas, debes crear un nuevo proyecto.</p>
+</div>
+<div id="crear-un-nuevo-proyecto-en-rstudio-selección-interactiva" class="section level3 hasAnchor" number="1.5.4">
+<h3><span class="header-section-number">1.5.4</span> Crear un nuevo proyecto en RStudio (selección interactiva)<a href="introducción-a-r-y-rstudio.html#crear-un-nuevo-proyecto-en-rstudio-selección-interactiva" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si usas RStudio:</p>
 <ul>
-<li>Llenen su información usando el formato <code>Markdown</code>. Por ejemplo <a href="https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31</a>.</li>
-<li>Agreguen sus perfiles estilo <a href="https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12</a></li>
-<li>Den click en el botón azul de <code>knit</code> en RStudio. Es equivalente a <code>rmarkdown::render("index.Rmd")</code>. Esto creará el archivo <code>index.html</code>.</li>
-<li>Hagan un <code>commit</code> para guardar los archivos nuevos incluyendo <code>index.html</code> y luego un <code>push</code> para subir los archivos a GitHub.</li>
-<li>Comparte tu repositorio vía el Slack de la CDSB en el canal <a href="https://comunidadbioinfo.slack.com/archives/C06GEV1JJE5"><code>intro_rnaseq_lcg_2024</code></a>.</li>
-<li>(opcional) Anuncien su nueva página web en Twitter/X o Bluesky usando el hashtag <code>#rstats</code> y/o etiquen al autor de <code>postcards</code> <a href="https://twitter.com/seankross" class="uri">https://twitter.com/seankross</a>. Pueden después incluir su página web en su introducción en el canal <code>#bienvenida</code> del Slack de la CDSB ^^ al cual pueden unirse a través de <a href="https://join.slack.com/t/comunidadbioinfo/shared_invite/zt-8lsvpm84-Fne1W0hadk6cpjgJS17Tnw">esta liga</a>.</li>
+<li>selecciona “File”, “New Project”…</li>
+<li>Elige “New Directory”, “Postcards Website”</li>
+<li>Ingresar un nombre de directorio para tu proyecto en RStudio (“Tu_Usuario.github.io”)</li>
+<li>Elegir una de las plantillas desde un menú desplegable</li>
 </ul>
+<p>Selecciona “Create Project” después de elegir un nombre para la carpeta que contendrá tu sitio. Esta carpeta contendrá dos archivos importantes:</p>
+<ul>
+<li>Un documento R Markdown con el contenido de tu sitio</li>
+<li>Una foto de muestra que debes reemplazar”</li>
+</ul>
+</div>
+<div id="crear-un-nuevo-proyecto" class="section level3 hasAnchor" number="1.5.5">
+<h3><span class="header-section-number">1.5.5</span> Crear un nuevo proyecto<a href="introducción-a-r-y-rstudio.html#crear-un-nuevo-proyecto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introducción-a-r-y-rstudio.html#cb23-1" tabindex="-1"></a><span class="do">## Crearun nuevo proyecto </span></span>
+<span id="cb23-2"><a href="introducción-a-r-y-rstudio.html#cb23-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_project</span>(<span class="st">&quot;Su_Usuario.github.io&quot;</span>)</span></code></pre></div>
+</div>
+<div id="configurar-git-y-github" class="section level3 hasAnchor" number="1.5.6">
+<h3><span class="header-section-number">1.5.6</span> Configurar Git y GitHub<a href="introducción-a-r-y-rstudio.html#configurar-git-y-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para poder guardar los cambios es necesario configurar Git y GitHub</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introducción-a-r-y-rstudio.html#cb24-1" tabindex="-1"></a><span class="do">## Configurar Git y GitHub</span></span>
+<span id="cb24-2"><a href="introducción-a-r-y-rstudio.html#cb24-2" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>() <span class="co"># Reiniciar la sesión</span></span>
+<span id="cb24-3"><a href="introducción-a-r-y-rstudio.html#cb24-3" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code></pre></div>
+</div>
+<div id="elegir-una-plantilla" class="section level3 hasAnchor" number="1.5.7">
+<h3><span class="header-section-number">1.5.7</span> Elegir una plantilla<a href="introducción-a-r-y-rstudio.html#elegir-una-plantilla" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introducción-a-r-y-rstudio.html#cb25-1" tabindex="-1"></a><span class="do">## Elegir solo una plantilla (la que más te guste)</span></span>
+<span id="cb25-2"><a href="introducción-a-r-y-rstudio.html#cb25-2" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;jolla&quot;</span>)</span>
+<span id="cb25-3"><a href="introducción-a-r-y-rstudio.html#cb25-3" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;jolla-blue&quot;</span>)</span>
+<span id="cb25-4"><a href="introducción-a-r-y-rstudio.html#cb25-4" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;trestles&quot;</span>)</span>
+<span id="cb25-5"><a href="introducción-a-r-y-rstudio.html#cb25-5" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;onofre&quot;</span>)</span>
+<span id="cb25-6"><a href="introducción-a-r-y-rstudio.html#cb25-6" tabindex="-1"></a>postcards<span class="sc">::</span><span class="fu">create_postcard</span>(<span class="at">template =</span> <span class="st">&quot;solana&quot;</span>)</span></code></pre></div>
+<p>De esta manera también se obtienen los 2 archivos importantes:</p>
+<ul>
+<li><p>Un documento R Markdown con el contenido de tu sitio</p></li>
+<li><p>Una foto de muestra que debes reemplazar</p></li>
+</ul>
+</div>
+<div id="editar-con-su-información" class="section level3 hasAnchor" number="1.5.8">
+<h3><span class="header-section-number">1.5.8</span> Editar con su información<a href="introducción-a-r-y-rstudio.html#editar-con-su-información" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Ahora deberán editar el documento R Markdown con su información y reemplazar la imágen con la que elijan :)</p></li>
+<li><p>Llenen su información usando el formato <code>Markdown</code>. Por ejemplo <a href="https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L17-L31</a>.</p></li>
+<li><p>Agreguen sus perfiles estilo <a href="https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12" class="uri">https://github.com/andrewejaffe/andrewejaffe.github.io/blob/master/index.Rmd#L7-L12</a></p></li>
+</ul>
+</div>
+<div id="desplegar-la-página" class="section level3 hasAnchor" number="1.5.9">
+<h3><span class="header-section-number">1.5.9</span> Desplegar la página<a href="introducción-a-r-y-rstudio.html#desplegar-la-página" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para compilar el archivo HTML autocontenido para el sitio:</p>
+<ul>
+<li>En RStudio puedes utilizar el botón “Knit”</li>
+</ul>
+<p>o directamente:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introducción-a-r-y-rstudio.html#cb26-1" tabindex="-1"></a><span class="do">## Desplegar la página GitHub</span></span>
+<span id="cb26-2"><a href="introducción-a-r-y-rstudio.html#cb26-2" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;index.Rmd&quot;</span>)</span></code></pre></div>
 
+</div>
 </div>
 </div>
 <div class="container">

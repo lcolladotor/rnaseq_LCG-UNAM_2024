@@ -159,7 +159,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#github"><i class="fa fa-check"></i><b>1.2</b> GitHub</a></li>
 <li class="chapter" data-level="1.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
 <li class="chapter" data-level="1.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#material-del-curso"><i class="fa fa-check"></i><b>1.4</b> Material del curso</a></li>
-<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards</a></li>
+<li class="chapter" data-level="1.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#actividad-postcards"><i class="fa fa-check"></i><b>1.5</b> Actividad postcards</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#create-beautiful-simple-personal-websites"><i class="fa fa-check"></i><b>1.5.1</b> Create Beautiful, Simple Personal Websites</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#instalación"><i class="fa fa-check"></i><b>1.5.2</b> Instalación</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#plantillas"><i class="fa fa-check"></i><b>1.5.3</b> Plantillas</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#crear-un-nuevo-proyecto-en-rstudio-selección-interactiva"><i class="fa fa-check"></i><b>1.5.4</b> Crear un nuevo proyecto en RStudio (selección interactiva)</a></li>
+<li class="chapter" data-level="1.5.5" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#crear-un-nuevo-proyecto"><i class="fa fa-check"></i><b>1.5.5</b> Crear un nuevo proyecto</a></li>
+<li class="chapter" data-level="1.5.6" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#configurar-git-y-github"><i class="fa fa-check"></i><b>1.5.6</b> Configurar Git y GitHub</a></li>
+<li class="chapter" data-level="1.5.7" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#elegir-una-plantilla"><i class="fa fa-check"></i><b>1.5.7</b> Elegir una plantilla</a></li>
+<li class="chapter" data-level="1.5.8" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#editar-con-su-información"><i class="fa fa-check"></i><b>1.5.8</b> Editar con su información</a></li>
+<li class="chapter" data-level="1.5.9" data-path="introducción-a-r-y-rstudio.html"><a href="introducción-a-r-y-rstudio.html#desplegar-la-página"><i class="fa fa-check"></i><b>1.5.9</b> Desplegar la página</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introducción-a-bioconductor.html"><a href="introducción-a-bioconductor.html"><i class="fa fa-check"></i><b>2</b> Introducción a Bioconductor</a>
 <ul>
@@ -282,65 +293,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.3</span> Usar recount3<a href="datos-de-rna-seq-a-través-de-recount3.html#usar-recount3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>Check the original documentation in English <a href="http://rna.recount.bio/docs/quick-access.html#quick-recount3">here</a> and <a href="http://rna.recount.bio/docs/bioconductor.html#recount3">here</a>.</em></p>
 <p>Primero cargamos el paquete de R que automáticamente carga todas las dependencias incluyendo a <code>SummarizedExperiment</code>.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb54-1" tabindex="-1"></a><span class="do">## Load recount3 R package</span></span>
-<span id="cb54-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb54-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-1" tabindex="-1"></a><span class="do">## Load recount3 R package</span></span>
+<span id="cb57-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span></code></pre></div>
 <p>Después tenemos que identificar un estudio de interes y determinar si queremos accesar la información a nivel de genes, exones, etc. Sabiendo el estudio de interes, podemos descargar los datos usando la función <code>create_rse()</code> como mostramos a continuación. <code>create_rse()</code> tiene argumentos con los cuales podemos especificar la <strong>anotación</strong> que queremos usar (las opciones dependen del organismo).</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-1" tabindex="-1"></a><span class="do">## Cambiaremos el URL de recount3 a Amazon (AWS)</span></span>
-<span id="cb55-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-2" tabindex="-1"></a><span class="do">## para evitar problems de TLS versión 1.2 en</span></span>
-<span id="cb55-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-3" tabindex="-1"></a><span class="do">## Windows (luego tiene una versión más vieja).</span></span>
-<span id="cb55-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-4" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-5" tabindex="-1"></a><span class="do">## Primero vemos el URL actual</span></span>
-<span id="cb55-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-6" tabindex="-1"></a><span class="fu">getOption</span>(</span>
-<span id="cb55-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-7" tabindex="-1"></a>    <span class="st">&quot;recount3_url&quot;</span>,</span>
-<span id="cb55-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-8" tabindex="-1"></a>    <span class="st">&quot;http://duffel.rail.bio/recount3&quot;</span></span>
-<span id="cb55-9"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb55-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-1" tabindex="-1"></a><span class="do">## Cambiaremos el URL de recount3 a Amazon (AWS)</span></span>
+<span id="cb58-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-2" tabindex="-1"></a><span class="do">## para evitar problems de TLS versión 1.2 en</span></span>
+<span id="cb58-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-3" tabindex="-1"></a><span class="do">## Windows (luego tiene una versión más vieja).</span></span>
+<span id="cb58-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-4" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-5" tabindex="-1"></a><span class="do">## Primero vemos el URL actual</span></span>
+<span id="cb58-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-6" tabindex="-1"></a><span class="fu">getOption</span>(</span>
+<span id="cb58-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-7" tabindex="-1"></a>    <span class="st">&quot;recount3_url&quot;</span>,</span>
+<span id="cb58-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-8" tabindex="-1"></a>    <span class="st">&quot;http://duffel.rail.bio/recount3&quot;</span></span>
+<span id="cb58-9"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb58-9" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## [1] &quot;http://duffel.rail.bio/recount3&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-1" tabindex="-1"></a><span class="do">## Ahora si lo cambiamos</span></span>
-<span id="cb57-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">recount3_url =</span> <span class="st">&quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</span>)</span>
-<span id="cb57-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-3" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-4" tabindex="-1"></a><span class="do">## Y vemos que ya funcionó el cambio.</span></span>
-<span id="cb57-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-5" tabindex="-1"></a><span class="fu">getOption</span>(</span>
-<span id="cb57-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-6" tabindex="-1"></a>    <span class="st">&quot;recount3_url&quot;</span>,</span>
-<span id="cb57-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-7" tabindex="-1"></a>    <span class="st">&quot;http://duffel.rail.bio/recount3&quot;</span></span>
-<span id="cb57-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb57-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-1" tabindex="-1"></a><span class="do">## Ahora si lo cambiamos</span></span>
+<span id="cb60-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">recount3_url =</span> <span class="st">&quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</span>)</span>
+<span id="cb60-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-3" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-4" tabindex="-1"></a><span class="do">## Y vemos que ya funcionó el cambio.</span></span>
+<span id="cb60-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-5" tabindex="-1"></a><span class="fu">getOption</span>(</span>
+<span id="cb60-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-6" tabindex="-1"></a>    <span class="st">&quot;recount3_url&quot;</span>,</span>
+<span id="cb60-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-7" tabindex="-1"></a>    <span class="st">&quot;http://duffel.rail.bio/recount3&quot;</span></span>
+<span id="cb60-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb60-8" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## [1] &quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb59-1" tabindex="-1"></a><span class="do">## Revisemos todos los proyectos con datos de humano en recount3</span></span>
-<span id="cb59-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb59-2" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
-<pre><code>## 2024-01-29 18:52:00.424616 caching file sra.recount_project.MD.gz.</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb62-1" tabindex="-1"></a><span class="do">## Revisemos todos los proyectos con datos de humano en recount3</span></span>
+<span id="cb62-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb62-2" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
+<pre><code>## 2024-01-30 00:25:28.493181 caching file sra.recount_project.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/sra.recount_project.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:00.683336 caching file gtex.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:28.751672 caching file gtex.recount_project.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/gtex/metadata/gtex.recount_project.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:00.968951 caching file tcga.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:29.09568 caching file tcga.recount_project.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/tcga/metadata/tcga.recount_project.MD.gz&#39;</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-1" tabindex="-1"></a><span class="do">## Encuentra tu proyecto de interés. Aquí usaremos</span></span>
-<span id="cb66-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-2" tabindex="-1"></a><span class="do">## SRP009615 de ejemplo</span></span>
-<span id="cb66-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-3" tabindex="-1"></a>proj_info <span class="ot">&lt;-</span> <span class="fu">subset</span>(</span>
-<span id="cb66-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-4" tabindex="-1"></a>    human_projects,</span>
-<span id="cb66-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-5" tabindex="-1"></a>    project <span class="sc">==</span> <span class="st">&quot;SRP009615&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
-<span id="cb66-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-6" tabindex="-1"></a>)</span>
-<span id="cb66-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-7" tabindex="-1"></a><span class="do">## Crea un objeto de tipo RangedSummarizedExperiment (RSE)</span></span>
-<span id="cb66-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-8" tabindex="-1"></a><span class="do">## con la información a nivel de genes</span></span>
-<span id="cb66-9"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb66-9" tabindex="-1"></a>rse_gene_SRP009615 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info)</span></code></pre></div>
-<pre><code>## 2024-01-29 18:52:05.615292 downloading and reading the metadata.</code></pre>
-<pre><code>## 2024-01-29 18:52:05.644779 caching file sra.sra.SRP009615.MD.gz.</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-1" tabindex="-1"></a><span class="do">## Encuentra tu proyecto de interés. Aquí usaremos</span></span>
+<span id="cb69-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-2" tabindex="-1"></a><span class="do">## SRP009615 de ejemplo</span></span>
+<span id="cb69-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-3" tabindex="-1"></a>proj_info <span class="ot">&lt;-</span> <span class="fu">subset</span>(</span>
+<span id="cb69-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-4" tabindex="-1"></a>    human_projects,</span>
+<span id="cb69-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-5" tabindex="-1"></a>    project <span class="sc">==</span> <span class="st">&quot;SRP009615&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
+<span id="cb69-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-6" tabindex="-1"></a>)</span>
+<span id="cb69-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-7" tabindex="-1"></a><span class="do">## Crea un objeto de tipo RangedSummarizedExperiment (RSE)</span></span>
+<span id="cb69-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-8" tabindex="-1"></a><span class="do">## con la información a nivel de genes</span></span>
+<span id="cb69-9"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb69-9" tabindex="-1"></a>rse_gene_SRP009615 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info)</span></code></pre></div>
+<pre><code>## 2024-01-30 00:25:33.763393 downloading and reading the metadata.</code></pre>
+<pre><code>## 2024-01-30 00:25:33.792464 caching file sra.sra.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.sra.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:05.832235 caching file sra.recount_project.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:33.98445 caching file sra.recount_project.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_project.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:06.016237 caching file sra.recount_qc.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:34.160874 caching file sra.recount_qc.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_qc.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:06.224837 caching file sra.recount_seq_qc.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:34.362376 caching file sra.recount_seq_qc.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_seq_qc.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:06.429358 caching file sra.recount_pred.SRP009615.MD.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:34.596566 caching file sra.recount_pred.SRP009615.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/15/SRP009615/sra.recount_pred.SRP009615.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:06.656217 downloading and reading the feature information.</code></pre>
-<pre><code>## 2024-01-29 18:52:06.67531 caching file human.gene_sums.G026.gtf.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:34.794357 downloading and reading the feature information.</code></pre>
+<pre><code>## 2024-01-30 00:25:34.814231 caching file human.gene_sums.G026.gtf.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/annotations/gene_sums/human.gene_sums.G026.gtf.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:07.305047 downloading and reading the counts: 12 samples across 63856 features.</code></pre>
-<pre><code>## 2024-01-29 18:52:07.323339 caching file sra.gene_sums.SRP009615.G026.gz.</code></pre>
+<pre><code>## 2024-01-30 00:25:35.486023 downloading and reading the counts: 12 samples across 63856 features.</code></pre>
+<pre><code>## 2024-01-30 00:25:35.505869 caching file sra.gene_sums.SRP009615.G026.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/gene_sums/15/SRP009615/sra.gene_sums.SRP009615.G026.gz&#39;</code></pre>
-<pre><code>## 2024-01-29 18:52:07.753673 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb85-1" tabindex="-1"></a><span class="do">## Explora el objeto RSE</span></span>
-<span id="cb85-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb85-2" tabindex="-1"></a>rse_gene_SRP009615</span></code></pre></div>
+<pre><code>## 2024-01-30 00:25:35.993607 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-1" tabindex="-1"></a><span class="do">## Explora el objeto RSE</span></span>
+<span id="cb88-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-2" tabindex="-1"></a>rse_gene_SRP009615</span></code></pre></div>
 <pre><code>## class: RangedSummarizedExperiment 
 ## dim: 63856 12 
 ## metadata(8): time_created recount3_version ... annotation recount3_url
@@ -350,26 +361,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## colnames(12): SRR387777 SRR387778 ... SRR389077 SRR389078
 ## colData names(175): rail_id external_id ... recount_pred.curated.cell_line BigWigURL</code></pre>
 <p>De forma interactiva también podemos escoger nuestro estudio de interés usando el siguiente código o vía <a href="http://rna.recount.bio/docs/index.html#study-explorer">el explorar de estudios</a> que creamos.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-1" tabindex="-1"></a><span class="do">## Explora los proyectos disponibles de forma interactiva</span></span>
-<span id="cb87-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-2" tabindex="-1"></a>proj_info_interactive <span class="ot">&lt;-</span> interactiveDisplayBase<span class="sc">::</span><span class="fu">display</span>(human_projects)</span>
-<span id="cb87-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-3" tabindex="-1"></a><span class="do">## Selecciona un solo renglón en la tabla y da click en &quot;send&quot;.</span></span>
-<span id="cb87-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-4" tabindex="-1"></a></span>
-<span id="cb87-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-5" tabindex="-1"></a><span class="do">## Aquí verificamos que solo seleccionaste un solo renglón.</span></span>
-<span id="cb87-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-6" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">nrow</span>(proj_info_interactive) <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb87-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-7" tabindex="-1"></a><span class="do">## Crea el objeto RSE</span></span>
-<span id="cb87-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb87-8" tabindex="-1"></a>rse_gene_interactive <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info_interactive)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-1" tabindex="-1"></a><span class="do">## Explora los proyectos disponibles de forma interactiva</span></span>
+<span id="cb90-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-2" tabindex="-1"></a>proj_info_interactive <span class="ot">&lt;-</span> interactiveDisplayBase<span class="sc">::</span><span class="fu">display</span>(human_projects)</span>
+<span id="cb90-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-3" tabindex="-1"></a><span class="do">## Selecciona un solo renglón en la tabla y da click en &quot;send&quot;.</span></span>
+<span id="cb90-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-4" tabindex="-1"></a></span>
+<span id="cb90-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-5" tabindex="-1"></a><span class="do">## Aquí verificamos que solo seleccionaste un solo renglón.</span></span>
+<span id="cb90-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-6" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">nrow</span>(proj_info_interactive) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb90-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-7" tabindex="-1"></a><span class="do">## Crea el objeto RSE</span></span>
+<span id="cb90-8"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb90-8" tabindex="-1"></a>rse_gene_interactive <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info_interactive)</span></code></pre></div>
 <p>Una vez que tenemos las cuentas, podemos usar <code>transform_counts()</code> o <code>compute_read_counts()</code> para convertir en los formatos esperados por otras herramientas. Revisen el artículo de 2017 del <code>recountWorkflow</code> para <a href="https://f1000research.com/articles/6-1558/v1">más detalles</a>.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-1" tabindex="-1"></a><span class="do">## Convirtamos las cuentas por nucleotido a cuentas por lectura</span></span>
-<span id="cb88-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-2" tabindex="-1"></a><span class="do">## usando compute_read_counts().</span></span>
-<span id="cb88-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-3" tabindex="-1"></a><span class="do">## Para otras transformaciones como RPKM y TPM, revisa transform_counts().</span></span>
-<span id="cb88-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb88-4" tabindex="-1"></a><span class="fu">assay</span>(rse_gene_SRP009615, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene_SRP009615)</span></code></pre></div>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-1" tabindex="-1"></a><span class="do">## Para este estudio en específico, hagamos más fácil de usar la</span></span>
-<span id="cb89-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-2" tabindex="-1"></a><span class="do">## información del experimento</span></span>
-<span id="cb89-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-3" tabindex="-1"></a>rse_gene_SRP009615 <span class="ot">&lt;-</span> <span class="fu">expand_sra_attributes</span>(rse_gene_SRP009615)</span>
-<span id="cb89-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-4" tabindex="-1"></a><span class="fu">colData</span>(rse_gene_SRP009615)[</span>
-<span id="cb89-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-5" tabindex="-1"></a>    ,</span>
-<span id="cb89-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-6" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene_SRP009615)))</span>
-<span id="cb89-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb89-7" tabindex="-1"></a>]</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb91-1" tabindex="-1"></a><span class="do">## Convirtamos las cuentas por nucleotido a cuentas por lectura</span></span>
+<span id="cb91-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb91-2" tabindex="-1"></a><span class="do">## usando compute_read_counts().</span></span>
+<span id="cb91-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb91-3" tabindex="-1"></a><span class="do">## Para otras transformaciones como RPKM y TPM, revisa transform_counts().</span></span>
+<span id="cb91-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb91-4" tabindex="-1"></a><span class="fu">assay</span>(rse_gene_SRP009615, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene_SRP009615)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb92-1" tabindex="-1"></a><span class="do">## Para este estudio en específico, hagamos más fácil de usar la</span></span>
+<span id="cb92-2"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb92-2" tabindex="-1"></a><span class="do">## información del experimento</span></span>
+<span id="cb92-3"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb92-3" tabindex="-1"></a>rse_gene_SRP009615 <span class="ot">&lt;-</span> <span class="fu">expand_sra_attributes</span>(rse_gene_SRP009615)</span>
+<span id="cb92-4"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb92-4" tabindex="-1"></a><span class="fu">colData</span>(rse_gene_SRP009615)[</span>
+<span id="cb92-5"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb92-5" tabindex="-1"></a>    ,</span>
+<span id="cb92-6"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb92-6" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene_SRP009615)))</span>
+<span id="cb92-7"><a href="datos-de-rna-seq-a-través-de-recount3.html#cb92-7" tabindex="-1"></a>]</span></code></pre></div>
 <pre><code>## DataFrame with 12 rows and 4 columns
 ##           sra_attribute.cells sra_attribute.shRNA_expression sra_attribute.source_name sra_attribute.treatment
 ##                   &lt;character&gt;                    &lt;character&gt;               &lt;character&gt;             &lt;character&gt;
