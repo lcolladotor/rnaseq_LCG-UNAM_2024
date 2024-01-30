@@ -220,14 +220,14 @@ O desde R con:
 library("gert")
 repo <- git_clone(
     "https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024",
-    "~/rnaseq_LCG-UNAM_2024"
+    "~/Desktop/rnaseq_LCG-UNAM_2024"
 )
 setwd(repo)
 
 ## Otra opción:
 git2r::clone(
     "https://github.com/lcolladotor/rnaseq_LCG-UNAM_2024",
-    "~/rnaseq_LCG-UNAM_2024"
+    "~/Desktop/rnaseq_LCG-UNAM_2024"
 )
 ```
 
@@ -285,13 +285,11 @@ En el mismo se encuentran las diapositivas: <https://github.com/Melii99/rnaseq_2
 ### Instalación
 
 ```{r, eval=FALSE}
-
 ## Puedes instalar Postcards con el siguiente comando:
 install.packages("postcards")
 
 ## O puedes instalar la última versión en desarrollo:
 remotes::install_github("seankross/postcards@main")
-
 ```
 
 ### Plantillas
@@ -338,10 +336,8 @@ Selecciona "Create Project" después de elegir un nombre para la carpeta que con
 ### Crear un nuevo proyecto
 
 ```{r, eval=FALSE}
-
-## Crearun nuevo proyecto 
+## Crearun nuevo proyecto
 usethis::create_project("Su_Usuario.github.io")
-
 ```
 
 ### Configurar Git y GitHub
@@ -349,24 +345,20 @@ usethis::create_project("Su_Usuario.github.io")
 Para poder guardar los cambios es necesario configurar Git y GitHub
 
 ```{r, eval=FALSE}
-
 ## Configurar Git y GitHub
 usethis::use_git() # Reiniciar la sesión
 usethis::use_github()
-
 ```
 
 ### Elegir una plantilla
 
 ```{r, eval=FALSE}
-
 ## Elegir solo una plantilla (la que más te guste)
 postcards::create_postcard(template = "jolla")
 postcards::create_postcard(template = "jolla-blue")
 postcards::create_postcard(template = "trestles")
 postcards::create_postcard(template = "onofre")
 postcards::create_postcard(template = "solana")
-
 ```
 
 De esta manera también se obtienen los 2 archivos importantes:
@@ -392,7 +384,6 @@ Para compilar el archivo HTML autocontenido para el sitio:
 o directamente:
 
 ```{r, eval=FALSE}
-
 ## Desplegar la página GitHub
 rmarkdown::render("index.Rmd")
 ```
