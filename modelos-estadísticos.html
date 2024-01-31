@@ -253,9 +253,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Revisión de regresión lineal <a href="https://lcolladotor.github.io/bioc_team_ds/helping-others.html#linear-regression-example" class="uri">https://lcolladotor.github.io/bioc_team_ds/helping-others.html#linear-regression-example</a></li>
 <li>Con R, usamos mucho la función <code>model.matrix()</code> y la sintáxis de fórmula <code>Y ~ X1 + X2</code> tal como en el siguiente ejemplo.</li>
 </ul>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="modelos-estadísticos.html#cb94-1" tabindex="-1"></a><span class="do">## ?model.matrix</span></span>
-<span id="cb94-2"><a href="modelos-estadísticos.html#cb94-2" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">with</span>(trees, <span class="fu">model.matrix</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Height) <span class="sc">+</span> <span class="fu">log</span>(Girth)))</span>
-<span id="cb94-3"><a href="modelos-estadísticos.html#cb94-3" tabindex="-1"></a>mat</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modelos-estadísticos.html#cb90-1" tabindex="-1"></a><span class="do">## ?model.matrix</span></span>
+<span id="cb90-2"><a href="modelos-estadísticos.html#cb90-2" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">with</span>(trees, <span class="fu">model.matrix</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Height) <span class="sc">+</span> <span class="fu">log</span>(Girth)))</span>
+<span id="cb90-3"><a href="modelos-estadísticos.html#cb90-3" tabindex="-1"></a>mat</span></code></pre></div>
 <pre><code>##    (Intercept) log(Height) log(Girth)
 ## 1            1    4.248495   2.116256
 ## 2            1    4.174387   2.151762
@@ -290,12 +290,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 31           1    4.465908   3.025291
 ## attr(,&quot;assign&quot;)
 ## [1] 0 1 2</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="modelos-estadísticos.html#cb96-1" tabindex="-1"></a><span class="fu">colnames</span>(mat)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="modelos-estadísticos.html#cb92-1" tabindex="-1"></a><span class="fu">colnames</span>(mat)</span></code></pre></div>
 <pre><code>## [1] &quot;(Intercept)&quot; &quot;log(Height)&quot; &quot;log(Girth)&quot;</code></pre>
 <ul>
 <li>¿Cómo interpretamos los nombres de las columnas de <code>mat</code>?</li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="modelos-estadísticos.html#cb98-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Height) <span class="sc">+</span> <span class="fu">log</span>(Girth), <span class="at">data =</span> trees))</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="modelos-estadísticos.html#cb94-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Height) <span class="sc">+</span> <span class="fu">log</span>(Girth), <span class="at">data =</span> trees))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(Volume) ~ log(Height) + log(Girth), data = trees)
@@ -323,11 +323,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="ejemplo-1" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Ejemplo 1<a href="modelos-estadísticos.html#ejemplo-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="modelos-estadísticos.html#cb100-1" tabindex="-1"></a><span class="do">## Datos de ejemplo</span></span>
-<span id="cb100-2"><a href="modelos-estadísticos.html#cb100-2" tabindex="-1"></a>(sampleData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb100-3"><a href="modelos-estadísticos.html#cb100-3" tabindex="-1"></a>    <span class="at">genotype =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
-<span id="cb100-4"><a href="modelos-estadísticos.html#cb100-4" tabindex="-1"></a>    <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ctrl&quot;</span>, <span class="st">&quot;trt&quot;</span>), <span class="dv">4</span>)</span>
-<span id="cb100-5"><a href="modelos-estadísticos.html#cb100-5" tabindex="-1"></a>))</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="modelos-estadísticos.html#cb96-1" tabindex="-1"></a><span class="do">## Datos de ejemplo</span></span>
+<span id="cb96-2"><a href="modelos-estadísticos.html#cb96-2" tabindex="-1"></a>(sampleData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb96-3"><a href="modelos-estadísticos.html#cb96-3" tabindex="-1"></a>    <span class="at">genotype =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
+<span id="cb96-4"><a href="modelos-estadísticos.html#cb96-4" tabindex="-1"></a>    <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ctrl&quot;</span>, <span class="st">&quot;trt&quot;</span>), <span class="dv">4</span>)</span>
+<span id="cb96-5"><a href="modelos-estadísticos.html#cb96-5" tabindex="-1"></a>))</span></code></pre></div>
 <pre><code>##   genotype treatment
 ## 1        A      ctrl
 ## 2        A       trt
@@ -337,23 +337,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6        B       trt
 ## 7        B      ctrl
 ## 8        B       trt</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="modelos-estadísticos.html#cb102-1" tabindex="-1"></a><span class="do">## Creemos las imágenes usando ExploreModelMatrix</span></span>
-<span id="cb102-2"><a href="modelos-estadísticos.html#cb102-2" tabindex="-1"></a>vd <span class="ot">&lt;-</span> ExploreModelMatrix<span class="sc">::</span><span class="fu">VisualizeDesign</span>(</span>
-<span id="cb102-3"><a href="modelos-estadísticos.html#cb102-3" tabindex="-1"></a>    <span class="at">sampleData =</span> sampleData,</span>
-<span id="cb102-4"><a href="modelos-estadísticos.html#cb102-4" tabindex="-1"></a>    <span class="at">designFormula =</span> <span class="sc">~</span> genotype <span class="sc">+</span> treatment,</span>
-<span id="cb102-5"><a href="modelos-estadísticos.html#cb102-5" tabindex="-1"></a>    <span class="at">textSizeFitted =</span> <span class="dv">4</span></span>
-<span id="cb102-6"><a href="modelos-estadísticos.html#cb102-6" tabindex="-1"></a>)</span>
-<span id="cb102-7"><a href="modelos-estadísticos.html#cb102-7" tabindex="-1"></a></span>
-<span id="cb102-8"><a href="modelos-estadísticos.html#cb102-8" tabindex="-1"></a><span class="do">## Veamos las imágenes</span></span>
-<span id="cb102-9"><a href="modelos-estadísticos.html#cb102-9" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(<span class="at">plotlist =</span> vd<span class="sc">$</span>plotlist)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="modelos-estadísticos.html#cb98-1" tabindex="-1"></a><span class="do">## Creemos las imágenes usando ExploreModelMatrix</span></span>
+<span id="cb98-2"><a href="modelos-estadísticos.html#cb98-2" tabindex="-1"></a>vd <span class="ot">&lt;-</span> ExploreModelMatrix<span class="sc">::</span><span class="fu">VisualizeDesign</span>(</span>
+<span id="cb98-3"><a href="modelos-estadísticos.html#cb98-3" tabindex="-1"></a>    <span class="at">sampleData =</span> sampleData,</span>
+<span id="cb98-4"><a href="modelos-estadísticos.html#cb98-4" tabindex="-1"></a>    <span class="at">designFormula =</span> <span class="sc">~</span> genotype <span class="sc">+</span> treatment,</span>
+<span id="cb98-5"><a href="modelos-estadísticos.html#cb98-5" tabindex="-1"></a>    <span class="at">textSizeFitted =</span> <span class="dv">4</span></span>
+<span id="cb98-6"><a href="modelos-estadísticos.html#cb98-6" tabindex="-1"></a>)</span>
+<span id="cb98-7"><a href="modelos-estadísticos.html#cb98-7" tabindex="-1"></a></span>
+<span id="cb98-8"><a href="modelos-estadísticos.html#cb98-8" tabindex="-1"></a><span class="do">## Veamos las imágenes</span></span>
+<span id="cb98-9"><a href="modelos-estadísticos.html#cb98-9" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(<span class="at">plotlist =</span> vd<span class="sc">$</span>plotlist)</span></code></pre></div>
 <p><img src="_main_files/figure-html/EMM_example1-1.png" width="672" /></p>
 <p>De forma interactiva podemos correr el siguiente código:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="modelos-estadísticos.html#cb103-1" tabindex="-1"></a><span class="do">## Usaremos shiny otra ves</span></span>
-<span id="cb103-2"><a href="modelos-estadísticos.html#cb103-2" tabindex="-1"></a>app <span class="ot">&lt;-</span> <span class="fu">ExploreModelMatrix</span>(</span>
-<span id="cb103-3"><a href="modelos-estadísticos.html#cb103-3" tabindex="-1"></a>    <span class="at">sampleData =</span> sampleData,</span>
-<span id="cb103-4"><a href="modelos-estadísticos.html#cb103-4" tabindex="-1"></a>    <span class="at">designFormula =</span> <span class="sc">~</span> genotype <span class="sc">+</span> treatment</span>
-<span id="cb103-5"><a href="modelos-estadísticos.html#cb103-5" tabindex="-1"></a>)</span>
-<span id="cb103-6"><a href="modelos-estadísticos.html#cb103-6" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">interactive</span>()) shiny<span class="sc">::</span><span class="fu">runApp</span>(app)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modelos-estadísticos.html#cb99-1" tabindex="-1"></a><span class="do">## Usaremos shiny otra ves</span></span>
+<span id="cb99-2"><a href="modelos-estadísticos.html#cb99-2" tabindex="-1"></a>app <span class="ot">&lt;-</span> <span class="fu">ExploreModelMatrix</span>(</span>
+<span id="cb99-3"><a href="modelos-estadísticos.html#cb99-3" tabindex="-1"></a>    <span class="at">sampleData =</span> sampleData,</span>
+<span id="cb99-4"><a href="modelos-estadísticos.html#cb99-4" tabindex="-1"></a>    <span class="at">designFormula =</span> <span class="sc">~</span> genotype <span class="sc">+</span> treatment</span>
+<span id="cb99-5"><a href="modelos-estadísticos.html#cb99-5" tabindex="-1"></a>)</span>
+<span id="cb99-6"><a href="modelos-estadísticos.html#cb99-6" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">interactive</span>()) shiny<span class="sc">::</span><span class="fu">runApp</span>(app)</span></code></pre></div>
 </div>
 <div id="ejemplo-2" class="section level3 hasAnchor" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Ejemplo 2<a href="modelos-estadísticos.html#ejemplo-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -386,37 +386,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="datos-de-srp045638" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Datos de SRP045638<a href="modelos-estadísticos.html#datos-de-srp045638" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos a usar datos de <a href="https://www.ncbi.nlm.nih.gov/sra/?term=SRP045638" class="uri">https://www.ncbi.nlm.nih.gov/sra/?term=SRP045638</a> procesados con <code>recount3</code>. Primero hay que descargar los datos con los comandos que vimos ayer.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modelos-estadísticos.html#cb104-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span>
-<span id="cb104-2"><a href="modelos-estadísticos.html#cb104-2" tabindex="-1"></a></span>
-<span id="cb104-3"><a href="modelos-estadísticos.html#cb104-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">recount3_url =</span> <span class="st">&quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</span>)</span>
-<span id="cb104-4"><a href="modelos-estadísticos.html#cb104-4" tabindex="-1"></a></span>
-<span id="cb104-5"><a href="modelos-estadísticos.html#cb104-5" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
-<pre><code>## 2024-01-30 17:52:53.554161 caching file sra.recount_project.MD.gz.</code></pre>
-<pre><code>## 2024-01-30 17:52:53.633584 caching file gtex.recount_project.MD.gz.</code></pre>
-<pre><code>## 2024-01-30 17:52:53.715359 caching file tcga.recount_project.MD.gz.</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="modelos-estadísticos.html#cb108-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(</span>
-<span id="cb108-2"><a href="modelos-estadísticos.html#cb108-2" tabindex="-1"></a>    <span class="fu">subset</span>(</span>
-<span id="cb108-3"><a href="modelos-estadísticos.html#cb108-3" tabindex="-1"></a>        human_projects,</span>
-<span id="cb108-4"><a href="modelos-estadísticos.html#cb108-4" tabindex="-1"></a>        project <span class="sc">==</span> <span class="st">&quot;SRP045638&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
-<span id="cb108-5"><a href="modelos-estadísticos.html#cb108-5" tabindex="-1"></a>    )</span>
-<span id="cb108-6"><a href="modelos-estadísticos.html#cb108-6" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## 2024-01-30 17:52:56.49338 downloading and reading the metadata.</code></pre>
-<pre><code>## 2024-01-30 17:52:56.54347 caching file sra.sra.SRP045638.MD.gz.</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="modelos-estadísticos.html#cb100-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span>
+<span id="cb100-2"><a href="modelos-estadísticos.html#cb100-2" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="modelos-estadísticos.html#cb100-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">recount3_url =</span> <span class="st">&quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</span>)</span>
+<span id="cb100-4"><a href="modelos-estadísticos.html#cb100-4" tabindex="-1"></a></span>
+<span id="cb100-5"><a href="modelos-estadísticos.html#cb100-5" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
+<pre><code>## 2024-01-31 19:34:05.223513 caching file sra.recount_project.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/sra.recount_project.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-31 19:34:05.558093 caching file gtex.recount_project.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/gtex/metadata/gtex.recount_project.MD.gz&#39;</code></pre>
+<pre><code>## 2024-01-31 19:34:05.979681 caching file tcga.recount_project.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/tcga/metadata/tcga.recount_project.MD.gz&#39;</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="modelos-estadísticos.html#cb107-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(</span>
+<span id="cb107-2"><a href="modelos-estadísticos.html#cb107-2" tabindex="-1"></a>    <span class="fu">subset</span>(</span>
+<span id="cb107-3"><a href="modelos-estadísticos.html#cb107-3" tabindex="-1"></a>        human_projects,</span>
+<span id="cb107-4"><a href="modelos-estadísticos.html#cb107-4" tabindex="-1"></a>        project <span class="sc">==</span> <span class="st">&quot;SRP045638&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
+<span id="cb107-5"><a href="modelos-estadísticos.html#cb107-5" tabindex="-1"></a>    )</span>
+<span id="cb107-6"><a href="modelos-estadísticos.html#cb107-6" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## 2024-01-31 19:34:08.848292 downloading and reading the metadata.</code></pre>
+<pre><code>## 2024-01-31 19:34:08.931945 caching file sra.sra.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.sra.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-30 17:52:56.787662 caching file sra.recount_project.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-31 19:34:09.270492 caching file sra.recount_project.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_project.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-30 17:52:57.013593 caching file sra.recount_qc.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-31 19:34:09.596436 caching file sra.recount_qc.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_qc.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-30 17:52:57.282126 caching file sra.recount_seq_qc.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-31 19:34:09.925055 caching file sra.recount_seq_qc.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_seq_qc.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-30 17:52:57.528939 caching file sra.recount_pred.SRP045638.MD.gz.</code></pre>
+<pre><code>## 2024-01-31 19:34:10.263104 caching file sra.recount_pred.SRP045638.MD.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_pred.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-30 17:52:57.780411 downloading and reading the feature information.</code></pre>
-<pre><code>## 2024-01-30 17:52:57.863584 caching file human.gene_sums.G026.gtf.gz.</code></pre>
-<pre><code>## 2024-01-30 17:52:58.303782 downloading and reading the counts: 66 samples across 63856 features.</code></pre>
-<pre><code>## 2024-01-30 17:52:58.340932 caching file sra.gene_sums.SRP045638.G026.gz.</code></pre>
+<pre><code>## 2024-01-31 19:34:10.562484 downloading and reading the feature information.</code></pre>
+<pre><code>## 2024-01-31 19:34:10.637302 caching file human.gene_sums.G026.gtf.gz.</code></pre>
+<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/annotations/gene_sums/human.gene_sums.G026.gtf.gz&#39;</code></pre>
+<pre><code>## 2024-01-31 19:34:11.356821 downloading and reading the counts: 66 samples across 63856 features.</code></pre>
+<pre><code>## 2024-01-31 19:34:11.43097 caching file sra.gene_sums.SRP045638.G026.gz.</code></pre>
 <pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/gene_sums/38/SRP045638/sra.gene_sums.SRP045638.G026.gz&#39;</code></pre>
-<pre><code>## 2024-01-30 17:52:59.327797 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
+<pre><code>## 2024-01-31 19:34:12.426736 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelos-estadísticos.html#cb126-1" tabindex="-1"></a><span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene_SRP045638)</span></code></pre></div>
 <p>Una vez descargados y con los números de lecturas podemos usar <code>expand_sra_attributes()</code>. Sin embargo, tenemos un problema con estos datos.</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="modelos-estadísticos.html#cb127-1" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
