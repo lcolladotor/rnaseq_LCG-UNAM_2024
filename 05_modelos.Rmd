@@ -84,8 +84,6 @@ Vamos a usar datos de https://www.ncbi.nlm.nih.gov/sra/?term=SRP045638 procesado
 ```{r download_SRP045638}
 library("recount3")
 
-options(recount3_url = "https://recount-opendata.s3.amazonaws.com/recount3/release")
-
 human_projects <- available_projects()
 
 rse_gene_SRP045638 <- create_rse(
