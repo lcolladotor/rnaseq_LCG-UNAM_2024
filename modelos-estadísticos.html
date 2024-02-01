@@ -388,58 +388,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Vamos a usar datos de <a href="https://www.ncbi.nlm.nih.gov/sra/?term=SRP045638" class="uri">https://www.ncbi.nlm.nih.gov/sra/?term=SRP045638</a> procesados con <code>recount3</code>. Primero hay que descargar los datos con los comandos que vimos ayer.</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="modelos-estadísticos.html#cb100-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span>
 <span id="cb100-2"><a href="modelos-estadísticos.html#cb100-2" tabindex="-1"></a></span>
-<span id="cb100-3"><a href="modelos-estadísticos.html#cb100-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">recount3_url =</span> <span class="st">&quot;https://recount-opendata.s3.amazonaws.com/recount3/release&quot;</span>)</span>
-<span id="cb100-4"><a href="modelos-estadísticos.html#cb100-4" tabindex="-1"></a></span>
-<span id="cb100-5"><a href="modelos-estadísticos.html#cb100-5" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
-<pre><code>## 2024-01-31 19:35:29.877146 caching file sra.recount_project.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/sra.recount_project.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:30.104818 caching file gtex.recount_project.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/gtex/metadata/gtex.recount_project.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:30.349397 caching file tcga.recount_project.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/tcga/metadata/tcga.recount_project.MD.gz&#39;</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="modelos-estadísticos.html#cb107-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(</span>
-<span id="cb107-2"><a href="modelos-estadísticos.html#cb107-2" tabindex="-1"></a>    <span class="fu">subset</span>(</span>
-<span id="cb107-3"><a href="modelos-estadísticos.html#cb107-3" tabindex="-1"></a>        human_projects,</span>
-<span id="cb107-4"><a href="modelos-estadísticos.html#cb107-4" tabindex="-1"></a>        project <span class="sc">==</span> <span class="st">&quot;SRP045638&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
-<span id="cb107-5"><a href="modelos-estadísticos.html#cb107-5" tabindex="-1"></a>    )</span>
-<span id="cb107-6"><a href="modelos-estadísticos.html#cb107-6" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## 2024-01-31 19:35:32.289749 downloading and reading the metadata.</code></pre>
-<pre><code>## 2024-01-31 19:35:32.336182 caching file sra.sra.SRP045638.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.sra.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:32.560432 caching file sra.recount_project.SRP045638.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_project.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:32.999983 caching file sra.recount_qc.SRP045638.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_qc.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:33.2291 caching file sra.recount_seq_qc.SRP045638.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_seq_qc.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:33.459631 caching file sra.recount_pred.SRP045638.MD.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/metadata/38/SRP045638/sra.recount_pred.SRP045638.MD.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:33.673128 downloading and reading the feature information.</code></pre>
-<pre><code>## 2024-01-31 19:35:33.712948 caching file human.gene_sums.G026.gtf.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/annotations/gene_sums/human.gene_sums.G026.gtf.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:34.471444 downloading and reading the counts: 66 samples across 63856 features.</code></pre>
-<pre><code>## 2024-01-31 19:35:34.506299 caching file sra.gene_sums.SRP045638.G026.gz.</code></pre>
-<pre><code>## adding rname &#39;https://recount-opendata.s3.amazonaws.com/recount3/release/human/data_sources/sra/gene_sums/38/SRP045638/sra.gene_sums.SRP045638.G026.gz&#39;</code></pre>
-<pre><code>## 2024-01-31 19:35:35.179172 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelos-estadísticos.html#cb126-1" tabindex="-1"></a><span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene_SRP045638)</span></code></pre></div>
+<span id="cb100-3"><a href="modelos-estadísticos.html#cb100-3" tabindex="-1"></a>human_projects <span class="ot">&lt;-</span> <span class="fu">available_projects</span>()</span></code></pre></div>
+<pre><code>## 2024-02-01 16:51:33.026267 caching file sra.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-02-01 16:51:33.318228 caching file gtex.recount_project.MD.gz.</code></pre>
+<pre><code>## 2024-02-01 16:51:33.621711 caching file tcga.recount_project.MD.gz.</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modelos-estadísticos.html#cb104-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(</span>
+<span id="cb104-2"><a href="modelos-estadísticos.html#cb104-2" tabindex="-1"></a>    <span class="fu">subset</span>(</span>
+<span id="cb104-3"><a href="modelos-estadísticos.html#cb104-3" tabindex="-1"></a>        human_projects,</span>
+<span id="cb104-4"><a href="modelos-estadísticos.html#cb104-4" tabindex="-1"></a>        project <span class="sc">==</span> <span class="st">&quot;SRP045638&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span></span>
+<span id="cb104-5"><a href="modelos-estadísticos.html#cb104-5" tabindex="-1"></a>    )</span>
+<span id="cb104-6"><a href="modelos-estadísticos.html#cb104-6" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## 2024-02-01 16:51:35.441746 downloading and reading the metadata.</code></pre>
+<pre><code>## 2024-02-01 16:51:35.858279 caching file sra.sra.SRP045638.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;http://duffel.rail.bio/recount3/human/data_sources/sra/metadata/38/SRP045638/sra.sra.SRP045638.MD.gz&#39;</code></pre>
+<pre><code>## 2024-02-01 16:51:36.85781 caching file sra.recount_project.SRP045638.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;http://duffel.rail.bio/recount3/human/data_sources/sra/metadata/38/SRP045638/sra.recount_project.SRP045638.MD.gz&#39;</code></pre>
+<pre><code>## 2024-02-01 16:51:37.905145 caching file sra.recount_qc.SRP045638.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;http://duffel.rail.bio/recount3/human/data_sources/sra/metadata/38/SRP045638/sra.recount_qc.SRP045638.MD.gz&#39;</code></pre>
+<pre><code>## 2024-02-01 16:51:38.985089 caching file sra.recount_seq_qc.SRP045638.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;http://duffel.rail.bio/recount3/human/data_sources/sra/metadata/38/SRP045638/sra.recount_seq_qc.SRP045638.MD.gz&#39;</code></pre>
+<pre><code>## 2024-02-01 16:51:40.07954 caching file sra.recount_pred.SRP045638.MD.gz.</code></pre>
+<pre><code>## adding rname &#39;http://duffel.rail.bio/recount3/human/data_sources/sra/metadata/38/SRP045638/sra.recount_pred.SRP045638.MD.gz&#39;</code></pre>
+<pre><code>## 2024-02-01 16:51:40.778706 downloading and reading the feature information.</code></pre>
+<pre><code>## 2024-02-01 16:51:41.026956 caching file human.gene_sums.G026.gtf.gz.</code></pre>
+<pre><code>## 2024-02-01 16:51:41.62124 downloading and reading the counts: 66 samples across 63856 features.</code></pre>
+<pre><code>## 2024-02-01 16:51:42.026714 caching file sra.gene_sums.SRP045638.G026.gz.</code></pre>
+<pre><code>## adding rname &#39;http://duffel.rail.bio/recount3/human/data_sources/sra/gene_sums/38/SRP045638/sra.gene_sums.SRP045638.G026.gz&#39;</code></pre>
+<pre><code>## 2024-02-01 16:51:43.289606 constructing the RangedSummarizedExperiment (rse) object.</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="modelos-estadísticos.html#cb122-1" tabindex="-1"></a><span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene_SRP045638)</span></code></pre></div>
 <p>Una vez descargados y con los números de lecturas podemos usar <code>expand_sra_attributes()</code>. Sin embargo, tenemos un problema con estos datos.</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="modelos-estadísticos.html#cb127-1" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="modelos-estadísticos.html#cb123-1" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;age;;67.78|biomaterial_provider;;LIBD|BioSampleModel;;Human|dev_stage;;Fetal|disease;;Control|Fraction;;total|isolate;;DLPFC|race;;AA|RIN;;8.3|sex;;female|tissue;;DLPFC&quot;
 ## [2] &quot;age;;40.42|biomaterial_provider;;LIBD|BioSampleModel;;Human|disease;;Control|Fraction;;total|isolate;;DLPFC|race;;AA|RIN;;8.4|sex;;male|tissue;;DLPFC&quot;                   
 ## [3] &quot;age;;41.58|biomaterial_provider;;LIBD|BioSampleModel;;Human|disease;;control|Fraction;;total|isolate;;R2869|race;;AA|RIN;;8.7|sex;;male|tissue;;DLPFC&quot;</code></pre>
 <p>Vamos a intentar resolverlo eliminando información que está presente solo en ciertas muestras.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="modelos-estadísticos.html#cb129-1" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;dev_stage;;Fetal</span><span class="sc">\\</span><span class="st">|&quot;</span>, <span class="st">&quot;&quot;</span>, rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes)</span>
-<span id="cb129-2"><a href="modelos-estadísticos.html#cb129-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelos-estadísticos.html#cb125-1" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;dev_stage;;Fetal</span><span class="sc">\\</span><span class="st">|&quot;</span>, <span class="st">&quot;&quot;</span>, rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes)</span>
+<span id="cb125-2"><a href="modelos-estadísticos.html#cb125-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra.sample_attributes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;age;;67.78|biomaterial_provider;;LIBD|BioSampleModel;;Human|disease;;Control|Fraction;;total|isolate;;DLPFC|race;;AA|RIN;;8.3|sex;;female|tissue;;DLPFC&quot;
 ## [2] &quot;age;;40.42|biomaterial_provider;;LIBD|BioSampleModel;;Human|disease;;Control|Fraction;;total|isolate;;DLPFC|race;;AA|RIN;;8.4|sex;;male|tissue;;DLPFC&quot;  
 ## [3] &quot;age;;41.58|biomaterial_provider;;LIBD|BioSampleModel;;Human|disease;;control|Fraction;;total|isolate;;R2869|race;;AA|RIN;;8.7|sex;;male|tissue;;DLPFC&quot;</code></pre>
 <p>Ahora si podemos continuar con el mismo código de ayer.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="modelos-estadísticos.html#cb131-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> <span class="fu">expand_sra_attributes</span>(rse_gene_SRP045638)</span>
-<span id="cb131-2"><a href="modelos-estadísticos.html#cb131-2" tabindex="-1"></a></span>
-<span id="cb131-3"><a href="modelos-estadísticos.html#cb131-3" tabindex="-1"></a><span class="fu">colData</span>(rse_gene_SRP045638)[</span>
-<span id="cb131-4"><a href="modelos-estadísticos.html#cb131-4" tabindex="-1"></a>    ,</span>
-<span id="cb131-5"><a href="modelos-estadísticos.html#cb131-5" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene_SRP045638)))</span>
-<span id="cb131-6"><a href="modelos-estadísticos.html#cb131-6" tabindex="-1"></a>]</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="modelos-estadísticos.html#cb127-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> <span class="fu">expand_sra_attributes</span>(rse_gene_SRP045638)</span>
+<span id="cb127-2"><a href="modelos-estadísticos.html#cb127-2" tabindex="-1"></a></span>
+<span id="cb127-3"><a href="modelos-estadísticos.html#cb127-3" tabindex="-1"></a><span class="fu">colData</span>(rse_gene_SRP045638)[</span>
+<span id="cb127-4"><a href="modelos-estadísticos.html#cb127-4" tabindex="-1"></a>    ,</span>
+<span id="cb127-5"><a href="modelos-estadísticos.html#cb127-5" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene_SRP045638)))</span>
+<span id="cb127-6"><a href="modelos-estadísticos.html#cb127-6" tabindex="-1"></a>]</span></code></pre></div>
 <pre><code>## DataFrame with 66 rows and 10 columns
 ##            sra_attribute.age sra_attribute.biomaterial_provider sra_attribute.BioSampleModel sra_attribute.disease
 ##                  &lt;character&gt;                        &lt;character&gt;                  &lt;character&gt;           &lt;character&gt;
@@ -481,17 +475,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## SRR2071374                DLPFC
 ## SRR2071375                DLPFC</code></pre>
 <p>Como ahora si vamos a usar esta información para un modelo estadístico, será importante que tengamos en el formato correcto de R a la información que vamos a usar.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="modelos-estadísticos.html#cb133-1" tabindex="-1"></a><span class="do">## Pasar de character a numeric o factor</span></span>
-<span id="cb133-2"><a href="modelos-estadísticos.html#cb133-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.age)</span>
-<span id="cb133-3"><a href="modelos-estadísticos.html#cb133-3" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.disease <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">tolower</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.disease))</span>
-<span id="cb133-4"><a href="modelos-estadísticos.html#cb133-4" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.RIN <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.RIN)</span>
-<span id="cb133-5"><a href="modelos-estadísticos.html#cb133-5" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.sex)</span>
-<span id="cb133-6"><a href="modelos-estadísticos.html#cb133-6" tabindex="-1"></a></span>
-<span id="cb133-7"><a href="modelos-estadísticos.html#cb133-7" tabindex="-1"></a><span class="do">## Resumen de las variables de interés</span></span>
-<span id="cb133-8"><a href="modelos-estadísticos.html#cb133-8" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.data.frame</span>(<span class="fu">colData</span>(rse_gene_SRP045638)[</span>
-<span id="cb133-9"><a href="modelos-estadísticos.html#cb133-9" tabindex="-1"></a>    ,</span>
-<span id="cb133-10"><a href="modelos-estadísticos.html#cb133-10" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute.[age|disease|RIN|sex]&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene_SRP045638)))</span>
-<span id="cb133-11"><a href="modelos-estadísticos.html#cb133-11" tabindex="-1"></a>]))</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="modelos-estadísticos.html#cb129-1" tabindex="-1"></a><span class="do">## Pasar de character a numeric o factor</span></span>
+<span id="cb129-2"><a href="modelos-estadísticos.html#cb129-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.age)</span>
+<span id="cb129-3"><a href="modelos-estadísticos.html#cb129-3" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.disease <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">tolower</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.disease))</span>
+<span id="cb129-4"><a href="modelos-estadísticos.html#cb129-4" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.RIN <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.RIN)</span>
+<span id="cb129-5"><a href="modelos-estadísticos.html#cb129-5" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>sra_attribute.sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.sex)</span>
+<span id="cb129-6"><a href="modelos-estadísticos.html#cb129-6" tabindex="-1"></a></span>
+<span id="cb129-7"><a href="modelos-estadísticos.html#cb129-7" tabindex="-1"></a><span class="do">## Resumen de las variables de interés</span></span>
+<span id="cb129-8"><a href="modelos-estadísticos.html#cb129-8" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.data.frame</span>(<span class="fu">colData</span>(rse_gene_SRP045638)[</span>
+<span id="cb129-9"><a href="modelos-estadísticos.html#cb129-9" tabindex="-1"></a>    ,</span>
+<span id="cb129-10"><a href="modelos-estadísticos.html#cb129-10" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute.[age|disease|RIN|sex]&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene_SRP045638)))</span>
+<span id="cb129-11"><a href="modelos-estadísticos.html#cb129-11" tabindex="-1"></a>]))</span></code></pre></div>
 <pre><code>##  sra_attribute.age sra_attribute.disease sra_attribute.isolate sra_attribute.RIN sra_attribute.sex
 ##  Min.   :-0.4986   control:66            Length:66             Min.   :5.30      female:22        
 ##  1st Qu.: 0.3424                         Class :character      1st Qu.:8.00      male  :44        
@@ -501,21 +495,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Max.   :73.9100                                               Max.   :9.60</code></pre>
 <p><a href="https://r4ds.had.co.nz/explore-intro.html"><img src="images/data-science-explore.png" width="800px" /></a></p>
 <p>Ahora crearemos un par de variables para que las podamos usar en nuestro análisis.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="modelos-estadísticos.html#cb135-1" tabindex="-1"></a><span class="do">## Encontraremos diferencias entre muestra prenatalas vs postnatales</span></span>
-<span id="cb135-2"><a href="modelos-estadísticos.html#cb135-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>prenatal <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.age <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">&quot;prenatal&quot;</span>, <span class="st">&quot;postnatal&quot;</span>))</span>
-<span id="cb135-3"><a href="modelos-estadísticos.html#cb135-3" tabindex="-1"></a><span class="fu">table</span>(rse_gene_SRP045638<span class="sc">$</span>prenatal)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="modelos-estadísticos.html#cb131-1" tabindex="-1"></a><span class="do">## Encontraremos diferencias entre muestra prenatalas vs postnatales</span></span>
+<span id="cb131-2"><a href="modelos-estadísticos.html#cb131-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>prenatal <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(rse_gene_SRP045638<span class="sc">$</span>sra_attribute.age <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">&quot;prenatal&quot;</span>, <span class="st">&quot;postnatal&quot;</span>))</span>
+<span id="cb131-3"><a href="modelos-estadísticos.html#cb131-3" tabindex="-1"></a><span class="fu">table</span>(rse_gene_SRP045638<span class="sc">$</span>prenatal)</span></code></pre></div>
 <pre><code>## 
 ## postnatal  prenatal 
 ##        56        10</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="modelos-estadísticos.html#cb137-1" tabindex="-1"></a><span class="do">## http://rna.recount.bio/docs/quality-check-fields.html</span></span>
-<span id="cb137-2"><a href="modelos-estadísticos.html#cb137-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop <span class="ot">&lt;-</span> rse_gene_SRP045638<span class="sc">$</span>recount_qc.gene_fc_count_all.assigned <span class="sc">/</span> rse_gene_SRP045638<span class="sc">$</span>recount_qc.gene_fc_count_all.total</span>
-<span id="cb137-3"><a href="modelos-estadísticos.html#cb137-3" tabindex="-1"></a><span class="fu">summary</span>(rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="modelos-estadísticos.html#cb133-1" tabindex="-1"></a><span class="do">## http://rna.recount.bio/docs/quality-check-fields.html</span></span>
+<span id="cb133-2"><a href="modelos-estadísticos.html#cb133-2" tabindex="-1"></a>rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop <span class="ot">&lt;-</span> rse_gene_SRP045638<span class="sc">$</span>recount_qc.gene_fc_count_all.assigned <span class="sc">/</span> rse_gene_SRP045638<span class="sc">$</span>recount_qc.gene_fc_count_all.total</span>
+<span id="cb133-3"><a href="modelos-estadísticos.html#cb133-3" tabindex="-1"></a><span class="fu">summary</span>(rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.1942  0.7004  0.7591  0.7170  0.7991  0.8493</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="modelos-estadísticos.html#cb139-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">colData</span>(rse_gene_SRP045638), <span class="fu">plot</span>(assigned_gene_prop, sra_attribute.RIN))</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="modelos-estadísticos.html#cb135-1" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">colData</span>(rse_gene_SRP045638), <span class="fu">plot</span>(assigned_gene_prop, sra_attribute.RIN))</span></code></pre></div>
 <p><img src="_main_files/figure-html/new_variables-1.png" width="672" /></p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="modelos-estadísticos.html#cb140-1" tabindex="-1"></a><span class="do">## Hm... veamos si hay una diferencia entre los grupos</span></span>
-<span id="cb140-2"><a href="modelos-estadísticos.html#cb140-2" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">colData</span>(rse_gene_SRP045638), <span class="fu">tapply</span>(assigned_gene_prop, prenatal, summary))</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="modelos-estadísticos.html#cb136-1" tabindex="-1"></a><span class="do">## Hm... veamos si hay una diferencia entre los grupos</span></span>
+<span id="cb136-2"><a href="modelos-estadísticos.html#cb136-2" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">colData</span>(rse_gene_SRP045638), <span class="fu">tapply</span>(assigned_gene_prop, prenatal, summary))</span></code></pre></div>
 <pre><code>## $postnatal
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.1942  0.7072  0.7719  0.7179  0.8017  0.8493 
@@ -524,39 +518,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.6856  0.7004  0.7088  0.7116  0.7259  0.7347</code></pre>
 <p>A continuación podemos eliminar algunas muestras que consideremos de baja calidad y genes con niveles de expresión muy bajos.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="modelos-estadísticos.html#cb142-1" tabindex="-1"></a><span class="do">## Guardemos nuestro objeto entero por si luego cambiamos de opinión</span></span>
-<span id="cb142-2"><a href="modelos-estadísticos.html#cb142-2" tabindex="-1"></a>rse_gene_SRP045638_unfiltered <span class="ot">&lt;-</span> rse_gene_SRP045638</span>
-<span id="cb142-3"><a href="modelos-estadísticos.html#cb142-3" tabindex="-1"></a></span>
-<span id="cb142-4"><a href="modelos-estadísticos.html#cb142-4" tabindex="-1"></a><span class="do">## Eliminemos a muestras malas</span></span>
-<span id="cb142-5"><a href="modelos-estadísticos.html#cb142-5" tabindex="-1"></a><span class="fu">hist</span>(rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="modelos-estadísticos.html#cb138-1" tabindex="-1"></a><span class="do">## Guardemos nuestro objeto entero por si luego cambiamos de opinión</span></span>
+<span id="cb138-2"><a href="modelos-estadísticos.html#cb138-2" tabindex="-1"></a>rse_gene_SRP045638_unfiltered <span class="ot">&lt;-</span> rse_gene_SRP045638</span>
+<span id="cb138-3"><a href="modelos-estadísticos.html#cb138-3" tabindex="-1"></a></span>
+<span id="cb138-4"><a href="modelos-estadísticos.html#cb138-4" tabindex="-1"></a><span class="do">## Eliminemos a muestras malas</span></span>
+<span id="cb138-5"><a href="modelos-estadísticos.html#cb138-5" tabindex="-1"></a><span class="fu">hist</span>(rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop)</span></code></pre></div>
 <p><img src="_main_files/figure-html/filter_rse-1.png" width="672" /></p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelos-estadísticos.html#cb143-1" tabindex="-1"></a><span class="fu">table</span>(rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop <span class="sc">&lt;</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="modelos-estadísticos.html#cb139-1" tabindex="-1"></a><span class="fu">table</span>(rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop <span class="sc">&lt;</span> <span class="fl">0.3</span>)</span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
 ##    65     1</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelos-estadísticos.html#cb145-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> rse_gene_SRP045638[, rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop <span class="sc">&gt;</span> <span class="fl">0.3</span>]</span>
-<span id="cb145-2"><a href="modelos-estadísticos.html#cb145-2" tabindex="-1"></a></span>
-<span id="cb145-3"><a href="modelos-estadísticos.html#cb145-3" tabindex="-1"></a><span class="do">## Calculemos los niveles medios de expresión de los genes en nuestras</span></span>
-<span id="cb145-4"><a href="modelos-estadísticos.html#cb145-4" tabindex="-1"></a><span class="do">## muestras.</span></span>
-<span id="cb145-5"><a href="modelos-estadísticos.html#cb145-5" tabindex="-1"></a><span class="do">## Ojo: en un análisis real probablemente haríamos esto con los RPKMs o CPMs</span></span>
-<span id="cb145-6"><a href="modelos-estadísticos.html#cb145-6" tabindex="-1"></a><span class="do">## en vez de las cuentas.</span></span>
-<span id="cb145-7"><a href="modelos-estadísticos.html#cb145-7" tabindex="-1"></a><span class="do">## En realidad usariamos:</span></span>
-<span id="cb145-8"><a href="modelos-estadísticos.html#cb145-8" tabindex="-1"></a><span class="co"># edgeR::filterByExpr() https://bioconductor.org/packages/edgeR/ https://rdrr.io/bioc/edgeR/man/filterByExpr.html</span></span>
-<span id="cb145-9"><a href="modelos-estadísticos.html#cb145-9" tabindex="-1"></a><span class="co"># genefilter::genefilter() https://bioconductor.org/packages/genefilter/ https://rdrr.io/bioc/genefilter/man/genefilter.html</span></span>
-<span id="cb145-10"><a href="modelos-estadísticos.html#cb145-10" tabindex="-1"></a><span class="co"># jaffelab::expression_cutoff() http://research.libd.org/jaffelab/reference/expression_cutoff.html</span></span>
-<span id="cb145-11"><a href="modelos-estadísticos.html#cb145-11" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb145-12"><a href="modelos-estadísticos.html#cb145-12" tabindex="-1"></a>gene_means <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(<span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>))</span>
-<span id="cb145-13"><a href="modelos-estadísticos.html#cb145-13" tabindex="-1"></a><span class="fu">summary</span>(gene_means)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="modelos-estadísticos.html#cb141-1" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> rse_gene_SRP045638[, rse_gene_SRP045638<span class="sc">$</span>assigned_gene_prop <span class="sc">&gt;</span> <span class="fl">0.3</span>]</span>
+<span id="cb141-2"><a href="modelos-estadísticos.html#cb141-2" tabindex="-1"></a></span>
+<span id="cb141-3"><a href="modelos-estadísticos.html#cb141-3" tabindex="-1"></a><span class="do">## Calculemos los niveles medios de expresión de los genes en nuestras</span></span>
+<span id="cb141-4"><a href="modelos-estadísticos.html#cb141-4" tabindex="-1"></a><span class="do">## muestras.</span></span>
+<span id="cb141-5"><a href="modelos-estadísticos.html#cb141-5" tabindex="-1"></a><span class="do">## Ojo: en un análisis real probablemente haríamos esto con los RPKMs o CPMs</span></span>
+<span id="cb141-6"><a href="modelos-estadísticos.html#cb141-6" tabindex="-1"></a><span class="do">## en vez de las cuentas.</span></span>
+<span id="cb141-7"><a href="modelos-estadísticos.html#cb141-7" tabindex="-1"></a><span class="do">## En realidad usariamos:</span></span>
+<span id="cb141-8"><a href="modelos-estadísticos.html#cb141-8" tabindex="-1"></a><span class="co"># edgeR::filterByExpr() https://bioconductor.org/packages/edgeR/ https://rdrr.io/bioc/edgeR/man/filterByExpr.html</span></span>
+<span id="cb141-9"><a href="modelos-estadísticos.html#cb141-9" tabindex="-1"></a><span class="co"># genefilter::genefilter() https://bioconductor.org/packages/genefilter/ https://rdrr.io/bioc/genefilter/man/genefilter.html</span></span>
+<span id="cb141-10"><a href="modelos-estadísticos.html#cb141-10" tabindex="-1"></a><span class="co"># jaffelab::expression_cutoff() http://research.libd.org/jaffelab/reference/expression_cutoff.html</span></span>
+<span id="cb141-11"><a href="modelos-estadísticos.html#cb141-11" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb141-12"><a href="modelos-estadísticos.html#cb141-12" tabindex="-1"></a>gene_means <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(<span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>))</span>
+<span id="cb141-13"><a href="modelos-estadísticos.html#cb141-13" tabindex="-1"></a><span class="fu">summary</span>(gene_means)</span></code></pre></div>
 <pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
 ##       0.0       0.1       2.5     815.2     170.2 1362047.9</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="modelos-estadísticos.html#cb147-1" tabindex="-1"></a><span class="do">## Eliminamos genes</span></span>
-<span id="cb147-2"><a href="modelos-estadísticos.html#cb147-2" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> rse_gene_SRP045638[gene_means <span class="sc">&gt;</span> <span class="fl">0.1</span>, ]</span>
-<span id="cb147-3"><a href="modelos-estadísticos.html#cb147-3" tabindex="-1"></a></span>
-<span id="cb147-4"><a href="modelos-estadísticos.html#cb147-4" tabindex="-1"></a><span class="do">## Dimensiones finales</span></span>
-<span id="cb147-5"><a href="modelos-estadísticos.html#cb147-5" tabindex="-1"></a><span class="fu">dim</span>(rse_gene_SRP045638)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelos-estadísticos.html#cb143-1" tabindex="-1"></a><span class="do">## Eliminamos genes</span></span>
+<span id="cb143-2"><a href="modelos-estadísticos.html#cb143-2" tabindex="-1"></a>rse_gene_SRP045638 <span class="ot">&lt;-</span> rse_gene_SRP045638[gene_means <span class="sc">&gt;</span> <span class="fl">0.1</span>, ]</span>
+<span id="cb143-3"><a href="modelos-estadísticos.html#cb143-3" tabindex="-1"></a></span>
+<span id="cb143-4"><a href="modelos-estadísticos.html#cb143-4" tabindex="-1"></a><span class="do">## Dimensiones finales</span></span>
+<span id="cb143-5"><a href="modelos-estadísticos.html#cb143-5" tabindex="-1"></a><span class="fu">dim</span>(rse_gene_SRP045638)</span></code></pre></div>
 <pre><code>## [1] 46929    65</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelos-estadísticos.html#cb149-1" tabindex="-1"></a><span class="do">## Porcentaje de genes que retuvimos</span></span>
-<span id="cb149-2"><a href="modelos-estadísticos.html#cb149-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">nrow</span>(rse_gene_SRP045638) <span class="sc">/</span> <span class="fu">nrow</span>(rse_gene_SRP045638_unfiltered) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelos-estadísticos.html#cb145-1" tabindex="-1"></a><span class="do">## Porcentaje de genes que retuvimos</span></span>
+<span id="cb145-2"><a href="modelos-estadísticos.html#cb145-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">nrow</span>(rse_gene_SRP045638) <span class="sc">/</span> <span class="fu">nrow</span>(rse_gene_SRP045638_unfiltered) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 73.49</code></pre>
 <p>Ahora ya estamos listos para continuar con el análisis de expresión diferencial, bueno, casi.</p>
 </div>
@@ -566,48 +560,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Lean <em>A hypothetical scenario</em> en uno de los artículos sobre <code>edgeR</code> <a href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25#Sec2" class="uri">https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-3-r25#Sec2</a> para entender un poco sobre el concepto de <em>composition bias</em>.</li>
 <li>Sigue siendo relevante con datos de scRNA-seq como pueden ver en <a href="https://bioconductor.org/books/3.18/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis" class="uri">https://bioconductor.org/books/3.18/OSCA.multisample/multi-sample-comparisons.html#performing-the-de-analysis</a>. Ahí descubren una serie de pasos para usar métodos desarrollados para bulk RNA-seq y como se pueden usar en scRNA-seq.</li>
 </ul>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelos-estadísticos.html#cb151-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;edgeR&quot;</span>) <span class="co"># BiocManager::install(&quot;edgeR&quot;, update = FALSE)</span></span>
-<span id="cb151-2"><a href="modelos-estadísticos.html#cb151-2" tabindex="-1"></a>dge <span class="ot">&lt;-</span> <span class="fu">DGEList</span>(</span>
-<span id="cb151-3"><a href="modelos-estadísticos.html#cb151-3" tabindex="-1"></a>    <span class="at">counts =</span> <span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>),</span>
-<span id="cb151-4"><a href="modelos-estadísticos.html#cb151-4" tabindex="-1"></a>    <span class="at">genes =</span> <span class="fu">rowData</span>(rse_gene_SRP045638)</span>
-<span id="cb151-5"><a href="modelos-estadísticos.html#cb151-5" tabindex="-1"></a>)</span>
-<span id="cb151-6"><a href="modelos-estadísticos.html#cb151-6" tabindex="-1"></a>dge <span class="ot">&lt;-</span> <span class="fu">calcNormFactors</span>(dge)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="modelos-estadísticos.html#cb147-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;edgeR&quot;</span>) <span class="co"># BiocManager::install(&quot;edgeR&quot;, update = FALSE)</span></span>
+<span id="cb147-2"><a href="modelos-estadísticos.html#cb147-2" tabindex="-1"></a>dge <span class="ot">&lt;-</span> <span class="fu">DGEList</span>(</span>
+<span id="cb147-3"><a href="modelos-estadísticos.html#cb147-3" tabindex="-1"></a>    <span class="at">counts =</span> <span class="fu">assay</span>(rse_gene_SRP045638, <span class="st">&quot;counts&quot;</span>),</span>
+<span id="cb147-4"><a href="modelos-estadísticos.html#cb147-4" tabindex="-1"></a>    <span class="at">genes =</span> <span class="fu">rowData</span>(rse_gene_SRP045638)</span>
+<span id="cb147-5"><a href="modelos-estadísticos.html#cb147-5" tabindex="-1"></a>)</span>
+<span id="cb147-6"><a href="modelos-estadísticos.html#cb147-6" tabindex="-1"></a>dge <span class="ot">&lt;-</span> <span class="fu">calcNormFactors</span>(dge)</span></code></pre></div>
 </div>
 <div id="expresión-diferencial" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Expresión diferencial<a href="modelos-estadísticos.html#expresión-diferencial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Primero que nada, definamos nuestro modelo estadístico. Típicamente, exploraríamos más los datos para revisar que no haya otros problemas con las muestras y para explorar la relación entre nuestras variables.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="modelos-estadísticos.html#cb152-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb152-2"><a href="modelos-estadísticos.html#cb152-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">as.data.frame</span>(<span class="fu">colData</span>(rse_gene_SRP045638)), <span class="fu">aes</span>(<span class="at">y =</span> assigned_gene_prop, <span class="at">x =</span> prenatal)) <span class="sc">+</span></span>
-<span id="cb152-3"><a href="modelos-estadísticos.html#cb152-3" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb152-4"><a href="modelos-estadísticos.html#cb152-4" tabindex="-1"></a>    <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb152-5"><a href="modelos-estadísticos.html#cb152-5" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Assigned Gene Prop&quot;</span>) <span class="sc">+</span></span>
-<span id="cb152-6"><a href="modelos-estadísticos.html#cb152-6" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Age Group&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelos-estadísticos.html#cb148-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb148-2"><a href="modelos-estadísticos.html#cb148-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">as.data.frame</span>(<span class="fu">colData</span>(rse_gene_SRP045638)), <span class="fu">aes</span>(<span class="at">y =</span> assigned_gene_prop, <span class="at">x =</span> prenatal)) <span class="sc">+</span></span>
+<span id="cb148-3"><a href="modelos-estadísticos.html#cb148-3" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb148-4"><a href="modelos-estadísticos.html#cb148-4" tabindex="-1"></a>    <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb148-5"><a href="modelos-estadísticos.html#cb148-5" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Assigned Gene Prop&quot;</span>) <span class="sc">+</span></span>
+<span id="cb148-6"><a href="modelos-estadísticos.html#cb148-6" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Age Group&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/explore_gene_prop_by_age-1.png" width="672" />
 Por ejemplo, usando el paquete de <a href="https://bioconductor.org/packages/variancePartition"><code>variancePartition</code></a> y <a href="https://bioconductor.org/packages/scater"><code>scater</code></a> entre otros tal como exploramos en el siguiente video del club de R de LIBD (<em><a href="https://docs.google.com/document/d/1hil3zwPN6BW6HlwldLbM1FdlLIBWKFNXRUqJJEK_-eY/edit">notes in English</a></em>)/</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OdNU5LUOHng" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 <p>Por ahora continuaremos con el siguiente modelo estadístico.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelos-estadísticos.html#cb153-1" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> prenatal <span class="sc">+</span> sra_attribute.RIN <span class="sc">+</span> sra_attribute.sex <span class="sc">+</span> assigned_gene_prop,</span>
-<span id="cb153-2"><a href="modelos-estadísticos.html#cb153-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">colData</span>(rse_gene_SRP045638)</span>
-<span id="cb153-3"><a href="modelos-estadísticos.html#cb153-3" tabindex="-1"></a>)</span>
-<span id="cb153-4"><a href="modelos-estadísticos.html#cb153-4" tabindex="-1"></a><span class="fu">colnames</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelos-estadísticos.html#cb149-1" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> prenatal <span class="sc">+</span> sra_attribute.RIN <span class="sc">+</span> sra_attribute.sex <span class="sc">+</span> assigned_gene_prop,</span>
+<span id="cb149-2"><a href="modelos-estadísticos.html#cb149-2" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">colData</span>(rse_gene_SRP045638)</span>
+<span id="cb149-3"><a href="modelos-estadísticos.html#cb149-3" tabindex="-1"></a>)</span>
+<span id="cb149-4"><a href="modelos-estadísticos.html#cb149-4" tabindex="-1"></a><span class="fu">colnames</span>(mod)</span></code></pre></div>
 <pre><code>## [1] &quot;(Intercept)&quot;           &quot;prenatalprenatal&quot;      &quot;sra_attribute.RIN&quot;     &quot;sra_attribute.sexmale&quot;
 ## [5] &quot;assigned_gene_prop&quot;</code></pre>
 <p>Ya teniendo el modelo estadístico, podemos usar <code>limma</code> para realizar el análisis de expresión diferencial como tal.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="modelos-estadísticos.html#cb155-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;limma&quot;</span>)</span>
-<span id="cb155-2"><a href="modelos-estadísticos.html#cb155-2" tabindex="-1"></a>vGene <span class="ot">&lt;-</span> <span class="fu">voom</span>(dge, mod, <span class="at">plot =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelos-estadísticos.html#cb151-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;limma&quot;</span>)</span>
+<span id="cb151-2"><a href="modelos-estadísticos.html#cb151-2" tabindex="-1"></a>vGene <span class="ot">&lt;-</span> <span class="fu">voom</span>(dge, mod, <span class="at">plot =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/run_limma-1.png" width="672" /></p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelos-estadísticos.html#cb156-1" tabindex="-1"></a>eb_results <span class="ot">&lt;-</span> <span class="fu">eBayes</span>(<span class="fu">lmFit</span>(vGene))</span>
-<span id="cb156-2"><a href="modelos-estadísticos.html#cb156-2" tabindex="-1"></a></span>
-<span id="cb156-3"><a href="modelos-estadísticos.html#cb156-3" tabindex="-1"></a>de_results <span class="ot">&lt;-</span> <span class="fu">topTable</span>(</span>
-<span id="cb156-4"><a href="modelos-estadísticos.html#cb156-4" tabindex="-1"></a>    eb_results,</span>
-<span id="cb156-5"><a href="modelos-estadísticos.html#cb156-5" tabindex="-1"></a>    <span class="at">coef =</span> <span class="dv">2</span>,</span>
-<span id="cb156-6"><a href="modelos-estadísticos.html#cb156-6" tabindex="-1"></a>    <span class="at">number =</span> <span class="fu">nrow</span>(rse_gene_SRP045638),</span>
-<span id="cb156-7"><a href="modelos-estadísticos.html#cb156-7" tabindex="-1"></a>    <span class="at">sort.by =</span> <span class="st">&quot;none&quot;</span></span>
-<span id="cb156-8"><a href="modelos-estadísticos.html#cb156-8" tabindex="-1"></a>)</span>
-<span id="cb156-9"><a href="modelos-estadísticos.html#cb156-9" tabindex="-1"></a><span class="fu">dim</span>(de_results)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="modelos-estadísticos.html#cb152-1" tabindex="-1"></a>eb_results <span class="ot">&lt;-</span> <span class="fu">eBayes</span>(<span class="fu">lmFit</span>(vGene))</span>
+<span id="cb152-2"><a href="modelos-estadísticos.html#cb152-2" tabindex="-1"></a></span>
+<span id="cb152-3"><a href="modelos-estadísticos.html#cb152-3" tabindex="-1"></a>de_results <span class="ot">&lt;-</span> <span class="fu">topTable</span>(</span>
+<span id="cb152-4"><a href="modelos-estadísticos.html#cb152-4" tabindex="-1"></a>    eb_results,</span>
+<span id="cb152-5"><a href="modelos-estadísticos.html#cb152-5" tabindex="-1"></a>    <span class="at">coef =</span> <span class="dv">2</span>,</span>
+<span id="cb152-6"><a href="modelos-estadísticos.html#cb152-6" tabindex="-1"></a>    <span class="at">number =</span> <span class="fu">nrow</span>(rse_gene_SRP045638),</span>
+<span id="cb152-7"><a href="modelos-estadísticos.html#cb152-7" tabindex="-1"></a>    <span class="at">sort.by =</span> <span class="st">&quot;none&quot;</span></span>
+<span id="cb152-8"><a href="modelos-estadísticos.html#cb152-8" tabindex="-1"></a>)</span>
+<span id="cb152-9"><a href="modelos-estadísticos.html#cb152-9" tabindex="-1"></a><span class="fu">dim</span>(de_results)</span></code></pre></div>
 <pre><code>## [1] 46929    16</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelos-estadísticos.html#cb158-1" tabindex="-1"></a><span class="fu">head</span>(de_results)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="modelos-estadísticos.html#cb154-1" tabindex="-1"></a><span class="fu">head</span>(de_results)</span></code></pre></div>
 <pre><code>##                    source type bp_length phase           gene_id                          gene_type   gene_name level
 ## ENSG00000223972.5  HAVANA gene      1735    NA ENSG00000223972.5 transcribed_unprocessed_pseudogene     DDX11L1     2
 ## ENSG00000278267.1 ENSEMBL gene        68    NA ENSG00000278267.1                              miRNA   MIR6859-1     3
@@ -622,17 +616,17 @@ Por ejemplo, usando el paquete de <a href="https://bioconductor.org/packages/var
 ## ENSG00000284332.1                 &lt;NA&gt;       &lt;NA&gt;  0.4559904 -5.7311063  1.438080 1.551609e-01 1.903075e-01 -5.7956155
 ## ENSG00000243485.5 OTTHUMG00000000959.2 ncRNA_host  0.9640252 -0.6646248  5.072618 3.445542e-06 9.728406e-06  3.7022021
 ## ENSG00000237613.2 OTTHUMG00000000960.1       &lt;NA&gt; -1.5460829 -5.3019159 -4.190983 8.476784e-05 1.828325e-04  0.9292571</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelos-estadísticos.html#cb160-1" tabindex="-1"></a><span class="do">## Genes diferencialmente expresados entre pre y post natal con FDR &lt; 5%</span></span>
-<span id="cb160-2"><a href="modelos-estadísticos.html#cb160-2" tabindex="-1"></a><span class="fu">table</span>(de_results<span class="sc">$</span>adj.P.Val <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelos-estadísticos.html#cb156-1" tabindex="-1"></a><span class="do">## Genes diferencialmente expresados entre pre y post natal con FDR &lt; 5%</span></span>
+<span id="cb156-2"><a href="modelos-estadísticos.html#cb156-2" tabindex="-1"></a><span class="fu">table</span>(de_results<span class="sc">$</span>adj.P.Val <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
 ## 12851 34078</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="modelos-estadísticos.html#cb162-1" tabindex="-1"></a><span class="do">## Visualicemos los resultados estadísticos</span></span>
-<span id="cb162-2"><a href="modelos-estadísticos.html#cb162-2" tabindex="-1"></a><span class="fu">plotMA</span>(eb_results, <span class="at">coef =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelos-estadísticos.html#cb158-1" tabindex="-1"></a><span class="do">## Visualicemos los resultados estadísticos</span></span>
+<span id="cb158-2"><a href="modelos-estadísticos.html#cb158-2" tabindex="-1"></a><span class="fu">plotMA</span>(eb_results, <span class="at">coef =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/run_limma-2.png" width="672" /></p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="modelos-estadísticos.html#cb163-1" tabindex="-1"></a><span class="fu">volcanoplot</span>(eb_results, <span class="at">coef =</span> <span class="dv">2</span>, <span class="at">highlight =</span> <span class="dv">3</span>, <span class="at">names =</span> de_results<span class="sc">$</span>gene_name)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="modelos-estadísticos.html#cb159-1" tabindex="-1"></a><span class="fu">volcanoplot</span>(eb_results, <span class="at">coef =</span> <span class="dv">2</span>, <span class="at">highlight =</span> <span class="dv">3</span>, <span class="at">names =</span> de_results<span class="sc">$</span>gene_name)</span></code></pre></div>
 <p><img src="_main_files/figure-html/run_limma-3.png" width="672" /></p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="modelos-estadísticos.html#cb164-1" tabindex="-1"></a>de_results[de_results<span class="sc">$</span>gene_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ZSCAN2&quot;</span>, <span class="st">&quot;VASH2&quot;</span>, <span class="st">&quot;KIAA0922&quot;</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelos-estadísticos.html#cb160-1" tabindex="-1"></a>de_results[de_results<span class="sc">$</span>gene_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ZSCAN2&quot;</span>, <span class="st">&quot;VASH2&quot;</span>, <span class="st">&quot;KIAA0922&quot;</span>), ]</span></code></pre></div>
 <pre><code>##                    source type bp_length phase            gene_id      gene_type gene_name level          havana_gene
 ## ENSG00000143494.15 HAVANA gene      9086    NA ENSG00000143494.15 protein_coding     VASH2     2 OTTHUMG00000036925.5
 ## ENSG00000176371.13 HAVANA gene      4878    NA ENSG00000176371.13 protein_coding    ZSCAN2     1 OTTHUMG00000074027.5
@@ -650,46 +644,46 @@ Por ejemplo, usando el paquete de <a href="https://bioconductor.org/packages/var
 <div id="visualizando-genes-de" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Visualizando genes DE<a href="modelos-estadísticos.html#visualizando-genes-de" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>De <code>vGene$E</code> podemos extraer los datos normalizados por <code>limma-voom</code>. Revisemos los top 50 genes diferencialmente expresados.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="modelos-estadísticos.html#cb166-1" tabindex="-1"></a><span class="do">## Extraer valores de los genes de interés</span></span>
-<span id="cb166-2"><a href="modelos-estadísticos.html#cb166-2" tabindex="-1"></a>exprs_heatmap <span class="ot">&lt;-</span> vGene<span class="sc">$</span>E[<span class="fu">rank</span>(de_results<span class="sc">$</span>adj.P.Val) <span class="sc">&lt;=</span> <span class="dv">50</span>, ]</span>
-<span id="cb166-3"><a href="modelos-estadísticos.html#cb166-3" tabindex="-1"></a></span>
-<span id="cb166-4"><a href="modelos-estadísticos.html#cb166-4" tabindex="-1"></a><span class="do">## Creemos una tabla con información de las muestras</span></span>
-<span id="cb166-5"><a href="modelos-estadísticos.html#cb166-5" tabindex="-1"></a><span class="do">## y con nombres de columnas más amigables</span></span>
-<span id="cb166-6"><a href="modelos-estadísticos.html#cb166-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">colData</span>(rse_gene_SRP045638)[, <span class="fu">c</span>(<span class="st">&quot;prenatal&quot;</span>, <span class="st">&quot;sra_attribute.RIN&quot;</span>, <span class="st">&quot;sra_attribute.sex&quot;</span>)])</span>
-<span id="cb166-7"><a href="modelos-estadísticos.html#cb166-7" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AgeGroup&quot;</span>, <span class="st">&quot;RIN&quot;</span>, <span class="st">&quot;Sex&quot;</span>)</span>
-<span id="cb166-8"><a href="modelos-estadísticos.html#cb166-8" tabindex="-1"></a></span>
-<span id="cb166-9"><a href="modelos-estadísticos.html#cb166-9" tabindex="-1"></a><span class="do">## Hagamos un heatmap</span></span>
-<span id="cb166-10"><a href="modelos-estadísticos.html#cb166-10" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;pheatmap&quot;</span>)</span>
-<span id="cb166-11"><a href="modelos-estadísticos.html#cb166-11" tabindex="-1"></a><span class="fu">pheatmap</span>(</span>
-<span id="cb166-12"><a href="modelos-estadísticos.html#cb166-12" tabindex="-1"></a>    exprs_heatmap,</span>
-<span id="cb166-13"><a href="modelos-estadísticos.html#cb166-13" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb166-14"><a href="modelos-estadísticos.html#cb166-14" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb166-15"><a href="modelos-estadísticos.html#cb166-15" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb166-16"><a href="modelos-estadísticos.html#cb166-16" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb166-17"><a href="modelos-estadísticos.html#cb166-17" tabindex="-1"></a>    <span class="at">annotation_col =</span> df</span>
-<span id="cb166-18"><a href="modelos-estadísticos.html#cb166-18" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="modelos-estadísticos.html#cb162-1" tabindex="-1"></a><span class="do">## Extraer valores de los genes de interés</span></span>
+<span id="cb162-2"><a href="modelos-estadísticos.html#cb162-2" tabindex="-1"></a>exprs_heatmap <span class="ot">&lt;-</span> vGene<span class="sc">$</span>E[<span class="fu">rank</span>(de_results<span class="sc">$</span>adj.P.Val) <span class="sc">&lt;=</span> <span class="dv">50</span>, ]</span>
+<span id="cb162-3"><a href="modelos-estadísticos.html#cb162-3" tabindex="-1"></a></span>
+<span id="cb162-4"><a href="modelos-estadísticos.html#cb162-4" tabindex="-1"></a><span class="do">## Creemos una tabla con información de las muestras</span></span>
+<span id="cb162-5"><a href="modelos-estadísticos.html#cb162-5" tabindex="-1"></a><span class="do">## y con nombres de columnas más amigables</span></span>
+<span id="cb162-6"><a href="modelos-estadísticos.html#cb162-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">colData</span>(rse_gene_SRP045638)[, <span class="fu">c</span>(<span class="st">&quot;prenatal&quot;</span>, <span class="st">&quot;sra_attribute.RIN&quot;</span>, <span class="st">&quot;sra_attribute.sex&quot;</span>)])</span>
+<span id="cb162-7"><a href="modelos-estadísticos.html#cb162-7" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AgeGroup&quot;</span>, <span class="st">&quot;RIN&quot;</span>, <span class="st">&quot;Sex&quot;</span>)</span>
+<span id="cb162-8"><a href="modelos-estadísticos.html#cb162-8" tabindex="-1"></a></span>
+<span id="cb162-9"><a href="modelos-estadísticos.html#cb162-9" tabindex="-1"></a><span class="do">## Hagamos un heatmap</span></span>
+<span id="cb162-10"><a href="modelos-estadísticos.html#cb162-10" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;pheatmap&quot;</span>)</span>
+<span id="cb162-11"><a href="modelos-estadísticos.html#cb162-11" tabindex="-1"></a><span class="fu">pheatmap</span>(</span>
+<span id="cb162-12"><a href="modelos-estadísticos.html#cb162-12" tabindex="-1"></a>    exprs_heatmap,</span>
+<span id="cb162-13"><a href="modelos-estadísticos.html#cb162-13" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb162-14"><a href="modelos-estadísticos.html#cb162-14" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb162-15"><a href="modelos-estadísticos.html#cb162-15" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb162-16"><a href="modelos-estadísticos.html#cb162-16" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb162-17"><a href="modelos-estadísticos.html#cb162-17" tabindex="-1"></a>    <span class="at">annotation_col =</span> df</span>
+<span id="cb162-18"><a href="modelos-estadísticos.html#cb162-18" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/pheatmap-1.png" width="672" /></p>
 <p>Los resultados que tenemos no son tan sorprendentes porque hay una diferencia enorme en los perfiles de expresión en el DLPFC entre muestra pre y post-natales. Eso lo podemos ver con MDS (multidimensional scaling) tal como describen en <a href="http://bioconductor.org/packages/release/workflows/vignettes/RNAseq123/inst/doc/limmaWorkflow.html#unsupervised-clustering-of-samples">este workflow</a>.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="modelos-estadísticos.html#cb167-1" tabindex="-1"></a><span class="do">## Para colores</span></span>
-<span id="cb167-2"><a href="modelos-estadísticos.html#cb167-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
-<span id="cb167-3"><a href="modelos-estadísticos.html#cb167-3" tabindex="-1"></a></span>
-<span id="cb167-4"><a href="modelos-estadísticos.html#cb167-4" tabindex="-1"></a><span class="do">## Conviertiendo los grupos de edad a colores</span></span>
-<span id="cb167-5"><a href="modelos-estadísticos.html#cb167-5" tabindex="-1"></a>col.group <span class="ot">&lt;-</span> df<span class="sc">$</span>AgeGroup</span>
-<span id="cb167-6"><a href="modelos-estadísticos.html#cb167-6" tabindex="-1"></a><span class="fu">levels</span>(col.group) <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="fu">nlevels</span>(col.group), <span class="st">&quot;Set1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="modelos-estadísticos.html#cb163-1" tabindex="-1"></a><span class="do">## Para colores</span></span>
+<span id="cb163-2"><a href="modelos-estadísticos.html#cb163-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
+<span id="cb163-3"><a href="modelos-estadísticos.html#cb163-3" tabindex="-1"></a></span>
+<span id="cb163-4"><a href="modelos-estadísticos.html#cb163-4" tabindex="-1"></a><span class="do">## Conviertiendo los grupos de edad a colores</span></span>
+<span id="cb163-5"><a href="modelos-estadísticos.html#cb163-5" tabindex="-1"></a>col.group <span class="ot">&lt;-</span> df<span class="sc">$</span>AgeGroup</span>
+<span id="cb163-6"><a href="modelos-estadísticos.html#cb163-6" tabindex="-1"></a><span class="fu">levels</span>(col.group) <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="fu">nlevels</span>(col.group), <span class="st">&quot;Set1&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in brewer.pal(nlevels(col.group), &quot;Set1&quot;): minimal value for n is 3, returning requested palette with 3 different levels</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="modelos-estadísticos.html#cb169-1" tabindex="-1"></a>col.group <span class="ot">&lt;-</span> <span class="fu">as.character</span>(col.group)</span>
-<span id="cb169-2"><a href="modelos-estadísticos.html#cb169-2" tabindex="-1"></a></span>
-<span id="cb169-3"><a href="modelos-estadísticos.html#cb169-3" tabindex="-1"></a><span class="do">## MDS por grupos de edad</span></span>
-<span id="cb169-4"><a href="modelos-estadísticos.html#cb169-4" tabindex="-1"></a><span class="fu">plotMDS</span>(vGene<span class="sc">$</span>E, <span class="at">labels =</span> df<span class="sc">$</span>AgeGroup, <span class="at">col =</span> col.group)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="modelos-estadísticos.html#cb165-1" tabindex="-1"></a>col.group <span class="ot">&lt;-</span> <span class="fu">as.character</span>(col.group)</span>
+<span id="cb165-2"><a href="modelos-estadísticos.html#cb165-2" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="modelos-estadísticos.html#cb165-3" tabindex="-1"></a><span class="do">## MDS por grupos de edad</span></span>
+<span id="cb165-4"><a href="modelos-estadísticos.html#cb165-4" tabindex="-1"></a><span class="fu">plotMDS</span>(vGene<span class="sc">$</span>E, <span class="at">labels =</span> df<span class="sc">$</span>AgeGroup, <span class="at">col =</span> col.group)</span></code></pre></div>
 <p><img src="_main_files/figure-html/plot_mds-1.png" width="672" /></p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="modelos-estadísticos.html#cb170-1" tabindex="-1"></a><span class="do">## Conviertiendo los valores de Sex a colores</span></span>
-<span id="cb170-2"><a href="modelos-estadísticos.html#cb170-2" tabindex="-1"></a>col.sex <span class="ot">&lt;-</span> df<span class="sc">$</span>Sex</span>
-<span id="cb170-3"><a href="modelos-estadísticos.html#cb170-3" tabindex="-1"></a><span class="fu">levels</span>(col.sex) <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="fu">nlevels</span>(col.sex), <span class="st">&quot;Dark2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="modelos-estadísticos.html#cb166-1" tabindex="-1"></a><span class="do">## Conviertiendo los valores de Sex a colores</span></span>
+<span id="cb166-2"><a href="modelos-estadísticos.html#cb166-2" tabindex="-1"></a>col.sex <span class="ot">&lt;-</span> df<span class="sc">$</span>Sex</span>
+<span id="cb166-3"><a href="modelos-estadísticos.html#cb166-3" tabindex="-1"></a><span class="fu">levels</span>(col.sex) <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="fu">nlevels</span>(col.sex), <span class="st">&quot;Dark2&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in brewer.pal(nlevels(col.sex), &quot;Dark2&quot;): minimal value for n is 3, returning requested palette with 3 different levels</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="modelos-estadísticos.html#cb172-1" tabindex="-1"></a>col.sex <span class="ot">&lt;-</span> <span class="fu">as.character</span>(col.sex)</span>
-<span id="cb172-2"><a href="modelos-estadísticos.html#cb172-2" tabindex="-1"></a></span>
-<span id="cb172-3"><a href="modelos-estadísticos.html#cb172-3" tabindex="-1"></a><span class="do">## MDS por sexo</span></span>
-<span id="cb172-4"><a href="modelos-estadísticos.html#cb172-4" tabindex="-1"></a><span class="fu">plotMDS</span>(vGene<span class="sc">$</span>E, <span class="at">labels =</span> df<span class="sc">$</span>Sex, <span class="at">col =</span> col.sex)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="modelos-estadísticos.html#cb168-1" tabindex="-1"></a>col.sex <span class="ot">&lt;-</span> <span class="fu">as.character</span>(col.sex)</span>
+<span id="cb168-2"><a href="modelos-estadísticos.html#cb168-2" tabindex="-1"></a></span>
+<span id="cb168-3"><a href="modelos-estadísticos.html#cb168-3" tabindex="-1"></a><span class="do">## MDS por sexo</span></span>
+<span id="cb168-4"><a href="modelos-estadísticos.html#cb168-4" tabindex="-1"></a><span class="fu">plotMDS</span>(vGene<span class="sc">$</span>E, <span class="at">labels =</span> df<span class="sc">$</span>Sex, <span class="at">col =</span> col.sex)</span></code></pre></div>
 <p><img src="_main_files/figure-html/plot_mds-2.png" width="672" /></p>
 </div>
 <div id="ejercicio-3" class="section level2 hasAnchor" number="5.6">
@@ -726,8 +720,8 @@ If you've ever been dazed by design matrices or confused by contrasts when perfo
 </div>
 <div id="ejercicio-respuesta" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> Ejercicio: respuesta<a href="modelos-estadísticos.html#ejercicio-respuesta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="modelos-estadísticos.html#cb173-1" tabindex="-1"></a><span class="do">## Tenemos que usar gene_id y gene_name</span></span>
-<span id="cb173-2"><a href="modelos-estadísticos.html#cb173-2" tabindex="-1"></a><span class="fu">rowRanges</span>(rse_gene_SRP045638)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="modelos-estadísticos.html#cb169-1" tabindex="-1"></a><span class="do">## Tenemos que usar gene_id y gene_name</span></span>
+<span id="cb169-2"><a href="modelos-estadísticos.html#cb169-2" tabindex="-1"></a><span class="fu">rowRanges</span>(rse_gene_SRP045638)</span></code></pre></div>
 <pre><code>## GRanges object with 46929 ranges and 10 metadata columns:
 ##                     seqnames            ranges strand |   source     type bp_length     phase           gene_id
 ##                        &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt; &lt;factor&gt; &lt;numeric&gt; &lt;integer&gt;       &lt;character&gt;
@@ -757,8 +751,8 @@ If you've ever been dazed by design matrices or confused by contrasts when perfo
 ##   ENSG00000237917.1 unprocessed_pseudogene     PARP4P1           1 OTTHUMG00000036812.1 overlapping_locus
 ##   -------
 ##   seqinfo: 374 sequences from an unspecified genome; no seqlengths</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="modelos-estadísticos.html#cb175-1" tabindex="-1"></a><span class="do">## Alternativamente, podriamos haber usado de_results</span></span>
-<span id="cb175-2"><a href="modelos-estadísticos.html#cb175-2" tabindex="-1"></a><span class="fu">head</span>(de_results, <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="modelos-estadísticos.html#cb171-1" tabindex="-1"></a><span class="do">## Alternativamente, podriamos haber usado de_results</span></span>
+<span id="cb171-2"><a href="modelos-estadísticos.html#cb171-2" tabindex="-1"></a><span class="fu">head</span>(de_results, <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##                    source type bp_length phase           gene_id                          gene_type gene_name level
 ## ENSG00000223972.5  HAVANA gene      1735    NA ENSG00000223972.5 transcribed_unprocessed_pseudogene   DDX11L1     2
 ## ENSG00000278267.1 ENSEMBL gene        68    NA ENSG00000278267.1                              miRNA MIR6859-1     3
@@ -767,52 +761,52 @@ If you've ever been dazed by design matrices or confused by contrasts when perfo
 ## ENSG00000223972.5 OTTHUMG00000000961.2 &lt;NA&gt; -0.4522185 -3.444164 -1.637034 1.064080e-01 1.348462e-01 -5.554484
 ## ENSG00000278267.1                 &lt;NA&gt; &lt;NA&gt;  1.1158860 -1.311645  6.123756 5.743771e-08 2.105690e-07  7.763912
 ## ENSG00000227232.5 OTTHUMG00000000958.1 &lt;NA&gt;  0.6860298  3.641131  5.644804 3.816951e-07 1.247133e-06  5.500784</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="modelos-estadísticos.html#cb177-1" tabindex="-1"></a><span class="do">## Es la misma información</span></span>
-<span id="cb177-2"><a href="modelos-estadísticos.html#cb177-2" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_id, de_results<span class="sc">$</span>gene_id)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="modelos-estadísticos.html#cb173-1" tabindex="-1"></a><span class="do">## Es la misma información</span></span>
+<span id="cb173-2"><a href="modelos-estadísticos.html#cb173-2" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_id, de_results<span class="sc">$</span>gene_id)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="modelos-estadísticos.html#cb179-1" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_name, de_results<span class="sc">$</span>gene_name)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="modelos-estadísticos.html#cb175-1" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_name, de_results<span class="sc">$</span>gene_name)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="modelos-estadísticos.html#cb181-1" tabindex="-1"></a><span class="do">## Guardemos los IDs de nuestros 50 genes</span></span>
-<span id="cb181-2"><a href="modelos-estadísticos.html#cb181-2" tabindex="-1"></a>nombres_originales <span class="ot">&lt;-</span> <span class="fu">rownames</span>(exprs_heatmap)</span>
-<span id="cb181-3"><a href="modelos-estadísticos.html#cb181-3" tabindex="-1"></a></span>
-<span id="cb181-4"><a href="modelos-estadísticos.html#cb181-4" tabindex="-1"></a><span class="do">## Con match() podemos encontrar cual es cual</span></span>
-<span id="cb181-5"><a href="modelos-estadísticos.html#cb181-5" tabindex="-1"></a><span class="fu">rownames</span>(exprs_heatmap) <span class="ot">&lt;-</span> <span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_name[</span>
-<span id="cb181-6"><a href="modelos-estadísticos.html#cb181-6" tabindex="-1"></a>    <span class="fu">match</span>(<span class="fu">rownames</span>(exprs_heatmap), <span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_id)</span>
-<span id="cb181-7"><a href="modelos-estadísticos.html#cb181-7" tabindex="-1"></a>]</span>
-<span id="cb181-8"><a href="modelos-estadísticos.html#cb181-8" tabindex="-1"></a></span>
-<span id="cb181-9"><a href="modelos-estadísticos.html#cb181-9" tabindex="-1"></a><span class="do">## Vean que tambien podriamos haber usado rank()</span></span>
-<span id="cb181-10"><a href="modelos-estadísticos.html#cb181-10" tabindex="-1"></a><span class="fu">identical</span>(</span>
-<span id="cb181-11"><a href="modelos-estadísticos.html#cb181-11" tabindex="-1"></a>    <span class="fu">which</span>(<span class="fu">rank</span>(de_results<span class="sc">$</span>adj.P.Val) <span class="sc">&lt;=</span> <span class="dv">50</span>),</span>
-<span id="cb181-12"><a href="modelos-estadísticos.html#cb181-12" tabindex="-1"></a>    <span class="fu">match</span>(nombres_originales, <span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_id)</span>
-<span id="cb181-13"><a href="modelos-estadísticos.html#cb181-13" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="modelos-estadísticos.html#cb177-1" tabindex="-1"></a><span class="do">## Guardemos los IDs de nuestros 50 genes</span></span>
+<span id="cb177-2"><a href="modelos-estadísticos.html#cb177-2" tabindex="-1"></a>nombres_originales <span class="ot">&lt;-</span> <span class="fu">rownames</span>(exprs_heatmap)</span>
+<span id="cb177-3"><a href="modelos-estadísticos.html#cb177-3" tabindex="-1"></a></span>
+<span id="cb177-4"><a href="modelos-estadísticos.html#cb177-4" tabindex="-1"></a><span class="do">## Con match() podemos encontrar cual es cual</span></span>
+<span id="cb177-5"><a href="modelos-estadísticos.html#cb177-5" tabindex="-1"></a><span class="fu">rownames</span>(exprs_heatmap) <span class="ot">&lt;-</span> <span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_name[</span>
+<span id="cb177-6"><a href="modelos-estadísticos.html#cb177-6" tabindex="-1"></a>    <span class="fu">match</span>(<span class="fu">rownames</span>(exprs_heatmap), <span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_id)</span>
+<span id="cb177-7"><a href="modelos-estadísticos.html#cb177-7" tabindex="-1"></a>]</span>
+<span id="cb177-8"><a href="modelos-estadísticos.html#cb177-8" tabindex="-1"></a></span>
+<span id="cb177-9"><a href="modelos-estadísticos.html#cb177-9" tabindex="-1"></a><span class="do">## Vean que tambien podriamos haber usado rank()</span></span>
+<span id="cb177-10"><a href="modelos-estadísticos.html#cb177-10" tabindex="-1"></a><span class="fu">identical</span>(</span>
+<span id="cb177-11"><a href="modelos-estadísticos.html#cb177-11" tabindex="-1"></a>    <span class="fu">which</span>(<span class="fu">rank</span>(de_results<span class="sc">$</span>adj.P.Val) <span class="sc">&lt;=</span> <span class="dv">50</span>),</span>
+<span id="cb177-12"><a href="modelos-estadísticos.html#cb177-12" tabindex="-1"></a>    <span class="fu">match</span>(nombres_originales, <span class="fu">rowRanges</span>(rse_gene_SRP045638)<span class="sc">$</span>gene_id)</span>
+<span id="cb177-13"><a href="modelos-estadísticos.html#cb177-13" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="modelos-estadísticos.html#cb183-1" tabindex="-1"></a><span class="do">## Esta es otra solución</span></span>
-<span id="cb183-2"><a href="modelos-estadísticos.html#cb183-2" tabindex="-1"></a><span class="fu">identical</span>(</span>
-<span id="cb183-3"><a href="modelos-estadísticos.html#cb183-3" tabindex="-1"></a>    de_results<span class="sc">$</span>gene_name[<span class="fu">rank</span>(de_results<span class="sc">$</span>adj.P.Val) <span class="sc">&lt;=</span> <span class="dv">50</span>],</span>
-<span id="cb183-4"><a href="modelos-estadísticos.html#cb183-4" tabindex="-1"></a>    <span class="fu">rownames</span>(exprs_heatmap)</span>
-<span id="cb183-5"><a href="modelos-estadísticos.html#cb183-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="modelos-estadísticos.html#cb179-1" tabindex="-1"></a><span class="do">## Esta es otra solución</span></span>
+<span id="cb179-2"><a href="modelos-estadísticos.html#cb179-2" tabindex="-1"></a><span class="fu">identical</span>(</span>
+<span id="cb179-3"><a href="modelos-estadísticos.html#cb179-3" tabindex="-1"></a>    de_results<span class="sc">$</span>gene_name[<span class="fu">rank</span>(de_results<span class="sc">$</span>adj.P.Val) <span class="sc">&lt;=</span> <span class="dv">50</span>],</span>
+<span id="cb179-4"><a href="modelos-estadísticos.html#cb179-4" tabindex="-1"></a>    <span class="fu">rownames</span>(exprs_heatmap)</span>
+<span id="cb179-5"><a href="modelos-estadísticos.html#cb179-5" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="modelos-estadísticos.html#cb185-1" tabindex="-1"></a><span class="do">## Por último podemos cambiar el valor de show_rownames de FALSE a TRUE</span></span>
-<span id="cb185-2"><a href="modelos-estadísticos.html#cb185-2" tabindex="-1"></a><span class="fu">pheatmap</span>(</span>
-<span id="cb185-3"><a href="modelos-estadísticos.html#cb185-3" tabindex="-1"></a>    exprs_heatmap,</span>
-<span id="cb185-4"><a href="modelos-estadísticos.html#cb185-4" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb185-5"><a href="modelos-estadísticos.html#cb185-5" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb185-6"><a href="modelos-estadísticos.html#cb185-6" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb185-7"><a href="modelos-estadísticos.html#cb185-7" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb185-8"><a href="modelos-estadísticos.html#cb185-8" tabindex="-1"></a>    <span class="at">annotation_col =</span> df</span>
-<span id="cb185-9"><a href="modelos-estadísticos.html#cb185-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="modelos-estadísticos.html#cb181-1" tabindex="-1"></a><span class="do">## Por último podemos cambiar el valor de show_rownames de FALSE a TRUE</span></span>
+<span id="cb181-2"><a href="modelos-estadísticos.html#cb181-2" tabindex="-1"></a><span class="fu">pheatmap</span>(</span>
+<span id="cb181-3"><a href="modelos-estadísticos.html#cb181-3" tabindex="-1"></a>    exprs_heatmap,</span>
+<span id="cb181-4"><a href="modelos-estadísticos.html#cb181-4" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb181-5"><a href="modelos-estadísticos.html#cb181-5" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb181-6"><a href="modelos-estadísticos.html#cb181-6" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb181-7"><a href="modelos-estadísticos.html#cb181-7" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb181-8"><a href="modelos-estadísticos.html#cb181-8" tabindex="-1"></a>    <span class="at">annotation_col =</span> df</span>
+<span id="cb181-9"><a href="modelos-estadísticos.html#cb181-9" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/respuesta-1.png" width="672" height="1100px" /></p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="modelos-estadísticos.html#cb186-1" tabindex="-1"></a><span class="do">## Guardar la imagen en un PDF largo para poder ver los nombres de los genes</span></span>
-<span id="cb186-2"><a href="modelos-estadísticos.html#cb186-2" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pheatmap_con_nombres.pdf&quot;</span>, <span class="at">height =</span> <span class="dv">14</span>, <span class="at">useDingbats =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb186-3"><a href="modelos-estadísticos.html#cb186-3" tabindex="-1"></a><span class="fu">pheatmap</span>(</span>
-<span id="cb186-4"><a href="modelos-estadísticos.html#cb186-4" tabindex="-1"></a>    exprs_heatmap,</span>
-<span id="cb186-5"><a href="modelos-estadísticos.html#cb186-5" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb186-6"><a href="modelos-estadísticos.html#cb186-6" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb186-7"><a href="modelos-estadísticos.html#cb186-7" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb186-8"><a href="modelos-estadísticos.html#cb186-8" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb186-9"><a href="modelos-estadísticos.html#cb186-9" tabindex="-1"></a>    <span class="at">annotation_col =</span> df</span>
-<span id="cb186-10"><a href="modelos-estadísticos.html#cb186-10" tabindex="-1"></a>)</span>
-<span id="cb186-11"><a href="modelos-estadísticos.html#cb186-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="modelos-estadísticos.html#cb182-1" tabindex="-1"></a><span class="do">## Guardar la imagen en un PDF largo para poder ver los nombres de los genes</span></span>
+<span id="cb182-2"><a href="modelos-estadísticos.html#cb182-2" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pheatmap_con_nombres.pdf&quot;</span>, <span class="at">height =</span> <span class="dv">14</span>, <span class="at">useDingbats =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb182-3"><a href="modelos-estadísticos.html#cb182-3" tabindex="-1"></a><span class="fu">pheatmap</span>(</span>
+<span id="cb182-4"><a href="modelos-estadísticos.html#cb182-4" tabindex="-1"></a>    exprs_heatmap,</span>
+<span id="cb182-5"><a href="modelos-estadísticos.html#cb182-5" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb182-6"><a href="modelos-estadísticos.html#cb182-6" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb182-7"><a href="modelos-estadísticos.html#cb182-7" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb182-8"><a href="modelos-estadísticos.html#cb182-8" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb182-9"><a href="modelos-estadísticos.html#cb182-9" tabindex="-1"></a>    <span class="at">annotation_col =</span> df</span>
+<span id="cb182-10"><a href="modelos-estadísticos.html#cb182-10" tabindex="-1"></a>)</span>
+<span id="cb182-11"><a href="modelos-estadísticos.html#cb182-11" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## pdf 
 ##   3</code></pre>
 </div>
@@ -820,28 +814,28 @@ If you've ever been dazed by design matrices or confused by contrasts when perfo
 <h2><span class="header-section-number">5.9</span> Sobre <em>centering</em> y <em>scaling</em> en heatmaps<a href="modelos-estadísticos.html#sobre-centering-y-scaling-en-heatmaps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/c8ffeFVUzk8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="modelos-estadísticos.html#cb188-1" tabindex="-1"></a><span class="do">## Versión con centering y scaling en los renglones (los genes)</span></span>
-<span id="cb188-2"><a href="modelos-estadísticos.html#cb188-2" tabindex="-1"></a>pheatmap<span class="sc">::</span><span class="fu">pheatmap</span>(</span>
-<span id="cb188-3"><a href="modelos-estadísticos.html#cb188-3" tabindex="-1"></a>    exprs_heatmap,</span>
-<span id="cb188-4"><a href="modelos-estadísticos.html#cb188-4" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb188-5"><a href="modelos-estadísticos.html#cb188-5" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb188-6"><a href="modelos-estadísticos.html#cb188-6" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb188-7"><a href="modelos-estadísticos.html#cb188-7" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb188-8"><a href="modelos-estadísticos.html#cb188-8" tabindex="-1"></a>    <span class="at">annotation_col =</span> df,</span>
-<span id="cb188-9"><a href="modelos-estadísticos.html#cb188-9" tabindex="-1"></a>    <span class="at">scale =</span> <span class="st">&quot;row&quot;</span></span>
-<span id="cb188-10"><a href="modelos-estadísticos.html#cb188-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="modelos-estadísticos.html#cb184-1" tabindex="-1"></a><span class="do">## Versión con centering y scaling en los renglones (los genes)</span></span>
+<span id="cb184-2"><a href="modelos-estadísticos.html#cb184-2" tabindex="-1"></a>pheatmap<span class="sc">::</span><span class="fu">pheatmap</span>(</span>
+<span id="cb184-3"><a href="modelos-estadísticos.html#cb184-3" tabindex="-1"></a>    exprs_heatmap,</span>
+<span id="cb184-4"><a href="modelos-estadísticos.html#cb184-4" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb184-5"><a href="modelos-estadísticos.html#cb184-5" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb184-6"><a href="modelos-estadísticos.html#cb184-6" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb184-7"><a href="modelos-estadísticos.html#cb184-7" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb184-8"><a href="modelos-estadísticos.html#cb184-8" tabindex="-1"></a>    <span class="at">annotation_col =</span> df,</span>
+<span id="cb184-9"><a href="modelos-estadísticos.html#cb184-9" tabindex="-1"></a>    <span class="at">scale =</span> <span class="st">&quot;row&quot;</span></span>
+<span id="cb184-10"><a href="modelos-estadísticos.html#cb184-10" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/centered_and_scaled-1.png" width="672" height="1100px" /></p>
 <p>También podemos hacer una versión con <code>ComplexHeatmap</code> <a href="https://bioconductor.org/packages/ComplexHeatmap/" class="uri">https://bioconductor.org/packages/ComplexHeatmap/</a>.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="modelos-estadísticos.html#cb189-1" tabindex="-1"></a><span class="do">## Misma versión pero ahora con ComplexHeatmap en vez del paquete pheatmap</span></span>
-<span id="cb189-2"><a href="modelos-estadísticos.html#cb189-2" tabindex="-1"></a>ComplexHeatmap<span class="sc">::</span><span class="fu">pheatmap</span>(</span>
-<span id="cb189-3"><a href="modelos-estadísticos.html#cb189-3" tabindex="-1"></a>    exprs_heatmap,</span>
-<span id="cb189-4"><a href="modelos-estadísticos.html#cb189-4" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb189-5"><a href="modelos-estadísticos.html#cb189-5" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb189-6"><a href="modelos-estadísticos.html#cb189-6" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb189-7"><a href="modelos-estadísticos.html#cb189-7" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb189-8"><a href="modelos-estadísticos.html#cb189-8" tabindex="-1"></a>    <span class="at">annotation_col =</span> df,</span>
-<span id="cb189-9"><a href="modelos-estadísticos.html#cb189-9" tabindex="-1"></a>    <span class="at">scale =</span> <span class="st">&quot;row&quot;</span></span>
-<span id="cb189-10"><a href="modelos-estadísticos.html#cb189-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="modelos-estadísticos.html#cb185-1" tabindex="-1"></a><span class="do">## Misma versión pero ahora con ComplexHeatmap en vez del paquete pheatmap</span></span>
+<span id="cb185-2"><a href="modelos-estadísticos.html#cb185-2" tabindex="-1"></a>ComplexHeatmap<span class="sc">::</span><span class="fu">pheatmap</span>(</span>
+<span id="cb185-3"><a href="modelos-estadísticos.html#cb185-3" tabindex="-1"></a>    exprs_heatmap,</span>
+<span id="cb185-4"><a href="modelos-estadísticos.html#cb185-4" tabindex="-1"></a>    <span class="at">cluster_rows =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb185-5"><a href="modelos-estadísticos.html#cb185-5" tabindex="-1"></a>    <span class="at">cluster_cols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb185-6"><a href="modelos-estadísticos.html#cb185-6" tabindex="-1"></a>    <span class="at">show_rownames =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb185-7"><a href="modelos-estadísticos.html#cb185-7" tabindex="-1"></a>    <span class="at">show_colnames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb185-8"><a href="modelos-estadísticos.html#cb185-8" tabindex="-1"></a>    <span class="at">annotation_col =</span> df,</span>
+<span id="cb185-9"><a href="modelos-estadísticos.html#cb185-9" tabindex="-1"></a>    <span class="at">scale =</span> <span class="st">&quot;row&quot;</span></span>
+<span id="cb185-10"><a href="modelos-estadísticos.html#cb185-10" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="específicaciones-del-proyecto" class="section level2 hasAnchor" number="5.10">
 <h2><span class="header-section-number">5.10</span> Específicaciones del proyecto<a href="modelos-estadísticos.html#específicaciones-del-proyecto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
