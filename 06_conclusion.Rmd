@@ -192,6 +192,8 @@ if (interactive()) {
 
 # R/Bioconductor-powered Team Data Science
 
+https://lcolladotor.github.io/
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/33scakbTNO0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <script async class="speakerdeck-embed" data-id="3c32410b600740abb4724486e83ebd30" data-ratio="1.77725118483412" src="//speakerdeck.com/assets/embed.js"></script>
@@ -200,15 +202,13 @@ if (interactive()) {
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🔥off the press! 👀 our <a href="https://twitter.com/biorxivpreprint?ref_src=twsrc%5Etfw">@biorxivpreprint</a> on human 🧠brain <a href="https://twitter.com/LieberInstitute?ref_src=twsrc%5Etfw">@LieberInstitute</a> spatial 🌌🔬transcriptomics data 🧬using Visium <a href="https://twitter.com/10xGenomics?ref_src=twsrc%5Etfw">@10xGenomics</a>🎉<a href="https://twitter.com/hashtag/spatialLIBD?src=hash&amp;ref_src=twsrc%5Etfw">#spatialLIBD</a><br><br>🔍<a href="https://t.co/RTW0VscUKR">https://t.co/RTW0VscUKR</a> <br>👩🏾‍💻<a href="https://t.co/bsg04XKONr">https://t.co/bsg04XKONr</a><br>📚<a href="https://t.co/FJDOOzrAJ6">https://t.co/FJDOOzrAJ6</a><br>📦<a href="https://t.co/Au5jwADGhY">https://t.co/Au5jwADGhY</a><a href="https://t.co/PiWEDN9q2N">https://t.co/PiWEDN9q2N</a> <a href="https://t.co/aWy0yLlR50">pic.twitter.com/aWy0yLlR50</a></p>&mdash; 🇲🇽 Leonardo Collado-Torres (@lcolladotor) <a href="https://twitter.com/lcolladotor/status/1233661576433061888?ref_src=twsrc%5Etfw">February 29, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<script async class="speakerdeck-embed" data-id="329db23f5f17460da31f45c7695a9f06" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+<script defer class="speakerdeck-embed" data-id="2c3377401c934bb9abd859b644bb9455" data-ratio="1.7772511848341233" src="//speakerdeck.com/assets/embed.js"></script>
 
-<script async class="speakerdeck-embed" data-id="c48e671f4c93476489c3d9d679830bca" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
-
-<script async class="speakerdeck-embed" data-id="9e099800589b49c29a99187a6415af91" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+Diapositivas de mis pláticas anteriores están disponibles en https://speakerdeck.com/lcolladotor.
 
 * Platicas grabadas
 
-Usta es la versión de un webinar para BioTuring que [pueden ver en su sitio web](https://bioturing.com/sources/webinar/60752954a433e26dd8affcbd) o a través de YouTube
+Usta es la versión de un webinar para [BioTuring](https://bioturing.com/) que pueden ver a través de YouTube
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/S8884Kde-1U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
